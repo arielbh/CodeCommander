@@ -1,0 +1,181 @@
+<Configuration>
+  <SettingsComponent>
+    <string />
+    <integer />
+    <boolean>
+      <setting name="SolutionAnalysisEnabled">False</setting>
+    </boolean>
+  </SettingsComponent>
+  <CompletionStatisticsManager>
+    <ItemStatistics item="Default">
+      <Item value="public" priority="7" />
+      <Item value="object" priority="0" />
+      <Item value="new" priority="10" />
+      <Item value="DelegateCommand" priority="0" />
+      <Item value="private" priority="0" />
+      <Item value="CommandProcessor" priority="0" />
+      <Item value="class" priority="0" />
+      <Item value="ICommandBase`0" priority="5" />
+      <Item value="bool" priority="0" />
+      <Item value="void" priority="1" />
+      <Item value="return" priority="3" />
+      <Item value="MainViewModel`0" priority="0" />
+      <Item value="mainViewModel" priority="0" />
+      <Item value="_mainViewModel" priority="0" />
+      <Item value="string" priority="1" />
+      <Item value="DateTime`0" priority="2" />
+      <Item value="Message`0" priority="0" />
+      <Item value="Message" priority="0" />
+      <Item value="Text" priority="0" />
+      <Item value="var" priority="2" />
+      <Item value="connectCommand" priority="0" />
+      <Item value="ObservableCollection&lt;Message&gt;" priority="0" />
+      <Item value="ConcurrentQueue&lt;AsyncSubject&lt;ICommandBase&gt;&gt;" priority="0" />
+      <Item value="AsyncSubject&lt;ICommandBase&gt;" priority="0" />
+      <Item value="subject" priority="0" />
+      <Item value="command" priority="2" />
+      <Item value="CommandProcessor`0" priority="0" />
+      <Item value="com" priority="0" />
+      <Item value="Observer`0" priority="3" />
+      <Item value="Observable`0" priority="1" />
+      <Item value="App`0" priority="0" />
+      <Item value="IObserver" priority="0" />
+      <Item value="IObservable" priority="0" />
+      <Item value="null" priority="1" />
+      <Item value="AsyncSubject" priority="0" />
+      <Item value="int" priority="0" />
+      <Item value="num" priority="0" />
+      <Item value="true" priority="0" />
+      <Item value="enum" priority="0" />
+      <Item value="Unit" priority="0" />
+      <Item value="CommandBase`0" priority="1" />
+      <Item value="abstract" priority="0" />
+      <Item value="AsyncSubject&lt;Unit&gt;" priority="0" />
+      <Item value="CommandResponse`0" priority="0" />
+      <Item value="response" priority="0" />
+      <Item value="CommandState`0" priority="0" />
+      <Item value="override" priority="1" />
+      <Item value="SignalCommandIsInitiated`0" priority="0" />
+      <Item value="_inner" priority="0" />
+      <Item value="IFilter`0" priority="1" />
+      <Item value="if" priority="0" />
+      <Item value="CanExecute`0" priority="0" />
+      <Item value="Exception`0" priority="0" />
+      <Item value="Execute`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.DateTime">
+      <Item value="Now" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Collections.ObjectModel.ObservableCollection`1">
+      <Item value="Add`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:CommandApp.MainViewModel">
+      <Item value="AddMessage`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Controls.Grid">
+      <Item value="ColumnDefinitions" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:CommandApp.ConnectCommand">
+      <Item value="Execute`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Collections.Concurrent.ConcurrentQueue`1">
+      <Item value="Enqueue`0" priority="0" />
+      <Item value="Subscribe`1" priority="0" />
+      <Item value="ToObservable`1" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:CodeValue.CodeCommander.Interfaces.ICommandBase">
+      <Item value="Execute`0" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Linq.Observable">
+      <Item value="ObserveOn`1" priority="0" />
+      <Item value="Start`1" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:CodeValue.CodeCommander.ObservableProcessQueue`1">
+      <Item value="OnNext`0" priority="0" />
+      <Item value="Where`1" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@CommandApp.App">
+      <Item value="Current" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Application">
+      <Item value="Dispatcher" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Windows.Threading.Dispatcher">
+      <Item value="BeginInvoke`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Linq.Observer">
+      <Item value="Create`1" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.IObservable`1">
+      <Item value="Subscribe`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Collections.Generic.AsyncSubject`1">
+      <Item value="OnCompleted`0" priority="0" />
+      <Item value="Subscribe`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@CodeValue.CodeCommander.Interfaces.CommandState">
+      <Item value="Pending" priority="0" />
+      <Item value="Successed" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Reactive.Subjects.ReplaySubject`1">
+      <Item value="OnNext`0" priority="0" />
+      <Item value="Subscribe`0" priority="0" />
+    </ItemStatistics>
+  </CompletionStatisticsManager>
+  <RecentFiles>
+    <RecentFiles>
+      <File id="7DF98769-B32F-43BE-ABBC-679A5391FA32/d:Interfaces/f:ICommandBase.cs" caret="108" fromTop="0" />
+      <File id="7DF98769-B32F-43BE-ABBC-679A5391FA32/d:Interfaces/f:ICommandProcessor.cs" caret="228" fromTop="9" />
+      <File id="7DF98769-B32F-43BE-ABBC-679A5391FA32/f:CommandResponse.cs" caret="162" fromTop="7" />
+      <File id="71A80D4F-63F9-43A0-9E70-903A14AD690F/f:MainWindow.xaml" caret="0" fromTop="0" />
+      <File id="d:Miscellaneous Files/f:DelegateCommand.cs/l:C!?Ariel?Projects?Microsoft?Prism4?PrismLibrary?Desktop?Prism?Commands?DelegateCommand.cs" caret="6388" fromTop="16" />
+      <File id="71A80D4F-63F9-43A0-9E70-903A14AD690F/f:MainWindow.xaml.cs" caret="664" fromTop="16" />
+      <File id="71A80D4F-63F9-43A0-9E70-903A14AD690F/f:MainViewModel.cs" caret="1234" fromTop="0" />
+      <File id="7DF98769-B32F-43BE-ABBC-679A5391FA32/f:CommandBase.cs" caret="720" fromTop="0" />
+      <File id="7DF98769-B32F-43BE-ABBC-679A5391FA32/f:CommandProcessor.cs" caret="1053" fromTop="31" />
+    </RecentFiles>
+    <RecentEdits>
+      <File id="7DF98769-B32F-43BE-ABBC-679A5391FA32/f:CommandBase.cs" caret="925" fromTop="4" />
+      <File id="7DF98769-B32F-43BE-ABBC-679A5391FA32/f:CommandBase.cs" caret="2688" fromTop="4" />
+      <File id="7DF98769-B32F-43BE-ABBC-679A5391FA32/f:CommandProcessor.cs" caret="2101" fromTop="18" />
+      <File id="7DF98769-B32F-43BE-ABBC-679A5391FA32/d:Interfaces/f:ICommandProcessor.cs" caret="228" fromTop="9" />
+      <File id="7DF98769-B32F-43BE-ABBC-679A5391FA32/f:CommandProcessor.cs" caret="2101" fromTop="15" />
+      <File id="7DF98769-B32F-43BE-ABBC-679A5391FA32/f:CommandResponse.cs" caret="141" fromTop="7" />
+      <File id="7DF98769-B32F-43BE-ABBC-679A5391FA32/f:CommandProcessor.cs" caret="2101" fromTop="10" />
+      <File id="7DF98769-B32F-43BE-ABBC-679A5391FA32/f:CommandProcessor.cs" caret="2102" fromTop="20" />
+      <File id="7DF98769-B32F-43BE-ABBC-679A5391FA32/f:CommandBase.cs" caret="1713" fromTop="2" />
+      <File id="7DF98769-B32F-43BE-ABBC-679A5391FA32/f:CommandBase.cs" caret="2587" fromTop="20" />
+      <File id="7DF98769-B32F-43BE-ABBC-679A5391FA32/f:CommandProcessor.cs" caret="1042" fromTop="11" />
+      <File id="7DF98769-B32F-43BE-ABBC-679A5391FA32/f:CommandProcessor.cs" caret="2114" fromTop="11" />
+      <File id="7DF98769-B32F-43BE-ABBC-679A5391FA32/f:CommandProcessor.cs" caret="675" fromTop="11" />
+      <File id="71A80D4F-63F9-43A0-9E70-903A14AD690F/f:MainViewModel.cs" caret="727" fromTop="12" />
+      <File id="71A80D4F-63F9-43A0-9E70-903A14AD690F/f:MainViewModel.cs" caret="955" fromTop="21" />
+      <File id="71A80D4F-63F9-43A0-9E70-903A14AD690F/f:MainViewModel.cs" caret="1294" fromTop="17" />
+      <File id="71A80D4F-63F9-43A0-9E70-903A14AD690F/f:MainViewModel.cs" caret="2858" fromTop="14" />
+      <File id="71A80D4F-63F9-43A0-9E70-903A14AD690F/f:MainViewModel.cs" caret="2858" fromTop="9" />
+      <File id="71A80D4F-63F9-43A0-9E70-903A14AD690F/f:MainViewModel.cs" caret="2858" fromTop="4" />
+      <File id="71A80D4F-63F9-43A0-9E70-903A14AD690F/f:MainViewModel.cs" caret="2019" fromTop="0" />
+      <File id="71A80D4F-63F9-43A0-9E70-903A14AD690F/f:MainViewModel.cs" caret="2411" fromTop="7" />
+      <File id="71A80D4F-63F9-43A0-9E70-903A14AD690F/f:MainViewModel.cs" caret="2247" fromTop="1" />
+      <File id="71A80D4F-63F9-43A0-9E70-903A14AD690F/f:MainViewModel.cs" caret="2696" fromTop="15" />
+      <File id="7DF98769-B32F-43BE-ABBC-679A5391FA32/f:CommandBase.cs" caret="70" fromTop="3" />
+      <File id="71A80D4F-63F9-43A0-9E70-903A14AD690F/f:MainViewModel.cs" caret="535" fromTop="14" />
+      <File id="7DF98769-B32F-43BE-ABBC-679A5391FA32/f:CommandBase.cs" caret="2982" fromTop="13" />
+      <File id="7DF98769-B32F-43BE-ABBC-679A5391FA32/f:CommandBase.cs" caret="255" fromTop="0" />
+      <File id="7DF98769-B32F-43BE-ABBC-679A5391FA32/f:CommandBase.cs" caret="3190" fromTop="11" />
+      <File id="71A80D4F-63F9-43A0-9E70-903A14AD690F/f:MainViewModel.cs" caret="2719" fromTop="11" />
+      <File id="7DF98769-B32F-43BE-ABBC-679A5391FA32/f:CommandBase.cs" caret="762" fromTop="20" />
+    </RecentEdits>
+  </RecentFiles>
+  <NAntValidationSettings>
+    <NAntPath value="" />
+  </NAntValidationSettings>
+  <UnitTestRunner>
+    <Providers />
+  </UnitTestRunner>
+  <UnitTestRunnerNUnit>
+    <NUnitInstallDir IsNull="False">
+    </NUnitInstallDir>
+    <UseAddins>Never</UseAddins>
+  </UnitTestRunnerNUnit>
+</Configuration>

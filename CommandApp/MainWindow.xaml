@@ -1,0 +1,32 @@
+﻿<Window x:Class="CommandApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="350" Width="525">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+
+        <Button Content="Create new Command" Command="{Binding CreateNewCommand}" Height="30"/>
+
+        <ListBox Grid.Column="1"
+                 ItemsSource="{Binding Messages}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock>
+                        <TextBlock.Text>
+                             <MultiBinding StringFormat="[{0} - {1}]">
+                                  <Binding Path="Date"></Binding>
+                                  <Binding Path="Text"></Binding>
+                             </MultiBinding>
+
+                        </TextBlock.Text>
+                    </TextBlock>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+    </Grid>
+</Window>
+                      
