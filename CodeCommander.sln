@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeValue.CodeCommander", "..\CodeValue.CodeCommander\CodeValue.CodeCommander.csproj", "{7DF98769-B32F-43BE-ABBC-679A5391FA32}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommandApp", "CommandApp\CommandApp.csproj", "{71A80D4F-63F9-43A0-9E70-903A14AD690F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeValue.CodeCommander", "CodeValue.CodeCommander\CodeValue.CodeCommander.csproj", "{7DF98769-B32F-43BE-ABBC-679A5391FA32}"
 EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
@@ -11,12 +11,12 @@ Global
 		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
 		SccTeamFoundationServer = https://tfs.codevalue.net:8088/tfs/defaultcollection
 		SccLocalPath0 = .
-		SccProjectUniqueName1 = ..\\CodeValue.CodeCommander\\CodeValue.CodeCommander.csproj
-		SccProjectName1 = ../CodeValue.CodeCommander
-		SccLocalPath1 = ..\\CodeValue.CodeCommander
-		SccProjectUniqueName2 = CommandApp\\CommandApp.csproj
-		SccProjectName2 = CommandApp
-		SccLocalPath2 = CommandApp
+		SccProjectUniqueName1 = CommandApp\\CommandApp.csproj
+		SccProjectName1 = CommandApp
+		SccLocalPath1 = CommandApp
+		SccProjectUniqueName2 = CodeValue.CodeCommander\\CodeValue.CodeCommander.csproj
+		SccProjectName2 = CodeValue.CodeCommander
+		SccLocalPath2 = CodeValue.CodeCommander
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,16 +27,6 @@ Global
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{7DF98769-B32F-43BE-ABBC-679A5391FA32}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7DF98769-B32F-43BE-ABBC-679A5391FA32}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7DF98769-B32F-43BE-ABBC-679A5391FA32}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{7DF98769-B32F-43BE-ABBC-679A5391FA32}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{7DF98769-B32F-43BE-ABBC-679A5391FA32}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{7DF98769-B32F-43BE-ABBC-679A5391FA32}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7DF98769-B32F-43BE-ABBC-679A5391FA32}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7DF98769-B32F-43BE-ABBC-679A5391FA32}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{7DF98769-B32F-43BE-ABBC-679A5391FA32}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{7DF98769-B32F-43BE-ABBC-679A5391FA32}.Release|x86.ActiveCfg = Release|Any CPU
 		{71A80D4F-63F9-43A0-9E70-903A14AD690F}.Debug|Any CPU.ActiveCfg = Debug|x86
 		{71A80D4F-63F9-43A0-9E70-903A14AD690F}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
 		{71A80D4F-63F9-43A0-9E70-903A14AD690F}.Debug|Mixed Platforms.Build.0 = Debug|x86
@@ -47,6 +37,16 @@ Global
 		{71A80D4F-63F9-43A0-9E70-903A14AD690F}.Release|Mixed Platforms.Build.0 = Release|x86
 		{71A80D4F-63F9-43A0-9E70-903A14AD690F}.Release|x86.ActiveCfg = Release|x86
 		{71A80D4F-63F9-43A0-9E70-903A14AD690F}.Release|x86.Build.0 = Release|x86
+		{7DF98769-B32F-43BE-ABBC-679A5391FA32}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7DF98769-B32F-43BE-ABBC-679A5391FA32}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7DF98769-B32F-43BE-ABBC-679A5391FA32}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{7DF98769-B32F-43BE-ABBC-679A5391FA32}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{7DF98769-B32F-43BE-ABBC-679A5391FA32}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{7DF98769-B32F-43BE-ABBC-679A5391FA32}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7DF98769-B32F-43BE-ABBC-679A5391FA32}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7DF98769-B32F-43BE-ABBC-679A5391FA32}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{7DF98769-B32F-43BE-ABBC-679A5391FA32}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{7DF98769-B32F-43BE-ABBC-679A5391FA32}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

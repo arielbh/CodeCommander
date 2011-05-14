@@ -107,7 +107,7 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\CodeValue.CodeCommander\CodeValue.CodeCommander.csproj">
+    <ProjectReference Include="..\CodeValue.CodeCommander\CodeValue.CodeCommander.csproj">
       <Project>{7DF98769-B32F-43BE-ABBC-679A5391FA32}</Project>
       <Name>CodeValue.CodeCommander</Name>
     </ProjectReference>

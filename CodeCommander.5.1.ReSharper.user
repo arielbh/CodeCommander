@@ -124,30 +124,12 @@
   </CompletionStatisticsManager>
   <RecentFiles>
     <RecentFiles>
-      <File id="7DF98769-B32F-43BE-ABBC-679A5391FA32/d:Interfaces/f:ICommandBase.cs" caret="108" fromTop="0" />
-      <File id="7DF98769-B32F-43BE-ABBC-679A5391FA32/d:Interfaces/f:ICommandProcessor.cs" caret="228" fromTop="9" />
-      <File id="7DF98769-B32F-43BE-ABBC-679A5391FA32/f:CommandResponse.cs" caret="162" fromTop="7" />
       <File id="71A80D4F-63F9-43A0-9E70-903A14AD690F/f:MainWindow.xaml" caret="0" fromTop="0" />
       <File id="d:Miscellaneous Files/f:DelegateCommand.cs/l:C!?Ariel?Projects?Microsoft?Prism4?PrismLibrary?Desktop?Prism?Commands?DelegateCommand.cs" caret="6388" fromTop="16" />
       <File id="71A80D4F-63F9-43A0-9E70-903A14AD690F/f:MainWindow.xaml.cs" caret="664" fromTop="16" />
       <File id="71A80D4F-63F9-43A0-9E70-903A14AD690F/f:MainViewModel.cs" caret="1234" fromTop="0" />
-      <File id="7DF98769-B32F-43BE-ABBC-679A5391FA32/f:CommandBase.cs" caret="720" fromTop="0" />
-      <File id="7DF98769-B32F-43BE-ABBC-679A5391FA32/f:CommandProcessor.cs" caret="1053" fromTop="31" />
     </RecentFiles>
     <RecentEdits>
-      <File id="7DF98769-B32F-43BE-ABBC-679A5391FA32/f:CommandBase.cs" caret="925" fromTop="4" />
-      <File id="7DF98769-B32F-43BE-ABBC-679A5391FA32/f:CommandBase.cs" caret="2688" fromTop="4" />
-      <File id="7DF98769-B32F-43BE-ABBC-679A5391FA32/f:CommandProcessor.cs" caret="2101" fromTop="18" />
-      <File id="7DF98769-B32F-43BE-ABBC-679A5391FA32/d:Interfaces/f:ICommandProcessor.cs" caret="228" fromTop="9" />
-      <File id="7DF98769-B32F-43BE-ABBC-679A5391FA32/f:CommandProcessor.cs" caret="2101" fromTop="15" />
-      <File id="7DF98769-B32F-43BE-ABBC-679A5391FA32/f:CommandResponse.cs" caret="141" fromTop="7" />
-      <File id="7DF98769-B32F-43BE-ABBC-679A5391FA32/f:CommandProcessor.cs" caret="2101" fromTop="10" />
-      <File id="7DF98769-B32F-43BE-ABBC-679A5391FA32/f:CommandProcessor.cs" caret="2102" fromTop="20" />
-      <File id="7DF98769-B32F-43BE-ABBC-679A5391FA32/f:CommandBase.cs" caret="1713" fromTop="2" />
-      <File id="7DF98769-B32F-43BE-ABBC-679A5391FA32/f:CommandBase.cs" caret="2587" fromTop="20" />
-      <File id="7DF98769-B32F-43BE-ABBC-679A5391FA32/f:CommandProcessor.cs" caret="1042" fromTop="11" />
-      <File id="7DF98769-B32F-43BE-ABBC-679A5391FA32/f:CommandProcessor.cs" caret="2114" fromTop="11" />
-      <File id="7DF98769-B32F-43BE-ABBC-679A5391FA32/f:CommandProcessor.cs" caret="675" fromTop="11" />
       <File id="71A80D4F-63F9-43A0-9E70-903A14AD690F/f:MainViewModel.cs" caret="727" fromTop="12" />
       <File id="71A80D4F-63F9-43A0-9E70-903A14AD690F/f:MainViewModel.cs" caret="955" fromTop="21" />
       <File id="71A80D4F-63F9-43A0-9E70-903A14AD690F/f:MainViewModel.cs" caret="1294" fromTop="17" />
@@ -158,13 +140,8 @@
       <File id="71A80D4F-63F9-43A0-9E70-903A14AD690F/f:MainViewModel.cs" caret="2411" fromTop="7" />
       <File id="71A80D4F-63F9-43A0-9E70-903A14AD690F/f:MainViewModel.cs" caret="2247" fromTop="1" />
       <File id="71A80D4F-63F9-43A0-9E70-903A14AD690F/f:MainViewModel.cs" caret="2696" fromTop="15" />
-      <File id="7DF98769-B32F-43BE-ABBC-679A5391FA32/f:CommandBase.cs" caret="70" fromTop="3" />
       <File id="71A80D4F-63F9-43A0-9E70-903A14AD690F/f:MainViewModel.cs" caret="535" fromTop="14" />
-      <File id="7DF98769-B32F-43BE-ABBC-679A5391FA32/f:CommandBase.cs" caret="2982" fromTop="13" />
-      <File id="7DF98769-B32F-43BE-ABBC-679A5391FA32/f:CommandBase.cs" caret="255" fromTop="0" />
-      <File id="7DF98769-B32F-43BE-ABBC-679A5391FA32/f:CommandBase.cs" caret="3190" fromTop="11" />
       <File id="71A80D4F-63F9-43A0-9E70-903A14AD690F/f:MainViewModel.cs" caret="2719" fromTop="11" />
-      <File id="7DF98769-B32F-43BE-ABBC-679A5391FA32/f:CommandBase.cs" caret="762" fromTop="20" />
     </RecentEdits>
   </RecentFiles>
   <NAntValidationSettings>
