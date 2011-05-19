@@ -8,7 +8,7 @@
   </SettingsComponent>
   <CompletionStatisticsManager>
     <ItemStatistics item="Default">
-      <Item value="public" priority="7" />
+      <Item value="public" priority="8" />
       <Item value="object" priority="0" />
       <Item value="new" priority="10" />
       <Item value="DelegateCommand" priority="0" />
@@ -48,12 +48,12 @@
       <Item value="true" priority="0" />
       <Item value="enum" priority="0" />
       <Item value="Unit" priority="0" />
-      <Item value="CommandBase`0" priority="1" />
+      <Item value="CommandBase`0" priority="2" />
       <Item value="abstract" priority="0" />
       <Item value="AsyncSubject&lt;Unit&gt;" priority="0" />
       <Item value="CommandResponse`0" priority="0" />
       <Item value="response" priority="0" />
-      <Item value="CommandState`0" priority="0" />
+      <Item value="CommandState`0" priority="1" />
       <Item value="override" priority="1" />
       <Item value="SignalCommandIsInitiated`0" priority="0" />
       <Item value="_inner" priority="0" />
@@ -62,6 +62,7 @@
       <Item value="CanExecute`0" priority="0" />
       <Item value="Exception`0" priority="0" />
       <Item value="Execute`0" priority="0" />
+      <Item value="Pending" priority="0" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:@System.DateTime">
       <Item value="Now" priority="0" />
@@ -121,27 +122,42 @@
       <Item value="OnNext`0" priority="0" />
       <Item value="Subscribe`0" priority="0" />
     </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Reactive.Subjects.AsyncSubject`1">
+      <Item value="OnNext`0" priority="0" />
+    </ItemStatistics>
   </CompletionStatisticsManager>
   <RecentFiles>
     <RecentFiles>
-      <File id="71A80D4F-63F9-43A0-9E70-903A14AD690F/f:MainWindow.xaml" caret="0" fromTop="0" />
       <File id="d:Miscellaneous Files/f:DelegateCommand.cs/l:C!?Ariel?Projects?Microsoft?Prism4?PrismLibrary?Desktop?Prism?Commands?DelegateCommand.cs" caret="6388" fromTop="16" />
       <File id="71A80D4F-63F9-43A0-9E70-903A14AD690F/f:MainWindow.xaml.cs" caret="664" fromTop="16" />
-      <File id="71A80D4F-63F9-43A0-9E70-903A14AD690F/f:MainViewModel.cs" caret="1234" fromTop="0" />
+      <File id="71A80D4F-63F9-43A0-9E70-903A14AD690F/f:MainWindow.xaml" caret="0" fromTop="0" />
+      <File id="71A80D4F-63F9-43A0-9E70-903A14AD690F/f:ViewModelBase.cs" caret="0" fromTop="0" />
+      <File id="7DF98769-B32F-43BE-ABBC-679A5391FA32/d:Interfaces/f:IFilterManager.cs" caret="0" fromTop="0" />
+      <File id="7DF98769-B32F-43BE-ABBC-679A5391FA32/d:Interfaces/f:ICommandBase.cs" caret="0" fromTop="0" />
+      <File id="7DF98769-B32F-43BE-ABBC-679A5391FA32/d:Interfaces/f:ICommandProcessor.cs" caret="0" fromTop="0" />
+      <File id="71A80D4F-63F9-43A0-9E70-903A14AD690F/f:MainViewModel.cs" caret="2745" fromTop="14" />
+      <File id="7DF98769-B32F-43BE-ABBC-679A5391FA32/f:CommandProcessor.cs" caret="1525" fromTop="15" />
+      <File id="7DF98769-B32F-43BE-ABBC-679A5391FA32/f:CommandBase.cs" caret="462" fromTop="0" />
+      <File id="7DF98769-B32F-43BE-ABBC-679A5391FA32/f:FilterManager.cs" caret="216" fromTop="8" />
     </RecentFiles>
     <RecentEdits>
       <File id="71A80D4F-63F9-43A0-9E70-903A14AD690F/f:MainViewModel.cs" caret="727" fromTop="12" />
       <File id="71A80D4F-63F9-43A0-9E70-903A14AD690F/f:MainViewModel.cs" caret="955" fromTop="21" />
-      <File id="71A80D4F-63F9-43A0-9E70-903A14AD690F/f:MainViewModel.cs" caret="1294" fromTop="17" />
-      <File id="71A80D4F-63F9-43A0-9E70-903A14AD690F/f:MainViewModel.cs" caret="2858" fromTop="14" />
-      <File id="71A80D4F-63F9-43A0-9E70-903A14AD690F/f:MainViewModel.cs" caret="2858" fromTop="9" />
-      <File id="71A80D4F-63F9-43A0-9E70-903A14AD690F/f:MainViewModel.cs" caret="2858" fromTop="4" />
-      <File id="71A80D4F-63F9-43A0-9E70-903A14AD690F/f:MainViewModel.cs" caret="2019" fromTop="0" />
-      <File id="71A80D4F-63F9-43A0-9E70-903A14AD690F/f:MainViewModel.cs" caret="2411" fromTop="7" />
-      <File id="71A80D4F-63F9-43A0-9E70-903A14AD690F/f:MainViewModel.cs" caret="2247" fromTop="1" />
-      <File id="71A80D4F-63F9-43A0-9E70-903A14AD690F/f:MainViewModel.cs" caret="2696" fromTop="15" />
+      <File id="71A80D4F-63F9-43A0-9E70-903A14AD690F/f:MainViewModel.cs" caret="2894" fromTop="14" />
+      <File id="71A80D4F-63F9-43A0-9E70-903A14AD690F/f:MainViewModel.cs" caret="2894" fromTop="9" />
+      <File id="71A80D4F-63F9-43A0-9E70-903A14AD690F/f:MainViewModel.cs" caret="2894" fromTop="4" />
+      <File id="71A80D4F-63F9-43A0-9E70-903A14AD690F/f:MainViewModel.cs" caret="2055" fromTop="0" />
+      <File id="71A80D4F-63F9-43A0-9E70-903A14AD690F/f:MainViewModel.cs" caret="2447" fromTop="7" />
+      <File id="71A80D4F-63F9-43A0-9E70-903A14AD690F/f:MainViewModel.cs" caret="2283" fromTop="1" />
+      <File id="71A80D4F-63F9-43A0-9E70-903A14AD690F/f:MainViewModel.cs" caret="2732" fromTop="15" />
       <File id="71A80D4F-63F9-43A0-9E70-903A14AD690F/f:MainViewModel.cs" caret="535" fromTop="14" />
-      <File id="71A80D4F-63F9-43A0-9E70-903A14AD690F/f:MainViewModel.cs" caret="2719" fromTop="11" />
+      <File id="71A80D4F-63F9-43A0-9E70-903A14AD690F/f:MainViewModel.cs" caret="2755" fromTop="11" />
+      <File id="71A80D4F-63F9-43A0-9E70-903A14AD690F/f:MainViewModel.cs" caret="1268" fromTop="18" />
+      <File id="7DF98769-B32F-43BE-ABBC-679A5391FA32/f:CommandBase.cs" caret="3418" fromTop="18" />
+      <File id="7DF98769-B32F-43BE-ABBC-679A5391FA32/f:FilterManager.cs" caret="240" fromTop="11" />
+      <File id="7DF98769-B32F-43BE-ABBC-679A5391FA32/f:FilterManager.cs" caret="216" fromTop="8" />
+      <File id="7DF98769-B32F-43BE-ABBC-679A5391FA32/f:CommandBase.cs" caret="979" fromTop="7" />
+      <File id="7DF98769-B32F-43BE-ABBC-679A5391FA32/f:CommandBase.cs" caret="462" fromTop="7" />
     </RecentEdits>
   </RecentFiles>
   <NAntValidationSettings>

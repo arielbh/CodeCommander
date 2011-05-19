@@ -13,15 +13,35 @@ namespace CodeValue.CodeCommander
 {
     public class CommandProcessor : ICommandProcessor
     {
+        private readonly IFilterManager _filterManager;
 
-        public IObservable<CommandResponse> RobotResponses { get; private set; }
+        public IObservable<CommandResponse> CommandResponses { get; private set; }
 
-        public CommandProcessor(IObservable<CommandResponse> robotResponses)
+        public CommandProcessor(IObservable<CommandResponse> commandResponses, IFilterManager filterManager)
         {
+            _filterManager = filterManager;
+            filterManager.ItemsAdded.Subscribe(
+                o =>
+                _outstandingCommands.Where(c => c.CurrentState == CommandState.Pending).ToList().ForEach(
+                    PushToFilter));
+            filterManager.ItemsRemoved.Subscribe(
+                o =>
+                _outstandingCommands.Where(c => c.CurrentState == CommandState.Pending).ToList().ForEach(
+                    PushToFilter));
+
+
             _outstandingCommands.ItemsAdded.Subscribe(item =>
-                _subscriptions[item] = item.Subscribe((u) => { },
-                    ex => _outstandingCommands.Remove(item),
-                    () => _outstandingCommands.Remove(item)));
+                                                          {
+                                                              item.CurrentState = CommandState.Pending;
+                                                            _subscriptions[item] = item.Subscribe((u) => { },
+                                                                                                ex =>
+                                                                                                _outstandingCommands
+                                                                                                    .Remove(item),
+                                                                                                () =>
+                                                                                                _outstandingCommands
+                                                                                                    .Remove(item));
+                                                        }
+                );
 
             _outstandingCommands.ItemsRemoved.Subscribe(item =>
             {
@@ -29,7 +49,7 @@ namespace CodeValue.CodeCommander
                 _subscriptions.Remove(item);
             });
 
-            robotResponses.SelectMany(resp =>
+            commandResponses.SelectMany(resp =>
             {
                 foreach (var cmd in _outstandingCommands)
                 {
@@ -54,12 +74,32 @@ namespace CodeValue.CodeCommander
 
         public IObservable<Unit> PublishCommand(CommandBase command)
         {
+
             _outstandingCommands.Add(command);
-            command.StartRequest(CommandState.Pending);
+
+            PushToFilter(command);
+
             return command;
         }
 
+        private void PushToFilter(CommandBase command)
+        {
+            bool result = _filterManager.Process(command);
+            if (result)
+            {
+                command.StartRequest(CommandState.Executing);
+            }
+            else
+            {
+                if (command.ShouldFailIfFiltered)
+                {
+                    command.StartRequest(CommandState.Failed);
 
+                }
+                command.StartRequest(CommandState.Pending);
+                
+            }
+        }
     }
 
 

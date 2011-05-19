@@ -14,13 +14,19 @@ namespace CommandApp
     {
         private int num;
         AsyncSubject<CommandResponse> callMe = new AsyncSubject<CommandResponse>();
+        private NotConnectedFilter _notConnectedFilter = new NotConnectedFilter();
         public MainViewModel()
         {
             Messages = new ObservableCollection<Message>();
             CreateNewCommand = new DelegateCommand(NewCommandAction);
-            CommandProcessor = new CommandProcessor(callMe);
+            FilterManager = new FilterManager();
+            FilterManager.AddFilter(_notConnectedFilter);
+            CommandProcessor = new CommandProcessor(callMe, FilterManager);
+            RemoveCommand = new DelegateCommand(() => FilterManager.RemoveFilter(_notConnectedFilter));
 
         }
+
+        public IFilterManager FilterManager { get; set; }
 
         private void NewCommandAction()
         {         
@@ -29,18 +35,25 @@ namespace CommandApp
             
             var suscriber = CommandProcessor.PublishCommand(connectCommand);
             IDisposable subscription = suscriber.Subscribe(
-                x => Console.WriteLine("OnNext:  {0}", x),
+                x => { },
                 ex => Console.WriteLine("OnError: {0}", ex.Message),
                 () => Console.WriteLine("OnCompleted")
             );
-            if (num++ == 3)
-            {
-            //    CommandProcessor.Ready = true;
 
-            }        
+            CommandProcessor.PublishCommand(new ExecuteCommand(this));
+
+
+            //callMe.OnNext(null);
+            //if (num++ == 3)
+            //{
+            ////    CommandProcessor.Ready = true;
+
+            //}        
         }
 
         public DelegateCommand CreateNewCommand { get; set; }
+        public DelegateCommand RemoveCommand { get; set; }
+
         public ICommandProcessor CommandProcessor { get; set; }
         public ObservableCollection<Message> Messages { get; set; }
 
@@ -88,10 +101,43 @@ namespace CommandApp
             return CommandState.Successed;
         }
 
-        
-        public override void StartRequest(CommandState currentState)
+    }
+
+    public class ExecuteCommand : CommandBase
+    {
+        private readonly MainViewModel _mainViewModel;
+
+        public ExecuteCommand(MainViewModel mainViewModel)
         {
-            SignalCommandIsInitiated();
+            _mainViewModel = mainViewModel;
+        }
+
+        public override bool CanExecute()
+        {
+            _mainViewModel.AddMessage("Execute Message CanExecuted");
+            return true;
+        }
+
+        public override void Execute()
+        {
+            _mainViewModel.AddMessage("Execute Message Executed");
+
+        }
+
+        public override CommandState? InterpretResponse(CommandResponse response, CommandState currentState)
+        {
+            return CommandState.Successed;
+        }
+
+    }
+
+    public class NotConnectedFilter : IFilter
+    {
+        public double Order { get; set; }
+
+        public bool Process(ICommandBase command)
+        {
+            return command is ConnectCommand;
         }
     }
 }

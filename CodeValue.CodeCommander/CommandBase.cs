@@ -9,12 +9,14 @@ namespace CodeValue.CodeCommander
 {
     public abstract class CommandBase : IObservable<Unit>, ICommandBase
     {
-        readonly ReplaySubject<Unit> _inner = new ReplaySubject<Unit>();
+        private readonly ReplaySubject<Unit> _inner = new ReplaySubject<Unit>();
+
 
         protected CommandBase()
         {
+            CurrentState = CommandState.Pending;
             HasBeenIssued = false;
-            _inner.Subscribe(_ =>
+            Inner.Subscribe(_ =>
                                  {
                                      HasBeenIssued = true;
                                      if (CanExecute())
@@ -22,12 +24,30 @@ namespace CodeValue.CodeCommander
                                          Execute();
                                      }
                                  });
+            
         }
 
         public bool HasBeenIssued { get; private set; }
+        public CommandState CurrentState { get; set; }
+
+        internal ReplaySubject<Unit> Inner
+        {
+            get { return _inner; }
+        }
 
         public virtual void StartRequest(CommandState currentState)
         {
+            CurrentState = currentState;
+            if (currentState == CommandState.Executing)
+            {
+                SignalCommandIsInitiated();
+                return;
+            }
+            if (CurrentState == CommandState.Failed)
+            {
+                throw new Exception("Command can not be started. Most likely due to filers");
+                return;
+            }
             // This method is called at the start of every request - this method
             // should do the following:
             //
@@ -63,18 +83,18 @@ namespace CodeValue.CodeCommander
 
         protected void SignalCommandIsInitiated()
         {
-            _inner.OnNext(new Unit());
+            Inner.OnNext(new Unit());
         }
 
         protected void CompleteCommand(Exception ex = null)
         {
             if (ex != null)
             {
-                _inner.OnError(ex);
+                Inner.OnError(ex);
             }
             else
             {
-                _inner.OnCompleted();
+                Inner.OnCompleted();
             }
         }
 
@@ -83,7 +103,11 @@ namespace CodeValue.CodeCommander
         public abstract void Execute();
         public IDisposable Subscribe(IObserver<Unit> observer)
         {
-            return _inner.Subscribe(observer);
+            return Inner.Subscribe(observer);
         }
+
+        public bool ShouldFailIfFiltered { get; set; }
+
+
     }
 }

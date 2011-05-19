@@ -7,9 +7,13 @@
             <ColumnDefinition />
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
+        <StackPanel>
 
-        <Button Content="Create new Command" Command="{Binding CreateNewCommand}" Height="30"/>
-
+            <Button Content="Create new Command" Command="{Binding CreateNewCommand}" Height="30"/>
+            <Button Content="Remove Filter"
+                    Command="{Binding RemoveCommand}"
+                    Height="30" />
+        </StackPanel>
         <ListBox Grid.Column="1"
                  ItemsSource="{Binding Messages}">
             <ListBox.ItemTemplate>
