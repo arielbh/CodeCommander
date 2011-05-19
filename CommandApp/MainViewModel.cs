@@ -110,6 +110,8 @@ namespace CommandApp
         public ExecuteCommand(MainViewModel mainViewModel)
         {
             _mainViewModel = mainViewModel;
+            PendingTimeout = 2000;
+           
         }
 
         public override bool CanExecute()

@@ -90,7 +90,9 @@ namespace CodeValue.CodeCommander
             {
                 lock (holdChanges)
                 {
+                    
                     return Filters.ToArray();
+                    
                 }
             }
         }
@@ -99,5 +101,11 @@ namespace CodeValue.CodeCommander
         {
             get { return Filters.ItemsAdded; }
         }
+
+        public IObservable<IFilter>  ItemsChanged
+        {
+            get { return Observable.Merge(Filters.ItemsAdded, Filters.ItemsRemoved); }
+        }
+
     }
 }

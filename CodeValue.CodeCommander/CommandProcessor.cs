@@ -20,19 +20,20 @@ namespace CodeValue.CodeCommander
         public CommandProcessor(IObservable<CommandResponse> commandResponses, IFilterManager filterManager)
         {
             _filterManager = filterManager;
-            filterManager.ItemsAdded.Subscribe(
+            filterManager.ItemsChanged.Subscribe(
                 o =>
                 _outstandingCommands.Where(c => c.CurrentState == CommandState.Pending).ToList().ForEach(
                     PushToFilter));
-            filterManager.ItemsRemoved.Subscribe(
-                o =>
-                _outstandingCommands.Where(c => c.CurrentState == CommandState.Pending).ToList().ForEach(
-                    PushToFilter));
+            //filterManager.ItemsRemoved.Subscribe(
+            //    o =>
+            //    _outstandingCommands.Where(c => c.CurrentState == CommandState.Pending).ToList().ForEach(
+            //        PushToFilter));
 
 
             _outstandingCommands.ItemsAdded.Subscribe(item =>
                                                           {
                                                               item.CurrentState = CommandState.Pending;
+                                                              PushToFilter(item);
                                                             _subscriptions[item] = item.Subscribe((u) => { },
                                                                                                 ex =>
                                                                                                 _outstandingCommands
@@ -65,6 +66,8 @@ namespace CodeValue.CodeCommander
             {
                 CurrentState = newState;
             });
+
+           
         }
 
         private ReactiveCollection<CommandBase> _outstandingCommands = new ReactiveCollection<CommandBase>();
@@ -76,9 +79,6 @@ namespace CodeValue.CodeCommander
         {
 
             _outstandingCommands.Add(command);
-
-            PushToFilter(command);
-
             return command;
         }
 

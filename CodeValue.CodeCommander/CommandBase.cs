@@ -1,20 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reactive.Linq;
 using System.Reactive.Subjects;
 using System.Text;
 using CodeValue.CodeCommander.Interfaces;
+using ReactiveUI;
 
 namespace CodeValue.CodeCommander
 {
-    public abstract class CommandBase : IObservable<Unit>, ICommandBase
+    public abstract class CommandBase : ReactiveObject, IObservable<Unit>, ICommandBase
     {
         private readonly ReplaySubject<Unit> _inner = new ReplaySubject<Unit>();
 
 
         protected CommandBase()
         {
-            CurrentState = CommandState.Pending;
+            CurrentState = CommandState.New;
             HasBeenIssued = false;
             Inner.Subscribe(_ =>
                                  {
@@ -24,11 +26,33 @@ namespace CodeValue.CodeCommander
                                          Execute();
                                      }
                                  });
-            
+            this.ObservableForProperty(c => c.CurrentState).Subscribe(b =>
+                                  {
+                                      if (b.Value == CommandState.Pending && PendingTimeout.HasValue)
+                                      {
+                                          Observable.Timer(new TimeSpan(0, 0, 0, 0, PendingTimeout.Value)).Subscribe(
+                                              a =>
+                                                  {
+                                                      if (CurrentState == CommandState.Pending)
+                                                      {
+                                                          //CompleteCommand(
+                                                          //    new Exception("Command has exceded its Pending timeout"));
+
+                                                      }
+                                                  });
+                                      }
+
+                                  });
+
         }
 
         public bool HasBeenIssued { get; private set; }
-        public CommandState CurrentState { get; set; }
+        private CommandState _CurrentState;
+        public CommandState CurrentState
+        {
+            get { return _CurrentState; }
+            set { this.RaiseAndSetIfChanged(x => x.CurrentState, value); }
+        }
 
         internal ReplaySubject<Unit> Inner
         {
@@ -107,6 +131,9 @@ namespace CodeValue.CodeCommander
         }
 
         public bool ShouldFailIfFiltered { get; set; }
+        public int? PendingTimeout { get; set; }
+        public int? ExecutingTimeout { get; set; }
+        
 
 
     }
