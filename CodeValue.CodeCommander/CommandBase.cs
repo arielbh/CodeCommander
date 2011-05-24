@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reactive;
 using System.Reactive.Linq;
 using System.Reactive.Subjects;
 using System.Text;
@@ -9,9 +10,9 @@ using ReactiveUI;
 
 namespace CodeValue.CodeCommander
 {
-    public abstract class CommandBase : ReactiveObject, IObservable<Unit>, ICommandBase
+    public abstract class CommandBase : ReactiveObject, IObservable<CommandResponse<Unit>>, ICommandBase
     {
-        private readonly ReplaySubject<Unit> _inner = new ReplaySubject<Unit>();
+        private readonly ReplaySubject<CommandResponse<Unit>> _inner = new ReplaySubject<CommandResponse<Unit>>();
 
 
         protected CommandBase()
@@ -25,7 +26,7 @@ namespace CodeValue.CodeCommander
                                      {
                                          Execute();
                                      }
-                                 });
+                                 }, ex => Console.WriteLine("Error: " + ex.Message));
             this.ObservableForProperty(c => c.CurrentState).Subscribe(b =>
                                   {
                                       if (b.Value == CommandState.Pending && PendingTimeout.HasValue)
@@ -35,11 +36,24 @@ namespace CodeValue.CodeCommander
                                                   {
                                                       if (CurrentState == CommandState.Pending)
                                                       {
-                                                          //CompleteCommand(
-                                                          //    new Exception("Command has exceded its Pending timeout"));
+                                                          CompleteCommand(
+                                                              new Exception("Command has exceded its Pending timeout"));
 
                                                       }
                                                   });
+                                      }
+                                      if (b.Value == CommandState.Executing && ExecutingTimeout.HasValue)
+                                      {
+                                          Observable.Timer(new TimeSpan(0, 0, 0, 0, ExecutingTimeout.Value)).Subscribe(
+                                              a =>
+                                              {
+                                                  if (CurrentState == CommandState.Executing)
+                                                  {
+                                                      CompleteCommand(
+                                                          new Exception("Command has exceded its Executing timeout"));
+
+                                                  }
+                                              });
                                       }
 
                                   });
@@ -54,23 +68,19 @@ namespace CodeValue.CodeCommander
             set { this.RaiseAndSetIfChanged(x => x.CurrentState, value); }
         }
 
-        internal ReplaySubject<Unit> Inner
-        {
-            get { return _inner; }
-        }
+        protected ReplaySubject<CommandResponse<Unit>> Inner { get { return _inner; } }
 
         public virtual void StartRequest(CommandState currentState)
         {
             CurrentState = currentState;
             if (currentState == CommandState.Executing)
             {
-                SignalCommandIsInitiated();
+                SignalCommandFulfillment();
                 return;
             }
             if (CurrentState == CommandState.Failed)
             {
-                throw new Exception("Command can not be started. Most likely due to filers");
-                return;
+                CompleteCommand(new Exception("Command can not be started. Most likely due to filers"));
             }
             // This method is called at the start of every request - this method
             // should do the following:
@@ -85,7 +95,7 @@ namespace CodeValue.CodeCommander
             //        queued, do nothing.
         }
 
-        public abstract CommandState? InterpretResponse(CommandResponse response, CommandState currentState);
+        public abstract CommandState? InterpretResponse(ProcessorInput response, CommandState currentState);
         // The contract of this command is that it should return:
         //
         //      * null if it is not interested in the command, or if command
@@ -105,9 +115,9 @@ namespace CodeValue.CodeCommander
         // sent over the wire. 
 
 
-        protected void SignalCommandIsInitiated()
+        protected virtual void SignalCommandFulfillment()
         {
-            Inner.OnNext(new Unit());
+            Inner.OnNext(new CommandResponse<Unit>(this, new Unit()));
         }
 
         protected void CompleteCommand(Exception ex = null)
@@ -125,16 +135,30 @@ namespace CodeValue.CodeCommander
         
         public abstract bool CanExecute();
         public abstract void Execute();
-        public IDisposable Subscribe(IObserver<Unit> observer)
+        public IDisposable Subscribe(IObserver<CommandResponse<Unit>> observer)
         {
             return Inner.Subscribe(observer);
         }
 
-        public bool ShouldFailIfFiltered { get; set; }
-        public int? PendingTimeout { get; set; }
-        public int? ExecutingTimeout { get; set; }
-        
+        public bool ShouldFailIfFiltered { get; protected set; }
+        public int? PendingTimeout { get; protected set; }
+        public int? ExecutingTimeout { get; protected set; }
 
+        public void RegisterForStateChange(IObserver<IObservedChange<CommandBase, CommandState>> observer)
+        {
+            this.ObservableForProperty(c => c.CurrentState).Subscribe(observer);
+        }
+    }
 
+    public abstract class CommandBase<T> : CommandBase, IObservable<T>
+    {
+        private readonly ReplaySubject<T> _inner = new ReplaySubject<T>();
+
+        public IDisposable Subscribe(IObserver<T> observer)
+        {
+           return Inner.Subscribe(observer);
+        }
+
+        protected new ReplaySubject<T> Inner { get { return _inner; } }
     }
 }

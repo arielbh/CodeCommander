@@ -8,7 +8,8 @@ C:\Ariel\Projects\CodeValue\CodeLight\CodeCommander\CommandApp\bin\Debug\Microso
 C:\Ariel\Projects\CodeValue\CodeLight\CodeCommander\CommandApp\bin\Debug\CodeValue.CodeCommander.pdb
 C:\Ariel\Projects\CodeValue\CodeLight\CodeCommander\CommandApp\bin\Debug\Microsoft.Practices.Prism.pdb
 C:\Ariel\Projects\CodeValue\CodeLight\CodeCommander\CommandApp\bin\Debug\Microsoft.Practices.Prism.xml
-C:\Ariel\Projects\CodeValue\CodeLight\CodeCommander\CommandApp\bin\Debug\System.Reactive.pdb
+C:\Ariel\Projects\CodeValue\CodeLight\CodeCommander\CommandApp\bin\Debug\ReactiveUI.pdb
+C:\Ariel\Projects\CodeValue\CodeLight\CodeCommander\CommandApp\bin\Debug\ReactiveUI.xml
 C:\Ariel\Projects\CodeValue\CodeLight\CodeCommander\CommandApp\bin\Debug\System.Reactive.xml
 C:\Ariel\Projects\CodeValue\CodeLight\CodeCommander\CommandApp\bin\Debug\Microsoft.Practices.ServiceLocation.xml
 C:\Ariel\Projects\CodeValue\CodeLight\CodeCommander\CommandApp\obj\x86\Debug\ResolveAssemblyReference.cache

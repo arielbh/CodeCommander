@@ -13,7 +13,7 @@ namespace CommandApp
     public class MainViewModel : ViewModelBase<object>
     {
         private int num;
-        AsyncSubject<CommandResponse> callMe = new AsyncSubject<CommandResponse>();
+        AsyncSubject<ProcessorInput> callMe = new AsyncSubject<ProcessorInput>();
         private NotConnectedFilter _notConnectedFilter = new NotConnectedFilter();
         public MainViewModel()
         {
@@ -27,6 +27,14 @@ namespace CommandApp
         }
 
         public IFilterManager FilterManager { get; set; }
+        private IDisposable subscription;
+        private IDisposable subscription2;
+
+        private void WrapAndCallCommand(CommandBase command)
+        {
+            //CommandProcessor.PublishCommand(command).Subscribe(x => AddMessage());
+            
+        }
 
         private void NewCommandAction()
         {         
@@ -34,13 +42,22 @@ namespace CommandApp
             var connectCommand = new ConnectCommand(this);
             
             var suscriber = CommandProcessor.PublishCommand(connectCommand);
-            IDisposable subscription = suscriber.Subscribe(
-                x => { },
+            subscription = suscriber.Subscribe(
+                x => { Console.WriteLine("OnNext: {0}", x); },
                 ex => Console.WriteLine("OnError: {0}", ex.Message),
                 () => Console.WriteLine("OnCompleted")
             );
 
-            CommandProcessor.PublishCommand(new ExecuteCommand(this));
+            var suscriber2 = CommandProcessor.PublishCommand(new ExecuteCommand(this));
+
+            subscription2 = suscriber2.Subscribe(
+                x => { Console.WriteLine("OnNext: {0}", x); },
+                ex => Console.WriteLine("OnError: {0}", ex.Message),
+                () => Console.WriteLine("OnCompleted")
+            );
+            var c = new GetValueCommand(this);
+
+            //CommandProcessor.PublishCommand<double>(c).Subscribe();
 
 
             //callMe.OnNext(null);
@@ -96,7 +113,7 @@ namespace CommandApp
             
         }
 
-        public override CommandState? InterpretResponse(CommandResponse response, CommandState currentState)
+        public override CommandState? InterpretResponse(ProcessorInput response, CommandState currentState)
         {
             return CommandState.Successed;
         }
@@ -126,11 +143,39 @@ namespace CommandApp
 
         }
 
-        public override CommandState? InterpretResponse(CommandResponse response, CommandState currentState)
+        public override CommandState? InterpretResponse(ProcessorInput response, CommandState currentState)
         {
             return CommandState.Successed;
         }
 
+    }
+
+    public class GetValueCommand : CommandBase<double>
+    {
+        private readonly MainViewModel _mainViewModel;
+
+        public GetValueCommand(MainViewModel mainViewModel)
+        {
+            _mainViewModel = mainViewModel;
+        }
+
+        public override CommandState? InterpretResponse(ProcessorInput response, CommandState currentState)
+        {
+            return CommandState.Successed;
+        }
+
+        public override bool CanExecute()
+        {
+            _mainViewModel.AddMessage("Execute Message CanExecuted");
+
+            return true;
+        }
+
+        public override void Execute()
+        {
+            _mainViewModel.AddMessage("Execute Message Executed");
+            
+        }
     }
 
     public class NotConnectedFilter : IFilter

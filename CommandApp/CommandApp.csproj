@@ -43,15 +43,12 @@
     <Reference Include="Microsoft.Practices.Prism">
       <HintPath>..\..\..\..\Microsoft\Prism4\PrismLibrary\Desktop\Prism.UnityExtensions.Tests\bin\Debug\Microsoft.Practices.Prism.dll</HintPath>
     </Reference>
-    <Reference Include="ReactiveUI, Version=2.3.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\CodeValue.CodeCommander\bin\Debug\ReactiveUI.dll</HintPath>
+    <Reference Include="ReactiveUI">
+      <HintPath>..\3rd Party\ReactiveUI.dll</HintPath>
     </Reference>
     <Reference Include="System" />
-    <Reference Include="System.CoreEx, Version=1.0.2856.104, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Reactive, Version=1.0.10425.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\3rd Party\System.Reactive.dll</HintPath>
-    </Reference>
+    <Reference Include="System.Reactive, Version=1.0.10425.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />

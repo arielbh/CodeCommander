@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
-using System.Concurrency;
 using System.Linq;
+using System.Reactive;
 using System.Reactive.Linq;
 using System.Reactive.Subjects;
 using System.Text;
@@ -15,9 +15,9 @@ namespace CodeValue.CodeCommander
     {
         private readonly IFilterManager _filterManager;
 
-        public IObservable<CommandResponse> CommandResponses { get; private set; }
+        //public IObservable<ProcessorInput> CommandResponses { get; private set; }
 
-        public CommandProcessor(IObservable<CommandResponse> commandResponses, IFilterManager filterManager)
+        public CommandProcessor(IObservable<ProcessorInput> inputsSource, IFilterManager filterManager)
         {
             _filterManager = filterManager;
             filterManager.ItemsChanged.Subscribe(
@@ -50,7 +50,7 @@ namespace CodeValue.CodeCommander
                 _subscriptions.Remove(item);
             });
 
-            commandResponses.SelectMany(resp =>
+            inputsSource.SelectMany(resp =>
             {
                 foreach (var cmd in _outstandingCommands)
                 {
@@ -75,11 +75,16 @@ namespace CodeValue.CodeCommander
 
         public CommandState CurrentState { get; private set; }
 
-        public IObservable<Unit> PublishCommand(CommandBase command)
+        public IObservable<CommandResponse<Unit>> PublishCommand(CommandBase command)
         {
-
             _outstandingCommands.Add(command);
             return command;
+        }
+
+        public IObservable<CommandResponse<T>> PublishCommand<T>(CommandBase<T> command)
+        {
+            _outstandingCommands.Add(command);
+            return (IObservable<CommandResponse<T>>) command;
         }
 
         private void PushToFilter(CommandBase command)
