@@ -25,3 +25,5 @@ C:\Ariel\Projects\CodeValue\CodeLight\CodeCommander\CommandApp\obj\x86\Debug\Com
 C:\Ariel\Projects\CodeValue\CodeLight\CodeCommander\CommandApp\obj\x86\Debug\CommandApp.pdb
 C:\Ariel\Projects\CodeValue\CodeLight\CodeCommander\CommandApp\obj\x86\Debug\Decl\CommandApp.exe
 C:\Ariel\Projects\CodeValue\CodeLight\CodeCommander\CommandApp\obj\x86\Debug\Decl\CommandApp.pdb
+C:\Ariel\Projects\CodeValue\CodeLight\CodeCommander\CommandApp\bin\Debug\System.Reactive.Windows.Threading.dll
+C:\Ariel\Projects\CodeValue\CodeLight\CodeCommander\CommandApp\bin\Debug\System.Reactive.Windows.Threading.xml

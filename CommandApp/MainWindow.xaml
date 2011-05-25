@@ -1,15 +1,23 @@
 ﻿<Window x:Class="CommandApp.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="MainWindow" Height="350" Width="525">
+        Title="MainWindow" Height="350" Width="525" WindowState="Maximized">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition />
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
         <StackPanel>
+            <Button Content="Connect Command" Command="{Binding ConnectCommand}" Height="30"/>
+            <CheckBox x:Name="isConnected" Content="Can Connect"
+                      />
+            <Button Content="Send Connection State"
+                    Command="{Binding SendConnectCommand}"
+                    CommandParameter="{Binding IsChecked,ElementName=isConnected}" />
+            <Button Content="Send GetValue"
+                    Command="{Binding GetValueCommand}"
+                    Height="30" />
 
-            <Button Content="Create new Command" Command="{Binding CreateNewCommand}" Height="30"/>
             <Button Content="Remove Filter"
                     Command="{Binding RemoveCommand}"
                     Height="30" />

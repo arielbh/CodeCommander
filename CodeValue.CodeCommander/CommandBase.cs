@@ -12,23 +12,30 @@ namespace CodeValue.CodeCommander
 {
     public abstract class CommandBase : ReactiveObject, IObservable<CommandResponse<Unit>>, ICommandBase
     {
+        internal int CommandCounter { get; set; }
         private readonly ReplaySubject<CommandResponse<Unit>> _inner = new ReplaySubject<CommandResponse<Unit>>();
-
 
         protected CommandBase()
         {
+            CommandId = Guid.NewGuid().ToString();
             CurrentState = CommandState.New;
             HasBeenIssued = false;
-            Inner.Subscribe(_ =>
-                                 {
-                                     HasBeenIssued = true;
-                                     if (CanExecute())
-                                     {
-                                         Execute();
-                                     }
-                                 }, ex => Console.WriteLine("Error: " + ex.Message));
+            Inner.Subscribe(HandleFullfillment, HandleError, HandleCompletion);
             this.ObservableForProperty(c => c.CurrentState).Subscribe(b =>
                                   {
+                                      if (b.Value == CommandState.Successed)
+                                      {
+                                          SignalCommandFulfillment();
+                                          if (!ShouldExecuteForever)
+                                          {
+                                              CompleteCommand();
+                                          }
+                                          else
+                                          {
+                                              CurrentState = CommandState.Executing;
+                                          }
+                                      }
+
                                       if (b.Value == CommandState.Pending && PendingTimeout.HasValue)
                                       {
                                           Observable.Timer(new TimeSpan(0, 0, 0, 0, PendingTimeout.Value)).Subscribe(
@@ -39,7 +46,7 @@ namespace CodeValue.CodeCommander
                                                           CompleteCommand(
                                                               new Exception("Command has exceded its Pending timeout"));
 
-                                                      }
+                                                      }                                                     
                                                   });
                                       }
                                       if (b.Value == CommandState.Executing && ExecutingTimeout.HasValue)
@@ -75,7 +82,7 @@ namespace CodeValue.CodeCommander
             CurrentState = currentState;
             if (currentState == CommandState.Executing)
             {
-                SignalCommandFulfillment();
+                SignalCommandCanStartExecuting();
                 return;
             }
             if (CurrentState == CommandState.Failed)
@@ -114,7 +121,19 @@ namespace CodeValue.CodeCommander
         // signalCommandIsInitiated method should be called after the command is
         // sent over the wire. 
 
-
+        internal void SignalCommandCanStartExecuting()
+        {
+            HasBeenIssued = true;
+            if (CanExecute())
+            {
+                Execute();
+            }
+            else
+            {
+                CurrentState = CommandState.Blocked;
+            }
+        }
+        
         protected virtual void SignalCommandFulfillment()
         {
             Inner.OnNext(new CommandResponse<Unit>(this, new Unit()));
@@ -128,6 +147,7 @@ namespace CodeValue.CodeCommander
             }
             else
             {
+                
                 Inner.OnCompleted();
             }
         }
@@ -135,6 +155,7 @@ namespace CodeValue.CodeCommander
         
         public abstract bool CanExecute();
         public abstract void Execute();
+
         public IDisposable Subscribe(IObserver<CommandResponse<Unit>> observer)
         {
             return Inner.Subscribe(observer);
@@ -143,22 +164,64 @@ namespace CodeValue.CodeCommander
         public bool ShouldFailIfFiltered { get; protected set; }
         public int? PendingTimeout { get; protected set; }
         public int? ExecutingTimeout { get; protected set; }
+        public bool ShouldExecuteForever { get; protected set; }
 
-        public void RegisterForStateChange(IObserver<IObservedChange<CommandBase, CommandState>> observer)
+        public IDisposable RegisterForStateChange(IObserver<IObservedChange<CommandBase, CommandState>> observer)
         {
-            this.ObservableForProperty(c => c.CurrentState).Subscribe(observer);
+            return this.ObservableForProperty(c => c.CurrentState).Subscribe(observer);
         }
+        protected virtual void HandleFullfillment(CommandResponse<Unit> commandResponse)
+        {
+            
+        }
+
+        protected virtual  void HandleError(Exception ex)
+        {
+            
+        }
+
+        protected virtual void HandleCompletion()
+        {
+
+        }
+
+        public string CommandId { get; private set; }
+
+        public override string ToString()
+        {
+            return "Command: " + CommandId;
+        }
+
+        public Unit ReturnValue { get; protected set; }
     }
 
-    public abstract class CommandBase<T> : CommandBase, IObservable<T>
+    public abstract class CommandBase<T> : CommandBase, IObservable<CommandResponse<T>>
     {
-        private readonly ReplaySubject<T> _inner = new ReplaySubject<T>();
+        public CommandBase()
+        {
+            Inner.Subscribe(HandleFullfillment, HandleError, HandleCompletion);
+        }
 
-        public IDisposable Subscribe(IObserver<T> observer)
+        private readonly ReplaySubject<CommandResponse<T>>  _inner = new ReplaySubject<CommandResponse<T>>();
+
+        public IDisposable Subscribe(IObserver<CommandResponse<T>> observer)
         {
            return Inner.Subscribe(observer);
         }
 
-        protected new ReplaySubject<T> Inner { get { return _inner; } }
+        protected new ReplaySubject<CommandResponse<T>> Inner { get { return _inner; } }
+
+        protected override void SignalCommandFulfillment()
+        {
+            Inner.OnNext(new CommandResponse<T>(this, ReturnValue));
+        }
+
+        public new T ReturnValue { get; protected set; }
+
+        protected new virtual void HandleFullfillment(CommandResponse<T> commandResponse)
+        {
+        }
+
+
     }
 }

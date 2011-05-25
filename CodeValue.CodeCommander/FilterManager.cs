@@ -29,36 +29,23 @@ namespace CodeValue.CodeCommander
 
         private bool ProcessFilters(CommandBase command)
         {
-            try
+            IFilter[] localFilters = null;
+            while (true)
             {
-                Filters.CollectionChanged += Filters_CollectionChanged;
-                IFilter[] localFilters = null;
-                while (true)
+                lock (holdChanges)
                 {
-                    lock (holdChanges)
-                    {
-                        localFilters = Filters.ToArray();
-                        _filtersChanged = false;
-                    }
-                    if (localFilters.Count() == 0) return true;
-                    int index = 0;
-                    while (index < localFilters.Count() && !_filtersChanged)
-                    {
-                        bool result = localFilters[index++].Process(command);
-                        if (!result) return false;
-                    }
-                    if (!_filtersChanged) return true;
+                    localFilters = Filters.OrderBy(f => f.Order).ToArray();
+                    _filtersChanged = false;
                 }
+                if (localFilters.Count() == 0) return true;
+                int index = 0;
+                while (index < localFilters.Count() && !_filtersChanged)
+                {
+                    bool result = localFilters[index++].Process(command);
+                    if (!result) return false;
+                }
+                if (!_filtersChanged) return true;
             }
-            finally
-            {
-                Filters.CollectionChanged -= Filters_CollectionChanged;
-            }
-        }
-
-        void Filters_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
-        {
-            _filtersChanged = true;
         }
 
         public IObservable<IFilter> ItemsRemoved
@@ -70,6 +57,7 @@ namespace CodeValue.CodeCommander
         {
             lock (holdChanges)
             {
+                _filtersChanged = true;
                 Filters.Add(filter);
             }
                     
@@ -79,6 +67,7 @@ namespace CodeValue.CodeCommander
         {
             lock (holdChanges)
             {
+                _filtersChanged = true;
                 return Filters.Remove(filter);
             }
         }

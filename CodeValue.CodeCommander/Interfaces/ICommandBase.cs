@@ -6,10 +6,11 @@ namespace CodeValue.CodeCommander.Interfaces
     {
         New,
         Pending,
+        Blocked,
         Executing,
         Successed,
-        Failed
-
+        Failed,
+        Canceled
     }
 
     public interface ICommandBase
