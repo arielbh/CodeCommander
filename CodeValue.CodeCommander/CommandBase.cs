@@ -17,12 +17,14 @@ namespace CodeValue.CodeCommander
 
         protected CommandBase()
         {
+            CommandTraces = new ReactiveCollection<CommandTrace>();
             CommandId = Guid.NewGuid().ToString();
             CurrentState = CommandState.New;
             HasBeenIssued = false;
-            Inner.Subscribe(HandleFullfillment, HandleError, HandleCompletion);
+            Inner.Subscribe(x => HandleFullfillment(), HandleError, HandleCompletion);
             this.ObservableForProperty(c => c.CurrentState).Subscribe(b =>
                                   {
+                                      CommandTraces.Add(new CommandTrace { DateTime = DateTime.Now, State = b.Value });
                                       if (b.Value == CommandState.Successed)
                                       {
                                           SignalCommandFulfillment();
@@ -170,18 +172,29 @@ namespace CodeValue.CodeCommander
         {
             return this.ObservableForProperty(c => c.CurrentState).Subscribe(observer);
         }
-        protected virtual void HandleFullfillment(CommandResponse<Unit> commandResponse)
+        protected virtual void HandleFullfillment()
         {
+            if (FullfillmentAction != null)
+            {
+                FullfillmentAction(this);
+            }
             
         }
 
         protected virtual  void HandleError(Exception ex)
         {
-            
+            if (ErrorAction != null)
+            {
+                ErrorAction(this, ex);
+            }   
         }
 
         protected virtual void HandleCompletion()
         {
+            if (CompleteAction != null)
+            {
+                CompleteAction(this);
+            }
 
         }
 
@@ -193,13 +206,21 @@ namespace CodeValue.CodeCommander
         }
 
         public Unit ReturnValue { get; protected set; }
+
+        public Action<CommandBase> CompleteAction { get; set; }
+        public Action<CommandBase, Exception> ErrorAction { get; set; }
+        public Action<CommandBase> FullfillmentAction { get; set; }
+
+        public ReactiveCollection<CommandTrace> CommandTraces { get; private set; }
+
+        
     }
 
     public abstract class CommandBase<T> : CommandBase, IObservable<CommandResponse<T>>
     {
         public CommandBase()
         {
-            Inner.Subscribe(HandleFullfillment, HandleError, HandleCompletion);
+            Inner.Subscribe(x => HandleFullfillment(), HandleError, HandleCompletion);
         }
 
         private readonly ReplaySubject<CommandResponse<T>>  _inner = new ReplaySubject<CommandResponse<T>>();
@@ -217,11 +238,11 @@ namespace CodeValue.CodeCommander
         }
 
         public new T ReturnValue { get; protected set; }
+    }
 
-        protected new virtual void HandleFullfillment(CommandResponse<T> commandResponse)
-        {
-        }
-
-
+    public class CommandTrace
+    {
+        public DateTime DateTime { get; set; }
+        public CommandState State { get; set; }
     }
 }
