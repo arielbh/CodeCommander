@@ -178,6 +178,10 @@ namespace CodeValue.CodeCommander
         {
             if (CanExecute())
             {
+                if (BeforeExecuteAction != null)
+                {
+                    BeforeExecuteAction(this);
+                }
                 Execute();
             }
             else
@@ -205,6 +209,7 @@ namespace CodeValue.CodeCommander
         public Action<CommandBase> CompleteAction { get; set; }
         public Action<CommandBase, Exception> ErrorAction { get; set; }
         public Action<CommandBase> FullfillmentAction { get; set; }
+        public Action<CommandBase> BeforeExecuteAction { get; set; }
         public ReactiveCollection<CommandTrace> CommandTraces { get; private set; }
         public bool ShouldFailIfFiltered { get; protected set; }
         public int? PendingTimeout { get; protected set; }

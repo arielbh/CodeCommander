@@ -13,11 +13,12 @@ namespace CodeValue.CodeCommander
 {
     public class CommandProcessor : ICommandProcessor
     {
-        private int commandCounter = 0;
+        private int _commandCounter = 0;
         private readonly IFilterManager _filterManager;
-        object lockingQueue = new object();
+        private readonly object _lockingQueue = new object();
+        private ReactiveCollection<CommandBase> _outstandingCommands = new ReactiveCollection<CommandBase>();
+        private Dictionary<CommandBase, IDisposable> _subscriptions = new Dictionary<CommandBase, IDisposable>();
 
-        //public IObservable<ProcessorInput> CommandResponses { get; private set; }
 
         public CommandProcessor(IObservable<ProcessorInput> inputsSource, IFilterManager filterManager)
         {
@@ -33,7 +34,6 @@ namespace CodeValue.CodeCommander
                 _subscriptions[item].Dispose();
                 _subscriptions.Remove(item);
             });
-            
 
             inputsSource.SelectMany(resp =>
             {
@@ -50,15 +50,13 @@ namespace CodeValue.CodeCommander
                 return Observable.Empty<CommandState>();
             }).Subscribe(newState =>
             {
-                CurrentState = newState;
+                
             });
-
-           
         }
 
         private void HandleAddedCommand(CommandBase item)
         {
-            item.CommandCounter = commandCounter++;
+            item.CommandCounter = _commandCounter++;
             item.CurrentState = CommandState.Pending;
             PushToFilter(item);
             if (_subscriptions.ContainsKey(item))
@@ -75,24 +73,28 @@ namespace CodeValue.CodeCommander
         private void AddCommand(CommandBase command)
         {
             if (command.CurrentState != CommandState.New) throw new Exception("Command is not new");
-            lock (lockingQueue)
+            lock (_lockingQueue)
             {
                 _outstandingCommands.Add(command);
             }
         }
         private bool RemoveCommand(CommandBase item)
         {
-            lock (lockingQueue)
+            lock (_lockingQueue)
             {
                 return _outstandingCommands
                     .Remove(item);
             }
         }
 
-        private ReactiveCollection<CommandBase> _outstandingCommands = new ReactiveCollection<CommandBase>();
-        Dictionary<CommandBase, IDisposable> _subscriptions = new Dictionary<CommandBase, IDisposable>();
-
-        public CommandState CurrentState { get; private set; }
+        private void PushToFilter(CommandBase command)
+        {
+            bool result = _filterManager.Process(command);
+            CommandState nextState = result
+                                         ? CommandState.Executing
+                                         : command.ShouldFailIfFiltered ? CommandState.Failed : CommandState.Pending;
+            command.StartRequest(nextState);
+        }
 
         public IObservable<CommandResponse<Unit>> PublishCommand(CommandBase command)
         {
@@ -110,7 +112,7 @@ namespace CodeValue.CodeCommander
         public void CancelCommand(CommandBase command)
         {
             command.CurrentState = CommandState.Canceled;
-            lock (lockingQueue)
+            lock (_lockingQueue)
             {
                 if (_outstandingCommands.Contains(command))
                 {
@@ -127,7 +129,7 @@ namespace CodeValue.CodeCommander
 
         public void CancelCommandGroup(string groupId)
         {
-            lock (lockingQueue)
+            lock (_lockingQueue)
             {
                 var commandsToCancel = _outstandingCommands.Where(c => c.CommandGroup == groupId).ToArray();
                 foreach (var command in commandsToCancel)
@@ -141,17 +143,6 @@ namespace CodeValue.CodeCommander
         {
             return _outstandingCommands.ItemsRemoved.Subscribe(observer);
         }
-
-        private void PushToFilter(CommandBase command)
-        {
-            bool result = _filterManager.Process(command);
-            CommandState nextState = result
-                                         ? CommandState.Executing
-                                         : command.ShouldFailIfFiltered? CommandState.Failed : CommandState.Pending;
-            command.StartRequest(nextState);
-        }
-
-    
     }
 
 

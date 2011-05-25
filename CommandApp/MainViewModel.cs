@@ -42,7 +42,7 @@ namespace CommandApp
         {
             var c = new ConnectCommand(this);
             CommandProcessor.PublishCommand<bool>(c).Subscribe(
-                x => AddMessage(x.Sender.ToString() + " Got result" + x.Value.ToString()),
+                x => AddMessage(x.Sender.ToString() + " Got result " + x.Value.ToString()),
                 ex => AddMessage(ex.Source + " Got Error: " + ex.Message),
                 () => { });
         }
@@ -53,7 +53,7 @@ namespace CommandApp
         private void WrapAndCallCommand(CommandBase command)
         {
             CommandProcessor.PublishCommand(command).Subscribe(
-                x => AddMessage(x.Sender.ToString() + " Got result" + x.Value.ToString()),
+                x => AddMessage(x.Sender.ToString() + " Got result " + x.Value.ToString()),
                 ex => AddMessage(ex.Source + " Got Error: " + ex.Message), 
                 () => {  });
         }
