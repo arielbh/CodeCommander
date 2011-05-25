@@ -15,6 +15,7 @@ namespace CodeValue.CodeCommander
     {
         private int commandCounter = 0;
         private readonly IFilterManager _filterManager;
+        object lockingQueue = new object();
 
         //public IObservable<ProcessorInput> CommandResponses { get; private set; }
 
@@ -23,8 +24,7 @@ namespace CodeValue.CodeCommander
             _filterManager = filterManager;
             filterManager.ItemsChanged.Subscribe(
                 o =>
-                _outstandingCommands.Where(c => c.CurrentState == CommandState.Pending).ToList().ForEach(
-                    PushToFilter));
+                _outstandingCommands.Where(c => c.CurrentState == CommandState.Pending).ToList().ForEach(PushToFilter));
 
             _outstandingCommands.ItemsAdded.Subscribe(HandleAddedCommand);
 
@@ -67,11 +67,26 @@ namespace CodeValue.CodeCommander
             }
             _subscriptions[item] = item.Subscribe(u => { },
                                                   ex =>
-                                                  _outstandingCommands
-                                                      .Remove(item),
+                                                  RemoveCommand(item),
                                                   () =>
-                                                  _outstandingCommands
-                                                      .Remove(item));
+                                                  RemoveCommand(item));
+        }
+
+        private void AddCommand(CommandBase command)
+        {
+            if (command.CurrentState != CommandState.New) throw new Exception("Command is not new");
+            lock (lockingQueue)
+            {
+                _outstandingCommands.Add(command);
+            }
+        }
+        private bool RemoveCommand(CommandBase item)
+        {
+            lock (lockingQueue)
+            {
+                return _outstandingCommands
+                    .Remove(item);
+            }
         }
 
         private ReactiveCollection<CommandBase> _outstandingCommands = new ReactiveCollection<CommandBase>();
@@ -81,28 +96,26 @@ namespace CodeValue.CodeCommander
 
         public IObservable<CommandResponse<Unit>> PublishCommand(CommandBase command)
         {
-            if (command.CurrentState != CommandState.New) throw new Exception("Command is not new");
-
-            _outstandingCommands.Add(command);
+            AddCommand(command);
             return command;
 
         }
 
         public IObservable<CommandResponse<T>> PublishCommand<T>(CommandBase<T> command)
         {
-            
-            if (command.CurrentState != CommandState.New) throw new Exception("Command is not new");
-
-            _outstandingCommands.Add(command);
+            AddCommand(command);
             return command;
         }
 
         public void CancelCommand(CommandBase command)
         {
             command.CurrentState = CommandState.Canceled;
-            if (_outstandingCommands.Contains(command))
+            lock (lockingQueue)
             {
-                _outstandingCommands.Remove(command);
+                if (_outstandingCommands.Contains(command))
+                {
+                    _outstandingCommands.Remove(command);
+                }
             }
         }
 
@@ -110,6 +123,18 @@ namespace CodeValue.CodeCommander
         {
             if (command.CurrentState != CommandState.Blocked) throw new Exception("Command is not blocked");
             HandleAddedCommand(command);
+        }
+
+        public void CancelCommandGroup(string groupId)
+        {
+            lock (lockingQueue)
+            {
+                var commandsToCancel = _outstandingCommands.Where(c => c.CommandGroup == groupId).ToArray();
+                foreach (var command in commandsToCancel)
+                {
+                    CancelCommand(command);
+                }
+            }
         }
 
         public IDisposable RegisterForCompletedCommands(IObserver<CommandBase> observer)

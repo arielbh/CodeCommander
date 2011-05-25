@@ -18,4 +18,6 @@ namespace CodeValue.CodeCommander.Interfaces
         bool CanExecute();
         void Execute();
     }
+
+
 }

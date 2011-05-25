@@ -10,8 +10,9 @@ using ReactiveUI;
 
 namespace CodeValue.CodeCommander
 {
-    public abstract class CommandBase : ReactiveObject, IObservable<CommandResponse<Unit>>, ICommandBase
+    public abstract class CommandBase : ReactiveObject, IObservable<CommandResponse<Unit>>, ICommandBase, IProcessedCommand
     {
+        private CommandState _CurrentState;
         internal int CommandCounter { get; set; }
         private readonly ReplaySubject<CommandResponse<Unit>> _inner = new ReplaySubject<CommandResponse<Unit>>();
 
@@ -20,64 +21,114 @@ namespace CodeValue.CodeCommander
             CommandTraces = new ReactiveCollection<CommandTrace>();
             CommandId = Guid.NewGuid().ToString();
             CurrentState = CommandState.New;
-            HasBeenIssued = false;
             Inner.Subscribe(x => HandleFullfillment(), HandleError, HandleCompletion);
-            this.ObservableForProperty(c => c.CurrentState).Subscribe(b =>
-                                  {
-                                      CommandTraces.Add(new CommandTrace { DateTime = DateTime.Now, State = b.Value });
-                                      if (b.Value == CommandState.Successed)
-                                      {
-                                          SignalCommandFulfillment();
-                                          if (!ShouldExecuteForever)
-                                          {
-                                              CompleteCommand();
-                                          }
-                                          else
-                                          {
-                                              CurrentState = CommandState.Executing;
-                                          }
-                                      }
-
-                                      if (b.Value == CommandState.Pending && PendingTimeout.HasValue)
-                                      {
-                                          Observable.Timer(new TimeSpan(0, 0, 0, 0, PendingTimeout.Value)).Subscribe(
-                                              a =>
-                                                  {
-                                                      if (CurrentState == CommandState.Pending)
-                                                      {
-                                                          CompleteCommand(
-                                                              new Exception("Command has exceded its Pending timeout"));
-
-                                                      }                                                     
-                                                  });
-                                      }
-                                      if (b.Value == CommandState.Executing && ExecutingTimeout.HasValue)
-                                      {
-                                          Observable.Timer(new TimeSpan(0, 0, 0, 0, ExecutingTimeout.Value)).Subscribe(
-                                              a =>
-                                              {
-                                                  if (CurrentState == CommandState.Executing)
-                                                  {
-                                                      CompleteCommand(
-                                                          new Exception("Command has exceded its Executing timeout"));
-
-                                                  }
-                                              });
-                                      }
-
-                                  });
-
+            this.ObservableForProperty(c => c.CurrentState).Subscribe(HandleStateChange);
         }
 
-        public bool HasBeenIssued { get; private set; }
-        private CommandState _CurrentState;
-        public CommandState CurrentState
+        private void HandleStateChange(IObservedChange<CommandBase, CommandState> b)
         {
-            get { return _CurrentState; }
-            set { this.RaiseAndSetIfChanged(x => x.CurrentState, value); }
+            CommandTraces.Add(new CommandTrace {DateTime = DateTime.Now, State = b.Value});
+            if (b.Value == CommandState.Successed)
+            {
+                SignalCommandFulfillment();
+                if (!ShouldExecuteForever)
+                {
+                    CompleteCommand();
+                }
+                else
+                {
+                    CurrentState = CommandState.Executing;
+                }
+            }
+
+            RegisterTimers(b.Value);
+        }
+
+        private void RegisterTimers(CommandState currentState)
+        {
+            if (currentState == CommandState.Pending && PendingTimeout.HasValue)
+            {
+                Observable.Timer(new TimeSpan(0, 0, 0, 0, PendingTimeout.Value)).Subscribe(
+                    a =>
+                        {
+                            if (CurrentState == CommandState.Pending)
+                            {
+                                CompleteCommand(
+                                    new Exception("Command has exceded its Pending timeout"));
+
+                            }                                                     
+                        });
+            }
+            if (currentState == CommandState.Executing && ExecutingTimeout.HasValue)
+            {
+                Observable.Timer(new TimeSpan(0, 0, 0, 0, ExecutingTimeout.Value)).Subscribe(
+                    a =>
+                        {
+                            if (CurrentState == CommandState.Executing)
+                            {
+                                CompleteCommand(
+                                    new Exception("Command has exceded its Executing timeout"));
+
+                            }
+                        });
+            }
+        }
+          
+        protected virtual void SignalCommandFulfillment()
+        {
+            Inner.OnNext(new CommandResponse<Unit>(this, new Unit()));
+        }
+
+        protected virtual void CompleteCommand(Exception ex = null)
+        {
+            if (ex != null)
+            {
+                Inner.OnError(ex);
+            }
+            else
+            {
+                
+                Inner.OnCompleted();
+            }
+        }
+
+       protected virtual void HandleFullfillment()
+        {
+            if (FullfillmentAction != null)
+            {
+                FullfillmentAction(this);
+            }
+            
+        }
+
+        protected virtual  void HandleError(Exception ex)
+        {
+            if (ErrorAction != null)
+            {
+                ErrorAction(this, ex);
+            }   
+        }
+
+        protected virtual void HandleCompletion()
+        {
+            if (CompleteAction != null)
+            {
+                CompleteAction(this);
+            }
+
         }
 
         protected ReplaySubject<CommandResponse<Unit>> Inner { get { return _inner; } }
+
+        public IDisposable RegisterForStateChange(IObserver<IObservedChange<CommandBase, CommandState>> observer)
+        {
+            return this.ObservableForProperty(c => c.CurrentState).Subscribe(observer);
+        }
+
+        public IDisposable Subscribe(IObserver<CommandResponse<Unit>> observer)
+        {
+            return Inner.Subscribe(observer);
+        }
 
         public virtual void StartRequest(CommandState currentState)
         {
@@ -123,9 +174,8 @@ namespace CodeValue.CodeCommander
         // signalCommandIsInitiated method should be called after the command is
         // sent over the wire. 
 
-        internal void SignalCommandCanStartExecuting()
+        internal virtual void SignalCommandCanStartExecuting()
         {
-            HasBeenIssued = true;
             if (CanExecute())
             {
                 Execute();
@@ -135,88 +185,35 @@ namespace CodeValue.CodeCommander
                 CurrentState = CommandState.Blocked;
             }
         }
-        
-        protected virtual void SignalCommandFulfillment()
-        {
-            Inner.OnNext(new CommandResponse<Unit>(this, new Unit()));
-        }
-
-        protected void CompleteCommand(Exception ex = null)
-        {
-            if (ex != null)
-            {
-                Inner.OnError(ex);
-            }
-            else
-            {
-                
-                Inner.OnCompleted();
-            }
-        }
-
-        
-        public abstract bool CanExecute();
-        public abstract void Execute();
-
-        public IDisposable Subscribe(IObserver<CommandResponse<Unit>> observer)
-        {
-            return Inner.Subscribe(observer);
-        }
-
-        public bool ShouldFailIfFiltered { get; protected set; }
-        public int? PendingTimeout { get; protected set; }
-        public int? ExecutingTimeout { get; protected set; }
-        public bool ShouldExecuteForever { get; protected set; }
-
-        public IDisposable RegisterForStateChange(IObserver<IObservedChange<CommandBase, CommandState>> observer)
-        {
-            return this.ObservableForProperty(c => c.CurrentState).Subscribe(observer);
-        }
-        protected virtual void HandleFullfillment()
-        {
-            if (FullfillmentAction != null)
-            {
-                FullfillmentAction(this);
-            }
-            
-        }
-
-        protected virtual  void HandleError(Exception ex)
-        {
-            if (ErrorAction != null)
-            {
-                ErrorAction(this, ex);
-            }   
-        }
-
-        protected virtual void HandleCompletion()
-        {
-            if (CompleteAction != null)
-            {
-                CompleteAction(this);
-            }
-
-        }
-
-        public string CommandId { get; private set; }
 
         public override string ToString()
         {
             return "Command: " + CommandId;
         }
 
-        public Unit ReturnValue { get; protected set; }
+        public CommandState CurrentState
+        {
+            get { return _CurrentState; }
+            set { this.RaiseAndSetIfChanged(x => x.CurrentState, value); }
+        }
 
+        public abstract bool CanExecute();
+        public abstract void Execute();
+        
+        public string CommandId { get; private set; }
+        public Unit ReturnValue { get; protected set; }
         public Action<CommandBase> CompleteAction { get; set; }
         public Action<CommandBase, Exception> ErrorAction { get; set; }
         public Action<CommandBase> FullfillmentAction { get; set; }
-
         public ReactiveCollection<CommandTrace> CommandTraces { get; private set; }
-
-        
+        public bool ShouldFailIfFiltered { get; protected set; }
+        public int? PendingTimeout { get; protected set; }
+        public int? ExecutingTimeout { get; protected set; }
+        public bool ShouldExecuteForever { get; protected set; }
+        public string CommandGroup { get; protected set; }
     }
 
-    public abstract class CommandBase<T> : CommandBase, IObservable<CommandResponse<T>>
+    public abstract class CommandBase<T> : CommandBase, IObservable<CommandResponse<T>>, IProcessedCommand<T>
     {
         public CommandBase()
         {
