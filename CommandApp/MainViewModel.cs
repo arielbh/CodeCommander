@@ -7,6 +7,7 @@ using System.Reactive.Subjects;
 using CodeLight.Common.Desktop;
 using CodeValue.CodeCommander;
 using CodeValue.CodeCommander.Interfaces;
+using CommandApp.Commands;
 using Microsoft.Practices.Prism.Commands;
 
 namespace CommandApp
@@ -15,13 +16,17 @@ namespace CommandApp
     {
         Subject<ProcessorInput> callMe = new Subject<ProcessorInput>();
         private NotConnectedFilter _notConnectedFilter = new NotConnectedFilter();
+        private CommandFactory commandFactory;
+
         public MainViewModel()
         {
+            
             Messages = new ObservableCollection<Message>();
             CreateNewCommand = new DelegateCommand(NewCommandAction);
             
             FilterManager = new FilterManager();
             FilterManager.AddFilter(_notConnectedFilter);
+            commandFactory = new CommandFactory(FilterManager);
 
             CommandProcessor = new CommandProcessor(callMe, FilterManager);
             CommandProcessor.RegisterForCompletedCommands(
