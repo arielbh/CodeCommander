@@ -54,6 +54,7 @@
     <Compile Include="CommandBase.cs" />
     <Compile Include="CommandProcessor.cs" />
     <Compile Include="CommandResponse.cs" />
+    <Compile Include="FilterBase.cs" />
     <Compile Include="Interfaces\IProcessedCommand.cs" />
     <Compile Include="ProcessorInput.cs" />
     <Compile Include="FilterManager.cs" />

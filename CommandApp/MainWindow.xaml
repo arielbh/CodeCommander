@@ -6,23 +6,66 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition />
             <ColumnDefinition />
+            <ColumnDefinition />
         </Grid.ColumnDefinitions>
-        <StackPanel>
-            <Button Content="Connect Command" Command="{Binding ConnectCommand}" Height="30"/>
-            <CheckBox x:Name="isConnected" Content="Can Connect"
-                      />
-            <Button Content="Send Connection State"
-                    Command="{Binding SendConnectCommand}"
-                    CommandParameter="{Binding IsChecked,ElementName=isConnected}" />
-            <Button Content="Send GetValue"
-                    Command="{Binding GetValueCommand}"
-                    Height="30" />
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60*" />
+            <RowDefinition Height="40*" />
+        </Grid.RowDefinitions>
+        <GroupBox Header="Client">
+            <StackPanel>
+                <Button Content="Connect Command"
+                        Command="{Binding CreateCommandCommand}"
+                        CommandParameter="ConnectCommand"
+                        Height="30" />
+                <Button Content="Alerts Command"
+                        Command="{Binding CreateCommandCommand}"
+                        CommandParameter="AlertsCommand"
+                        Height="30" />
+                <Button Content="Execute Command"
+                        Command="{Binding CreateCommandCommand}"
+                        CommandParameter="ExecuteCommand"
+                        Height="30" />
+                <Button Content="GetValue Command"
+                        Command="{Binding CreateCommandCommand}"
+                        CommandParameter="GetValueCommand"
+                        Height="30" />
+                <CheckBox Content="Allow Execute?" IsChecked="{Binding AllowExecute}"/>
+                <Button Content="Release Blocked Command"
+                        Command="{Binding ReleaseBlockedCommand}"
+                        CommandParameter="{Binding SelectedItem.CommandId, ElementName=commandsGrid}" 
+                        Height="30" />
+            </StackPanel>
+        </GroupBox>
+        <GroupBox Grid.Column="1"
+                  Header="Device">
+            <StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <CheckBox x:Name="isConnected"
+                              Content="Can Connect"
+                              IsChecked="True" />
+                    <Button Content="Send Connection State"
+                            Command="{Binding SendConnectCommand}"
+                            CommandParameter="{Binding IsChecked,ElementName=isConnected}" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Button Content="Throw Alert"
+                            Command="{Binding ThrowAlertCommand}"
+                            CommandParameter="{Binding Text, ElementName=alertTextBox}"
+                            Height="30" />
+                    <TextBox x:Name="alertTextBox"  Width="100"/>
+                </StackPanel>
 
-            <Button Content="Remove Filter"
-                    Command="{Binding RemoveCommand}"
-                    Height="30" />
-        </StackPanel>
-        <ListBox Grid.Column="1"
+                <Button Content="Send Signal"
+                        Command="{Binding SendSignalCommand}"
+                        CommandParameter="{Binding SelectedItem.CommandId, ElementName=commandsGrid}" />
+                <TextBox Text="{Binding SignalValue}" />
+                
+            </StackPanel>
+            
+        </GroupBox>
+   
+        <ListBox Grid.Row="1" Grid.ColumnSpan="3"
                  ItemsSource="{Binding Messages}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
@@ -38,6 +81,33 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
+        <Grid Grid.Column="2">
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <GroupBox Header="Running Commands">
+                <DataGrid x:Name="commandsGrid"  ItemsSource="{Binding Commands}" 
+                           AutoGenerateColumns="False">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Binding="{Binding CommandId}" />
+                        <DataGridTextColumn Binding="{Binding CurrentState}" />
+                        <DataGridTextColumn Binding="{Binding ReturnValue}" />
+                    </DataGrid.Columns>
+                </DataGrid>
+            </GroupBox>
+            <GroupBox Grid.Row="1"
+                      Header="Current Filters">
+                <DataGrid ItemsSource="{Binding Filters}"
+                          AutoGenerateColumns="True">
+          
+                </DataGrid>
+            </GroupBox>
+
+
+
+        </Grid>
+
 
     </Grid>
 </Window>

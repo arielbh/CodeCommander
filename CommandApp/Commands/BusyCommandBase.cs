@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using CodeValue.CodeCommander;
@@ -12,7 +11,7 @@ namespace CommandApp.Commands
     {
     }
 
-    public abstract class BuyCommandbase<T> : CommandBase<T>
+    public abstract class BusyCommandBase<T> : CommandBase<T>
     {
         
     }
@@ -35,44 +34,12 @@ namespace CommandApp.Commands
         }
     }
 
-    public class BusyFilter : IFilter
+    public class BusyFilter : FilterBase
     {
-        public double Order
-        {
-            get; set;
-        }
-
-        public bool Process(ICommandBase command)
+        public override bool Process(ICommandBase command)
         {
             // When there will be stop command
             return command is StopCommand;                                
-
-        }
-    }
-
-
-    public class CommandFactory
-    {
-        private readonly IFilterManager _filterManager;
-        private BusyFilter _busyFilter;
-        public CommandFactory(IFilterManager filterManager)
-        {
-            _filterManager = filterManager;
-        }
-
-        public T CreateCommand<T>() where T : CommandBase
-        {
-            T instance = Activator.CreateInstance<T>();
-            if (instance is BusyCommandBase)
-            {
-                instance.BeforeExecuteAction = c => _filterManager.AddFilter(_busyFilter);
-                instance.CompleteAction = c => _filterManager.RemoveFilter(_busyFilter);
-            }
-            if (instance is BusyCommandBase)
-            {
-                instance.CompleteAction = c => _filterManager.RemoveFilter(_busyFilter);
-            }
-            return instance;
         }
     }
 }

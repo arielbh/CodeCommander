@@ -9,6 +9,7 @@ using CodeValue.CodeCommander;
 using CodeValue.CodeCommander.Interfaces;
 using CommandApp.Commands;
 using Microsoft.Practices.Prism.Commands;
+using System.Reflection;
 
 namespace CommandApp
 {
@@ -17,100 +18,151 @@ namespace CommandApp
         Subject<ProcessorInput> callMe = new Subject<ProcessorInput>();
         private NotConnectedFilter _notConnectedFilter = new NotConnectedFilter();
         private CommandFactory commandFactory;
+        private Type[] _types;
+        private CommandBase currentConnectCommand;
+        private IProcessedCommand currentAlertCommand;
+        private Dictionary<Type, Action<CommandBase>> _additionals = new Dictionary<Type, Action<CommandBase>>();
+        private Dictionary<string, Func<string, bool>> _CanExecutes = new Dictionary<string, Func<string, bool>>();
 
         public MainViewModel()
         {
-            
+            Filters = new ObservableCollection<IFilter>();
+            SendSignalCommand = new DelegateCommand<string>(s =>
+                                                                {
+                                                                    if (string.IsNullOrEmpty(SignalValue))
+                                                                        callMe.OnNext(new DeviceResult {CommandId = s});
+                                                                    else
+                                                                        callMe.OnNext(new DeviceResult<string>
+                                                                                          {
+                                                                                              CommandId = s,
+                                                                                              Input = SignalValue
+                                                                                          });
+
+                                                                }
+                );
+
+            _types = Assembly.GetExecutingAssembly().GetTypes();
+            _additionals[typeof (ConnectCommand)] =
+                c =>
+                    {
+                        CommandBase<bool> command = c as CommandBase<bool>;
+                        command.CompleteAction = com =>
+                                                     {
+                                                         if (com.ReturnValue)
+                                                         {
+                                                             FilterManager.RemoveFilter(_notConnectedFilter);
+                                                         }
+                                                     };
+                        currentConnectCommand = command;
+                    };
+            _additionals[typeof (AlertsCommand)] =
+                c =>
+                    {
+                        CommandBase<String> com = c as CommandBase<string>;
+                        com.Subscribe(
+                            Observer.Create<CommandResponse<string>>(
+                                x => AddMessage(x.Sender.ToString() + " Got result " + x.Value.ToString()),
+                                ex => AddMessage(ex.Source + " Got Error: " + ex.Message),
+                                () => { }));
+                        currentAlertCommand = c;
+                    };
+
+            _CanExecutes["AlertsCommand"] = new Func<string, bool>(s => CanConnect);
+
+            CreateCommandCommand = new DelegateCommand<string>(CreateACommand, s =>
+                                                                                   {
+                                                                                       if (_CanExecutes.ContainsKey(s))
+                                                                                       {
+                                                                                           return _CanExecutes[s](s);
+                                                                                       }
+                                                                                       return true;
+                                                                                   });
+
+            ThrowAlertCommand =
+                new DelegateCommand<string>(
+                    s => callMe.OnNext(new DeviceResult<string> {Input = s, CommandId = currentAlertCommand.CommandId}));
+
+            Commands = new ObservableCollection<IProcessedCommand>();
             Messages = new ObservableCollection<Message>();
-            CreateNewCommand = new DelegateCommand(NewCommandAction);
-            
+
             FilterManager = new FilterManager();
+            FilterManager.ItemsAdded.Subscribe(f => Filters.Add(f));
+            FilterManager.ItemsRemoved.Subscribe(f => Filters.Remove(f));
             FilterManager.AddFilter(_notConnectedFilter);
             commandFactory = new CommandFactory(FilterManager);
+            commandFactory.OnCreateCommand = new Action<CommandBase>(c => Commands.Add(c));
 
             CommandProcessor = new CommandProcessor(callMe, FilterManager);
             CommandProcessor.RegisterForCompletedCommands(
                 Observer.Create<CommandBase>(c => AddMessage(c.ToString() + "  is Completed")));
-            RemoveCommand = new DelegateCommand(() => FilterManager.RemoveFilter(_notConnectedFilter));
 
-            SendConnectCommand = new DelegateCommand<bool?>(b => 
-                callMe.OnNext(new ProcessorInput<bool> { Input = b.Value}),
-                b => CanConnect);
+            SendConnectCommand = new DelegateCommand<bool?>(b =>
+                                                            callMe.OnNext(new DeviceResult<bool>
+                                                                              {
+                                                                                  Input = b.Value,
+                                                                                  CommandId =
+                                                                                      currentConnectCommand.CommandId
+                                                                              }));
 
-            
-            ConnectCommand = new DelegateCommand(() => CreateConnectCommand());
+
             callMe.OnNext(new ProcessorInput());
 
+            ReleaseBlockedCommand = new DelegateCommand<string>(s => CommandProcessor.RerunBlockedCommand((CommandBase)
+                                                                                                          Commands.First(c => c.CommandId == s)));
+
         }
 
-        private void CreateConnectCommand()
-        {
-            var c = new ConnectCommand(this);
-            CommandProcessor.PublishCommand<bool>(c).Subscribe(
-                x => AddMessage(x.Sender.ToString() + " Got result " + x.Value.ToString()),
-                ex => AddMessage(ex.Source + " Got Error: " + ex.Message),
-                () => { });
-        }
 
         public IFilterManager FilterManager { get; set; }
-        private IDisposable subscription2;
+        private List<IDisposable> subscriptions = new List<IDisposable>();
 
         private void WrapAndCallCommand(CommandBase command)
         {
-            CommandProcessor.PublishCommand(command).Subscribe(
+            subscriptions.Add( CommandProcessor.PublishCommand(command).Subscribe(
                 x => AddMessage(x.Sender.ToString() + " Got result " + x.Value.ToString()),
                 ex => AddMessage(ex.Source + " Got Error: " + ex.Message), 
-                () => {  });
+                () => {  }));
         }
 
-        private void NewCommandAction()
-        {         
-            WrapAndCallCommand(new ConnectCommand(this));
-
-            WrapAndCallCommand(new ExecuteCommand(this));
-
-            FilterManager.RemoveFilter(_notConnectedFilter);
-
-            WrapAndCallCommand(new GetValueCommand(this));
 
 
-            
-            //var connectCommand = new ConnectCommand(this);
-            
-            //var suscriber = CommandProcessor.PublishCommand(connectCommand);
-            //subscription = suscriber.Subscribe(
-            //    x => { Console.WriteLine("OnNext: {0}", x); },
-            //    ex => Console.WriteLine("OnError: {0}", ex.Message),
-            //    () => Console.WriteLine("OnCompleted")
-            //);
-
-            //var suscriber2 = CommandProcessor.PublishCommand(new ExecuteCommand(this));
-
-            //subscription2 = suscriber2.Subscribe(
-            //    x => { Console.WriteLine("OnNext: {0}", x); },
-            //    ex => Console.WriteLine("OnError: {0}", ex.Message),
-            //    () => Console.WriteLine("OnCompleted")
-            //);
-            //var c = new GetValueCommand(this);
-
-            //CommandProcessor.PublishCommand<double>(c).Subscribe();
 
 
-            //callMe.OnNext(null);
-            //if (num++ == 3)
-            //{
-            ////    CommandProcessor.Ready = true;
+        private void CreateACommand(string commandName)
+        {
+            var type = _types.FirstOrDefault(t => t.Name == commandName);
+            if (type == null) return;
 
-            //}        
+            var command = commandFactory.CreateCommand(type, this);
+            if (_additionals.ContainsKey(type))
+            {
+                _additionals[type](command);
+
+            }
+
+            WrapAndCallCommand(command);
         }
 
-        public DelegateCommand CreateNewCommand { get; set; }
-        public DelegateCommand RemoveCommand { get; set; }
-        public DelegateCommand ConnectCommand { get; set; }
+        public void AddMessage(string text)
+        {
+            App.Current.Dispatcher.BeginInvoke(new Action(
+                                                   () => Messages.Add(new Message { Text = text })));
+        }
+
+
+        public DelegateCommand<string> CreateCommandCommand { get; set; }
+
         public DelegateCommand<bool?> SendConnectCommand { get; set; }
+        public DelegateCommand<string> ThrowAlertCommand { get; set; }
+        public DelegateCommand<string> ReleaseBlockedCommand { get; set; }
 
         public ICommandProcessor CommandProcessor { get; set; }
         public ObservableCollection<Message> Messages { get; set; }
+        public ObservableCollection<IProcessedCommand> Commands { get; set; }
+        public ObservableCollection<IFilter> Filters { get; set; }
+        public DelegateCommand<string> SendSignalCommand { get; set; }
+        public string SignalValue { get; set; }
+        public bool AllowExecute { get; set; }
 
         private bool _canConnect = false;
 
@@ -124,16 +176,13 @@ namespace CommandApp
                     _canConnect = value;
                     OnPropertyChanged(() => CanConnect);
                     SendConnectCommand.RaiseCanExecuteChanged();
+                    CreateCommandCommand.RaiseCanExecuteChanged();
                     
                 }
             }
         }
 
-        public void AddMessage(string text)
-        {
-            App.Current.Dispatcher.BeginInvoke(new Action(
-                                                   () => Messages.Add(new Message {Text = text})));
-        }
+
 
     }
 
@@ -145,118 +194,5 @@ namespace CommandApp
         }
         public string Text { get; set; }
         public DateTime Date { get; set; }
-    }
-
-    public class ConnectCommand : CommandBase<bool>
-    {
-        private readonly MainViewModel _mainViewModel;
-
-        public ConnectCommand(MainViewModel mainViewModel)
-        {
-            _mainViewModel = mainViewModel;
-            ShouldFailIfFiltered = true;
-            ExecutingTimeout = 100000;
-        }
-
-        public override bool CanExecute()
-        {
-            _mainViewModel.AddMessage("Connect Message CanExecuted");
-            return true;
-        }
-
-        protected override void HandleError(Exception ex)
-        {
-            _mainViewModel.CanConnect = false;
-        }
-
-        public override void Execute()
-        {
-            
-            _mainViewModel.AddMessage("Connect Message Executed");
-            _mainViewModel.CanConnect = true;
-            
-        }
-
-        public override CommandState? InterpretResponse(ProcessorInput response, CommandState currentState)
-        {
-            ProcessorInput<bool> res = response as ProcessorInput<bool>;
-            if (res != null)
-            {
-                ReturnValue = res.Input;
-                return CommandState.Successed;
-            }
-            return null;
-        }
-
-         
-
-    }
-
-    public class ExecuteCommand : CommandBase
-    {
-        private readonly MainViewModel _mainViewModel;
-
-        public ExecuteCommand(MainViewModel mainViewModel)
-        {
-            _mainViewModel = mainViewModel;
-            PendingTimeout = 2000;
-           
-        }
-
-        public override bool CanExecute()
-        {
-            _mainViewModel.AddMessage("Execute Message CanExecuted");
-            return true;
-        }
-
-        public override void Execute()
-        {
-            _mainViewModel.AddMessage("Execute Message Executed");
-
-        }
-
-        public override CommandState? InterpretResponse(ProcessorInput response, CommandState currentState)
-        {
-            return CommandState.Successed;
-        }
-
-    }
-
-    public class GetValueCommand : CommandBase<double>
-    {
-        private readonly MainViewModel _mainViewModel;
-
-        public GetValueCommand(MainViewModel mainViewModel)
-        {
-            _mainViewModel = mainViewModel;
-        }
-
-        public override CommandState? InterpretResponse(ProcessorInput response, CommandState currentState)
-        {
-            return CommandState.Successed;
-        }
-
-        public override bool CanExecute()
-        {
-            _mainViewModel.AddMessage("Execute Message CanExecuted");
-
-            return true;
-        }
-
-        public override void Execute()
-        {
-            _mainViewModel.AddMessage("Execute Message Executed");
-            
-        }
-    }
-
-    public class NotConnectedFilter : IFilter
-    {
-        public double Order { get; set; }
-
-        public bool Process(ICommandBase command)
-        {
-            return command is ConnectCommand;
-        }
     }
 }

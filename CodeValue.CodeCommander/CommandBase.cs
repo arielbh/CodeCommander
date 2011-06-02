@@ -83,6 +83,7 @@ namespace CodeValue.CodeCommander
         {
             if (ex != null)
             {
+                CurrentState = CommandState.Failed;
                 Inner.OnError(ex);
             }
             else
@@ -205,11 +206,18 @@ namespace CodeValue.CodeCommander
         public abstract void Execute();
         
         public string CommandId { get; private set; }
-        public Unit ReturnValue { get; protected set; }
-        public Action<CommandBase> CompleteAction { get; set; }
-        public Action<CommandBase, Exception> ErrorAction { get; set; }
-        public Action<CommandBase> FullfillmentAction { get; set; }
-        public Action<CommandBase> BeforeExecuteAction { get; set; }
+
+        private Unit _ReturnValue;
+        public Unit ReturnValue
+        {
+            get { return _ReturnValue; }
+            protected set { this.RaiseAndSetIfChanged(x => x.ReturnValue, value); }
+        }
+
+        public Action<IProcessedCommand> CompleteAction { get; set; }
+        public Action<IProcessedCommand, Exception> ErrorAction { get; set; }
+        public Action<IProcessedCommand> FullfillmentAction { get; set; }
+        public Action<IProcessedCommand> BeforeExecuteAction { get; set; }
         public ReactiveCollection<CommandTrace> CommandTraces { get; private set; }
         public bool ShouldFailIfFiltered { get; protected set; }
         public int? PendingTimeout { get; protected set; }
@@ -238,8 +246,35 @@ namespace CodeValue.CodeCommander
         {
             Inner.OnNext(new CommandResponse<T>(this, ReturnValue));
         }
+         protected override void  HandleError(Exception ex)
+        {
+            if (ErrorAction != null)
+            {
+                ErrorAction(this, ex);
+            }   
+        }
 
-        public new T ReturnValue { get; protected set; }
+        protected override void HandleCompletion()
+        {
+            if (CompleteAction != null)
+            {
+                CompleteAction(this);
+            }
+
+        }
+        
+
+        private T _ReturnValue;
+        public new T ReturnValue
+        {
+            get { return _ReturnValue; }
+            protected set { this.RaiseAndSetIfChanged(x => x.ReturnValue, value); }
+        }
+
+        public new Action<IProcessedCommand<T>> CompleteAction { get; set; }
+        public new Action<IProcessedCommand<T>> BeforeExecuteAction { get; set; }
+        public new Action<IProcessedCommand<T>> FullfillmentAction { get; set; }
+        public new Action<IProcessedCommand<T>, Exception> ErrorAction { get; set; }
     }
 
     public class CommandTrace

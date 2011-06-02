@@ -67,7 +67,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AlertsCommand.cs" />
     <Compile Include="Commands\BusyCommandBase.cs" />
+    <Compile Include="Commands\CommandFactory.cs" />
+    <Compile Include="ConnectCommand.cs" />
+    <Compile Include="Device.cs" />
+    <Compile Include="ExecuteCommand.cs" />
+    <Compile Include="GetValueCommand.cs" />
+    <Compile Include="NotConnectedFilter.cs" />
     <Compile Include="ViewModelBase.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
