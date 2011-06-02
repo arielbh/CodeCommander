@@ -8,8 +8,8 @@ namespace CodeValue.CodeCommander.Interfaces
 {
     public interface ICommandProcessor
     {
-        IObservable<CommandResponse<Unit>> PublishCommand(CommandBase command);
-        IObservable<CommandResponse<T>> PublishCommand<T>(CommandBase<T> command);
+        IObservable<ICommandResponse<Unit>> PublishCommand(CommandBase command);
+        IObservable<ICommandResponse<T>> PublishCommand<T>(CommandBase<T> command);
         
         void CancelCommand(CommandBase command);
         void RerunBlockedCommand(CommandBase command);

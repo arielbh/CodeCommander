@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reactive;
 using System.Text;
+using CodeValue.CodeCommander.Interfaces;
 
 namespace CodeValue.CodeCommander
 {
-    public class CommandResponse<T>
+    public class CommandResponse<T>  : ICommandResponse<T>
     {
         public CommandResponse(CommandBase sender, T value)
         {

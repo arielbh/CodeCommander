@@ -35,6 +35,10 @@
                         Command="{Binding ReleaseBlockedCommand}"
                         CommandParameter="{Binding SelectedItem.CommandId, ElementName=commandsGrid}" 
                         Height="30" />
+                <Button Content="Cancel Command"
+                        Command="{Binding CancelCommandCommand}"
+                        CommandParameter="{Binding SelectedItem.CommandId, ElementName=commandsGrid}"
+                        Height="30" />
             </StackPanel>
         </GroupBox>
         <GroupBox Grid.Column="1"
@@ -88,17 +92,22 @@
             </Grid.RowDefinitions>
             <GroupBox Header="Running Commands">
                 <DataGrid x:Name="commandsGrid"  ItemsSource="{Binding Commands}" 
-                           AutoGenerateColumns="False">
+                           AutoGenerateColumns="False" IsReadOnly="True">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Binding="{Binding CommandId}" />
-                        <DataGridTextColumn Binding="{Binding CurrentState}" />
-                        <DataGridTextColumn Binding="{Binding ReturnValue}" />
+                        <DataGridTextColumn Header="Command Id" Binding="{Binding CommandId}" />
+                        <DataGridTextColumn Header="State" Binding="{Binding CurrentState}" />
+                        <DataGridTextColumn Header="Return Value" Binding="{Binding ReturnValue}" />
+                        <DataGridTextColumn Header="Serial Number"
+                                            Binding="{Binding SerialNumber}" />
+
                     </DataGrid.Columns>
                 </DataGrid>
             </GroupBox>
             <GroupBox Grid.Row="1"
-                      Header="Current Filters">
+                      Header="Current Filters"
+                      >
                 <DataGrid ItemsSource="{Binding Filters}"
+                          IsReadOnly="True"
                           AutoGenerateColumns="True">
           
                 </DataGrid>

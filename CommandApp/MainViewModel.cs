@@ -60,7 +60,7 @@ namespace CommandApp
                     {
                         CommandBase<String> com = c as CommandBase<string>;
                         com.Subscribe(
-                            Observer.Create<CommandResponse<string>>(
+                            Observer.Create<ICommandResponse<string>>(
                                 x => AddMessage(x.Sender.ToString() + " Got result " + x.Value.ToString()),
                                 ex => AddMessage(ex.Source + " Got Error: " + ex.Message),
                                 () => { }));
@@ -109,6 +109,8 @@ namespace CommandApp
 
             ReleaseBlockedCommand = new DelegateCommand<string>(s => CommandProcessor.RerunBlockedCommand((CommandBase)
                                                                                                           Commands.First(c => c.CommandId == s)));
+            CancelCommandCommand = new DelegateCommand<string>(s => CommandProcessor.CancelCommand((CommandBase)
+                                                                                                          Commands.First(c => c.CommandId == s)));
 
         }
 
@@ -151,6 +153,7 @@ namespace CommandApp
 
 
         public DelegateCommand<string> CreateCommandCommand { get; set; }
+        public DelegateCommand<string> CancelCommandCommand { get; set; }
 
         public DelegateCommand<bool?> SendConnectCommand { get; set; }
         public DelegateCommand<string> ThrowAlertCommand { get; set; }

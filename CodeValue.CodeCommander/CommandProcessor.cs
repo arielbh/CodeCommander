@@ -56,7 +56,7 @@ namespace CodeValue.CodeCommander
 
         private void HandleAddedCommand(CommandBase item)
         {
-            item.CommandCounter = _commandCounter++;
+            item.SerialNumber = _commandCounter++;
             item.CurrentState = CommandState.Pending;
             PushToFilter(item);
             if (_subscriptions.ContainsKey(item))
@@ -96,14 +96,14 @@ namespace CodeValue.CodeCommander
             command.StartRequest(nextState);
         }
 
-        public IObservable<CommandResponse<Unit>> PublishCommand(CommandBase command)
+        public IObservable<ICommandResponse<Unit>> PublishCommand(CommandBase command)
         {
             AddCommand(command);
             return command;
 
         }
 
-        public IObservable<CommandResponse<T>> PublishCommand<T>(CommandBase<T> command)
+        public IObservable<ICommandResponse<T>> PublishCommand<T>(CommandBase<T> command)
         {
             AddCommand(command);
             return command;

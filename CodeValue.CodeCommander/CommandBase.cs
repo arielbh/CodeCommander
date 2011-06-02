@@ -10,11 +10,15 @@ using ReactiveUI;
 
 namespace CodeValue.CodeCommander
 {
-    public abstract class CommandBase : ReactiveObject, IObservable<CommandResponse<Unit>>, ICommandBase, IProcessedCommand
+    public abstract class CommandBase : ReactiveObject, IObservable<ICommandResponse<Unit>>, ICommandBase, IProcessedCommand
     {
+#pragma warning disable 649 //RxUI assume private methods are following this convention.
+// ReSharper disable InconsistentNaming
         private CommandState _CurrentState;
-        internal int CommandCounter { get; set; }
-        private readonly ReplaySubject<CommandResponse<Unit>> _inner = new ReplaySubject<CommandResponse<Unit>>();
+// ReSharper restore InconsistentNaming
+#pragma warning restore  649
+
+        private readonly ReplaySubject<ICommandResponse<Unit>> _inner = new ReplaySubject<ICommandResponse<Unit>>();
 
         protected CommandBase()
         {
@@ -119,14 +123,14 @@ namespace CodeValue.CodeCommander
 
         }
 
-        protected ReplaySubject<CommandResponse<Unit>> Inner { get { return _inner; } }
+        protected ReplaySubject<ICommandResponse<Unit>> Inner { get { return _inner; } }
 
         public IDisposable RegisterForStateChange(IObserver<IObservedChange<CommandBase, CommandState>> observer)
         {
             return this.ObservableForProperty(c => c.CurrentState).Subscribe(observer);
         }
 
-        public IDisposable Subscribe(IObserver<CommandResponse<Unit>> observer)
+        public IDisposable Subscribe(IObserver<ICommandResponse<Unit>> observer)
         {
             return Inner.Subscribe(observer);
         }
@@ -207,7 +211,12 @@ namespace CodeValue.CodeCommander
         
         public string CommandId { get; private set; }
 
+#pragma warning disable 649 //RxUI assume private methods are following this convention.
+        // ReSharper disable InconsistentNaming
         private Unit _ReturnValue;
+        // ReSharper restore InconsistentNaming
+#pragma warning restore  649
+
         public Unit ReturnValue
         {
             get { return _ReturnValue; }
@@ -224,23 +233,24 @@ namespace CodeValue.CodeCommander
         public int? ExecutingTimeout { get; protected set; }
         public bool ShouldExecuteForever { get; protected set; }
         public string CommandGroup { get; protected set; }
+        public int SerialNumber { get; internal set; }
     }
 
-    public abstract class CommandBase<T> : CommandBase, IObservable<CommandResponse<T>>, IProcessedCommand<T>
+    public abstract class CommandBase<T> : CommandBase, IObservable<ICommandResponse<T>>, IProcessedCommand<T>
     {
         public CommandBase()
         {
             Inner.Subscribe(x => HandleFullfillment(), HandleError, HandleCompletion);
         }
 
-        private readonly ReplaySubject<CommandResponse<T>>  _inner = new ReplaySubject<CommandResponse<T>>();
+        private readonly ReplaySubject<ICommandResponse<T>> _inner = new ReplaySubject<ICommandResponse<T>>();
 
-        public IDisposable Subscribe(IObserver<CommandResponse<T>> observer)
+        public IDisposable Subscribe(IObserver<ICommandResponse<T>> observer)
         {
            return Inner.Subscribe(observer);
         }
 
-        protected new ReplaySubject<CommandResponse<T>> Inner { get { return _inner; } }
+        protected new ReplaySubject<ICommandResponse<T>> Inner { get { return _inner; } }
 
         protected override void SignalCommandFulfillment()
         {
@@ -262,9 +272,14 @@ namespace CodeValue.CodeCommander
             }
 
         }
-        
 
+
+#pragma warning disable 649 //RxUI assume private methods are following this convention.
+        // ReSharper disable InconsistentNaming
         private T _ReturnValue;
+        // ReSharper restore InconsistentNaming
+#pragma warning restore  649
+        
         public new T ReturnValue
         {
             get { return _ReturnValue; }

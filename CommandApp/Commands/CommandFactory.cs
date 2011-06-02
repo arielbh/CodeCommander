@@ -24,7 +24,7 @@ namespace CommandApp.Commands
                 instance.CompleteAction = c => _filterManager.RemoveFilter(_busyFilter);
                 instance.RegisterForStateChange(Observer.Create<IObservedChange<CommandBase, CommandState>>(b =>
                                                                                                                 {
-                                                                                                                    if (b.Value == CommandState.Blocked)
+                                                                                                                    if (b.Value == CommandState.Blocked || b.Value == CommandState.Canceled)
                                                                                                                     {
                                                                                                                     _filterManager.RemoveFilter(_busyFilter);                                
                                                                                                                     }

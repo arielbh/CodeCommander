@@ -4,9 +4,10 @@ using ReactiveUI;
 
 namespace CodeValue.CodeCommander.Interfaces
 {
-    public interface IProcessedCommand
+    public interface IProcessedCommand : ICommandBase
     {
         string CommandId { get; }
+        int SerialNumber { get;}
         string CommandGroup { get; }
         Unit ReturnValue { get; }
         CommandState CurrentState { get; }
@@ -24,7 +25,7 @@ namespace CodeValue.CodeCommander.Interfaces
         ReactiveCollection<CommandTrace> CommandTraces { get; }
 
         IDisposable RegisterForStateChange(IObserver<IObservedChange<CommandBase, CommandState>> observer);
-        IDisposable Subscribe(IObserver<CommandResponse<Unit>> observer);
+        IDisposable Subscribe(IObserver<ICommandResponse<Unit>> observer);
         //void StartRequest(CommandState currentState);
         //CommandState? InterpretResponse(ProcessorInput response, CommandState currentState);
         //IDisposable Subscribe(IObserver<CommandResponse<Unit>> observer);
@@ -33,11 +34,11 @@ namespace CodeValue.CodeCommander.Interfaces
     public interface IProcessedCommand<T> : IProcessedCommand
     {
         new T ReturnValue { get; }
-        Action<IProcessedCommand<T>> CompleteAction { get; set; }
-        Action<IProcessedCommand<T>, Exception> ErrorAction { get; set; }
-        Action<IProcessedCommand<T>> FullfillmentAction { get; set; }
-        Action<IProcessedCommand<T>> BeforeExecuteAction { get; set; }
+        new Action<IProcessedCommand<T>> CompleteAction { get; set; }
+        new Action<IProcessedCommand<T>, Exception> ErrorAction { get; set; }
+        new Action<IProcessedCommand<T>> FullfillmentAction { get; set; }
+        new Action<IProcessedCommand<T>> BeforeExecuteAction { get; set; }
 
-        IDisposable Subscribe(IObserver<CommandResponse<T>> observer);
+        IDisposable Subscribe(IObserver<ICommandResponse<T>> observer);
     }
 }
