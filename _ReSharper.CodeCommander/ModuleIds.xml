@@ -1,7 +1,0 @@
-<Modules>
-  <Module PersistentId="71A80D4F-63F9-43A0-9E70-903A14AD690F" ModuleId="CommandApp" />
-  <Module PersistentId="7DF98769-B32F-43BE-ABBC-679A5391FA32" ModuleId="CodeValue.CodeCommander" />
-  <Module PersistentId="Microsoft.Practices.Prism, Version=4.0.0.0, Culture=neutral, PublicKeyToken=c4def769cd5b7e21" ModuleId="Microsoft.Practices.Prism" />
-  <Module PersistentId="ReactiveUI, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null" ModuleId="ReactiveUI" />
-  <Module PersistentId="ReactiveUI, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null" ModuleId="ReactiveUI_1" />
-</Modules>
