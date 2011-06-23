@@ -75,6 +75,7 @@
     <Compile Include="Commands\GetValueCommand.cs" />
     <Compile Include="DeviceResult.cs" />
     <Compile Include="Commands\NotConnectedFilter.cs" />
+    <Compile Include="Extensions.cs" />
     <Compile Include="ViewModelBase.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>

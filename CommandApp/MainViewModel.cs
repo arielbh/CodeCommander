@@ -48,7 +48,8 @@ namespace CommandApp
                         CommandBase<bool> command = c as CommandBase<bool>;
                         command.CompleteAction = com =>
                                                      {
-                                                         if (com.ReturnValue)
+                                                         CommandBase<bool> cast = com as CommandBase<bool>;
+                                                         if (cast.ReturnValue)
                                                          {
                                                              FilterManager.RemoveFilter(_notConnectedFilter);
                                                          }
@@ -112,6 +113,19 @@ namespace CommandApp
             CancelCommandCommand = new DelegateCommand<string>(s => CommandProcessor.CancelCommand((CommandBase)
                                                                                                           Commands.First(c => c.CommandId == s)));
 
+            CreateManyCommand  = new DelegateCommand<string>(CreateManyAction);
+
+        }
+
+        private void CreateManyAction(string obj)
+        {
+            for (int i = 0; i < 200; i++)
+
+            {
+                CreateACommand("DummyCommand");
+
+            }
+            
         }
 
 
@@ -120,10 +134,10 @@ namespace CommandApp
 
         private void WrapAndCallCommand(CommandBase command)
         {
-            subscriptions.Add( CommandProcessor.PublishCommand(command).Subscribe(
+            subscriptions.Add( CommandProcessor.PublishCommand(command, Observer.Create<ICommandResponse<Unit>>(
                 x => AddMessage(x.Sender.ToString() + " Got result " + x.Value.ToString()),
                 ex => AddMessage(ex.Source + " Got Error: " + ex.Message), 
-                () => {  }));
+                () => {  })));
         }
 
 
@@ -158,6 +172,8 @@ namespace CommandApp
         public DelegateCommand<bool?> SendConnectCommand { get; set; }
         public DelegateCommand<string> ThrowAlertCommand { get; set; }
         public DelegateCommand<string> ReleaseBlockedCommand { get; set; }
+        public DelegateCommand<string> CreateManyCommand { get; set; }
+        
 
         public ICommandProcessor CommandProcessor { get; set; }
         public ObservableCollection<Message> Messages { get; set; }
@@ -197,5 +213,33 @@ namespace CommandApp
         }
         public string Text { get; set; }
         public DateTime Date { get; set; }
+    }
+
+    public class DummyCommand : CommandBase
+    {
+        private readonly MainViewModel _mainViewModel;
+
+        public DummyCommand(MainViewModel mainViewModel)
+        {
+            _mainViewModel = mainViewModel;
+        }
+
+        public override CommandState? InterpretResponse(ProcessorInput response, CommandState currentState)
+        {
+            return null;
+        }
+
+        public override bool CanExecute()
+        {
+            _mainViewModel.AddMessage("Dummy Message CanExecuted");
+
+            return true;
+        }
+
+        public override void Execute()
+        {
+            _mainViewModel.AddMessage("Dummy Message CanExecuted");
+            
+        }
     }
 }

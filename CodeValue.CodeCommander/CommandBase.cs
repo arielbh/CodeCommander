@@ -5,6 +5,7 @@ using System.Reactive;
 using System.Reactive.Linq;
 using System.Reactive.Subjects;
 using System.Text;
+using CodeValue.CodeCommander.Exceptions;
 using CodeValue.CodeCommander.Interfaces;
 using ReactiveUI;
 
@@ -13,9 +14,9 @@ namespace CodeValue.CodeCommander
     public abstract class CommandBase : ReactiveObject, IObservable<ICommandResponse<Unit>>, ICommandBase, IProcessedCommand
     {
 #pragma warning disable 649 //RxUI assume private methods are following this convention.
-// ReSharper disable InconsistentNaming
+        // ReSharper disable InconsistentNaming
         private CommandState _CurrentState;
-// ReSharper restore InconsistentNaming
+        // ReSharper restore InconsistentNaming
 #pragma warning restore  649
 
         private readonly ReplaySubject<ICommandResponse<Unit>> _inner = new ReplaySubject<ICommandResponse<Unit>>();
@@ -31,7 +32,7 @@ namespace CodeValue.CodeCommander
 
         private void HandleStateChange(IObservedChange<CommandBase, CommandState> b)
         {
-            CommandTraces.Add(new CommandTrace {DateTime = DateTime.Now, State = b.Value});
+            CommandTraces.Add(new CommandTrace { DateTime = DateTime.Now, State = b.Value });
             if (b.Value == CommandState.Successed)
             {
                 SignalCommandFulfillment();
@@ -54,30 +55,30 @@ namespace CodeValue.CodeCommander
             {
                 Observable.Timer(new TimeSpan(0, 0, 0, 0, PendingTimeout.Value)).Subscribe(
                     a =>
+                    {
+                        if (CurrentState == CommandState.Pending)
                         {
-                            if (CurrentState == CommandState.Pending)
-                            {
-                                CompleteCommand(
-                                    new Exception("Command has exceded its Pending timeout"));
+                            CompleteCommand(
+                                new CommandTimeoutException("Command has exceded its Pending timeout", CommandState.Pending));
 
-                            }                                                     
-                        });
+                        }
+                    });
             }
             if (currentState == CommandState.Executing && ExecutingTimeout.HasValue)
             {
                 Observable.Timer(new TimeSpan(0, 0, 0, 0, ExecutingTimeout.Value)).Subscribe(
                     a =>
+                    {
+                        if (CurrentState == CommandState.Executing)
                         {
-                            if (CurrentState == CommandState.Executing)
-                            {
-                                CompleteCommand(
-                                    new Exception("Command has exceded its Executing timeout"));
+                            CompleteCommand(
+                                new CommandTimeoutException("Command has exceded its Executing timeout", CommandState.Executing));
 
-                            }
-                        });
+                        }
+                    });
             }
         }
-          
+
         protected virtual void SignalCommandFulfillment()
         {
             Inner.OnNext(new CommandResponse<Unit>(this, new Unit()));
@@ -92,26 +93,26 @@ namespace CodeValue.CodeCommander
             }
             else
             {
-                
+
                 Inner.OnCompleted();
             }
         }
 
-       protected virtual void HandleFullfillment()
+        protected virtual void HandleFullfillment()
         {
             if (FullfillmentAction != null)
             {
                 FullfillmentAction(this);
             }
-            
+
         }
 
-        protected virtual  void HandleError(Exception ex)
+        protected virtual void HandleError(Exception ex)
         {
             if (ErrorAction != null)
             {
                 ErrorAction(this, ex);
-            }   
+            }
         }
 
         protected virtual void HandleCompletion()
@@ -145,7 +146,7 @@ namespace CodeValue.CodeCommander
             }
             if (CurrentState == CommandState.Failed)
             {
-                CompleteCommand(new Exception("Command can not be started. Most likely due to filers"));
+                CompleteCommand(new CommandFailureException("Command can not be started. Most likely due to filers"));
             }
             // This method is called at the start of every request - this method
             // should do the following:
@@ -181,17 +182,28 @@ namespace CodeValue.CodeCommander
 
         internal virtual void SignalCommandCanStartExecuting()
         {
-            if (CanExecute())
+            try
             {
-                if (BeforeExecuteAction != null)
+                if (CanExecute())
                 {
-                    BeforeExecuteAction(this);
+                    if (BeforeExecuteAction != null)
+                    {
+                        BeforeExecuteAction(this);
+                    }
+                    Execute();
                 }
-                Execute();
+                else
+                {
+                    if (ShouldFailIfBlocked)
+                    {
+                        CompleteCommand(new CommandFailureException("Command was supposed to be blocked, due to configuration command has failed."));
+                    }
+                    CurrentState = CommandState.Blocked;
+                }
             }
-            else
+            catch (Exception ex)
             {
-                CurrentState = CommandState.Blocked;
+                CompleteCommand(ex);
             }
         }
 
@@ -208,7 +220,7 @@ namespace CodeValue.CodeCommander
 
         public abstract bool CanExecute();
         public abstract void Execute();
-        
+
         public string CommandId { get; private set; }
 
 #pragma warning disable 649 //RxUI assume private methods are following this convention.
@@ -232,6 +244,7 @@ namespace CodeValue.CodeCommander
         public int? PendingTimeout { get; protected set; }
         public int? ExecutingTimeout { get; protected set; }
         public bool ShouldExecuteForever { get; protected set; }
+        public bool ShouldFailIfBlocked { get; protected set; }
         public string CommandGroup { get; protected set; }
         public int SerialNumber { get; internal set; }
     }
@@ -247,7 +260,7 @@ namespace CodeValue.CodeCommander
 
         public IDisposable Subscribe(IObserver<ICommandResponse<T>> observer)
         {
-           return Inner.Subscribe(observer);
+            return Inner.Subscribe(observer);
         }
 
         protected new ReplaySubject<ICommandResponse<T>> Inner { get { return _inner; } }
@@ -256,22 +269,7 @@ namespace CodeValue.CodeCommander
         {
             Inner.OnNext(new CommandResponse<T>(this, ReturnValue));
         }
-         protected override void  HandleError(Exception ex)
-        {
-            if (ErrorAction != null)
-            {
-                ErrorAction(this, ex);
-            }   
-        }
 
-        protected override void HandleCompletion()
-        {
-            if (CompleteAction != null)
-            {
-                CompleteAction(this);
-            }
-
-        }
 
 
 #pragma warning disable 649 //RxUI assume private methods are following this convention.
@@ -279,17 +277,15 @@ namespace CodeValue.CodeCommander
         private T _ReturnValue;
         // ReSharper restore InconsistentNaming
 #pragma warning restore  649
-        
+
         public new T ReturnValue
         {
             get { return _ReturnValue; }
             protected set { this.RaiseAndSetIfChanged(x => x.ReturnValue, value); }
         }
 
-        public new Action<IProcessedCommand<T>> CompleteAction { get; set; }
-        public new Action<IProcessedCommand<T>> BeforeExecuteAction { get; set; }
-        public new Action<IProcessedCommand<T>> FullfillmentAction { get; set; }
-        public new Action<IProcessedCommand<T>, Exception> ErrorAction { get; set; }
+
+
     }
 
     public class CommandTrace

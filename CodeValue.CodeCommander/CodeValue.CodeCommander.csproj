@@ -38,12 +38,13 @@
   <ItemGroup>
     <Reference Include="PresentationCore" />
     <Reference Include="ReactiveUI, Version=2.3.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\3rd Party\ReactiveUI.dll</HintPath>
+      <HintPath>..\..\3rd Party\RxUI\ReactiveUI.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Reactive, Version=1.0.10425.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Reactive, Version=1.0.10425.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\3rd Party\RxUI\System.Reactive.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -54,6 +55,9 @@
     <Compile Include="CommandBase.cs" />
     <Compile Include="CommandProcessor.cs" />
     <Compile Include="CommandResponse.cs" />
+    <Compile Include="Exceptions\CommandProcessorException.cs" />
+    <Compile Include="Exceptions\CommandFailureException.cs" />
+    <Compile Include="Exceptions\CommandTimeoutException.cs" />
     <Compile Include="FilterBase.cs" />
     <Compile Include="Interfaces\ICommandResponse.cs" />
     <Compile Include="Interfaces\IProcessedCommand.cs" />
@@ -65,7 +69,9 @@
     <Compile Include="Interfaces\IFilterManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="CodeCommander.cd" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -18,7 +18,9 @@ namespace CommandApp.Commands
         public CommandBase CreateCommand(Type type, params object[] args)
         {
             CommandBase instance = (CommandBase)Activator.CreateInstance(type, args);
-            if (instance is BusyCommandBase)
+
+
+            if (instance is BusyCommandBase || type.InheritsOrImplements(typeof(BusyCommandBase<>)))                
             {
                 instance.BeforeExecuteAction = c => _filterManager.AddFilter(_busyFilter);
                 instance.CompleteAction = c => _filterManager.RemoveFilter(_busyFilter);
@@ -31,6 +33,7 @@ namespace CommandApp.Commands
 
                                                                                                                 }));
             }
+
 
             if (OnCreateCommand != null)
             {

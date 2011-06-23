@@ -1,0 +1,3872 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Telerik.JustMock</name>
+    </assembly>
+    <members>
+        <member name="T:Telerik.JustMock.Expectations.Abstraction.IFunc`1">
+            <summary>
+            Interface containing Func2 type method expecatations.
+            </summary>
+            <typeparam name="TReturn"></typeparam>
+        </member>
+        <member name="M:Telerik.JustMock.Expectations.Abstraction.IFunc`1.Returns(`0)">
+            <summary>
+            Defines the return value for a sepecific method expecation.
+            </summary>
+            <param name="value">any object value</param>
+            <returns></returns>
+        </member>
+        <member name="M:Telerik.JustMock.Expectations.Abstraction.IFunc`1.Returns(Telerik.JustMock.Func2{`0})">
+            <summary>
+            Evaluates the acion and returns a value for the setup.
+            </summary>
+            <param name="value"></param>
+            <returns>Reference to <see cref="T:Telerik.JustMock.Expectations.Abstraction.IAssertable"/></returns>
+        </member>
+        <member name="M:Telerik.JustMock.Expectations.Abstraction.IFunc`1.Returns``1(Telerik.JustMock.Func2{``0,`0})">
+            <summary>
+            Evaluates the acion and returns a value for the setup.
+            </summary>
+            <typeparam name="T1">user defined argument</typeparam>
+            <param name="func"></param>
+            <returns>Reference to <see cref="T:Telerik.JustMock.Expectations.Abstraction.IAssertable"/></returns>
+        </member>
+        <member name="M:Telerik.JustMock.Expectations.Abstraction.IFunc`1.Returns``2(Telerik.JustMock.Func2{``0,``1,`0})">
+            <summary>
+            Evaluates the acion and returns a value for the setup.
+            </summary>
+            <typeparam name="T1">user defined argument</typeparam>
+            <typeparam name="T2">user defined argument</typeparam>
+            <param name="func"></param>
+            <returns>Reference to <see cref="T:Telerik.JustMock.Expectations.Abstraction.IAssertable"/></returns>
+        </member>
+        <member name="M:Telerik.JustMock.Expectations.Abstraction.IFunc`1.Returns``3(Telerik.JustMock.Func2{``0,``1,``2,`0})">
+            <summary>
+            Evaluates the acion and returns a value for the setup.
+            </summary>
+            <typeparam name="T1">user defined argument</typeparam>
+            <typeparam name="T2">user defined argument</typeparam>
+            <typeparam name="T3">user defined argument</typeparam>
+            <param name="func"></param>
+            <returns>Reference to <see cref="T:Telerik.JustMock.Expectations.Abstraction.IAssertable"/></returns>
+        </member>
+        <member name="M:Telerik.JustMock.Expectations.Abstraction.IFunc`1.Returns``4(Telerik.JustMock.Func2{``0,``1,``2,``3,`0})">
+             <summary>
+             Evaluates the acion and returns a value for the setup.
+             </summary>
+             <typeparam name="T1">user defined argument</typeparam>
+             <typeparam name="T2">user defined argument</typeparam>
+             <typeparam name="T3">user defined argument</typeparam>
+            <typeparam name="T4">user defined argument</typeparam>
+             <param name="func"></param>
+             <returns>Reference to <see cref="T:Telerik.JustMock.Expectations.Abstraction.IAssertable"/></returns>
+        </member>
+        <member name="M:Telerik.JustMock.Expectations.Abstraction.IFunc`1.Returns``5(Telerik.JustMock.Func2{``0,``1,``2,``3,``4,`0})">
+             <summary>
+             Evaluates the acion and returns a value for the setup.
+             </summary>
+             <typeparam name="T1">user defined argument</typeparam>
+             <typeparam name="T2">user defined argument</typeparam>
+             <typeparam name="T3">user defined argument</typeparam>
+            <typeparam name="T4">user defined argument</typeparam>
+            <typeparam name="T5">user defined argument</typeparam>
+             <param name="func"></param>
+             <returns><see cref="T:Telerik.JustMock.Expectations.Abstraction.IAssertable"/></returns>
+        </member>
+        <member name="M:Telerik.JustMock.Expectations.Abstraction.IFunc`1.Returns``6(Telerik.JustMock.Func2{``0,``1,``2,``3,``4,``5,`0})">
+             <summary>
+             Evaluates the acion and returns a value for the setup.
+             </summary>
+             <typeparam name="T1">user defined argument</typeparam>
+             <typeparam name="T2">user defined argument</typeparam>
+             <typeparam name="T3">user defined argument</typeparam>
+            <typeparam name="T4">user defined argument</typeparam>
+            <typeparam name="T5">user defined argument</typeparam>
+            <typeparam name="T6">user defined argument</typeparam>
+             <param name="func"></param>
+             <returns><see cref="T:Telerik.JustMock.Expectations.Abstraction.IAssertable"/></returns>
+        </member>
+        <member name="M:Telerik.JustMock.Expectations.Abstraction.IFunc`1.Returns``7(Telerik.JustMock.Func2{``0,``1,``2,``3,``4,``5,``6,`0})">
+             <summary>
+             Evaluates the acion and returns a value for the setup.
+             </summary>
+             <typeparam name="T1">user defined argument</typeparam>
+             <typeparam name="T2">user defined argument</typeparam>
+             <typeparam name="T3">user defined argument</typeparam>
+            <typeparam name="T4">user defined argument</typeparam>
+            <typeparam name="T5">user defined argument</typeparam>
+            <typeparam name="T6">user defined argument</typeparam>
+            <typeparam name="T7">user defined argument</typeparam>
+             <param name="func"></param>
+             <returns><see cref="T:Telerik.JustMock.Expectations.Abstraction.IAssertable"/></returns>
+        </member>
+        <member name="M:Telerik.JustMock.Expectations.Abstraction.IFunc`1.Returns``8(Telerik.JustMock.Func2{``0,``1,``2,``3,``4,``5,``6,``7,`0})">
+             <summary>
+             Evaluates the acion and returns a value for the setup.
+             </summary>
+             <typeparam name="T1">user defined argument</typeparam>
+             <typeparam name="T2">user defined argument</typeparam>
+             <typeparam name="T3">user defined argument</typeparam>
+            <typeparam name="T4">user defined argument</typeparam>
+            <typeparam name="T5">user defined argument</typeparam>
+            <typeparam name="T6">user defined argument</typeparam>
+            <typeparam name="T7">user defined argument</typeparam>
+            <typeparam name="T8">user defined argument</typeparam>
+             <param name="func"></param>
+             <returns><see cref="T:Telerik.JustMock.Expectations.Abstraction.IAssertable"/></returns>
+        </member>
+        <member name="M:Telerik.JustMock.Expectations.Abstraction.IFunc`1.Returns``9(Telerik.JustMock.Func2{``0,``1,``2,``3,``4,``5,``6,``7,``8,`0})">
+             <summary>
+             Evaluates the acion and returns a value for the setup.
+             </summary>
+             <typeparam name="T1">user defined argument</typeparam>
+             <typeparam name="T2">user defined argument</typeparam>
+             <typeparam name="T3">user defined argument</typeparam>
+            <typeparam name="T4">user defined argument</typeparam>
+            <typeparam name="T5">user defined argument</typeparam>
+            <typeparam name="T6">user defined argument</typeparam>
+            <typeparam name="T7">user defined argument</typeparam>
+            <typeparam name="T8">user defined argument</typeparam>
+            <typeparam name="T9">user defined argument</typeparam>
+             <param name="func"></param>
+             <returns><see cref="T:Telerik.JustMock.Expectations.Abstraction.IAssertable"/></returns>
+        </member>
+        <member name="T:Telerik.JustMock.Guard">
+            <summary>
+            Helper class for argument validation.
+            </summary>
+        </member>
+        <member name="M:Telerik.JustMock.Guard.IsNotNull(System.Object,System.String)">
+            <summary>
+            Ensures the specified collection is not null.
+            </summary>
+            <param name="parameter">The parameter.</param>
+            <param name="parameterName">Name of the parameter.</param>
+        </member>
+        <member name="M:Telerik.JustMock.Guard.IsNotNullOrEmpty(System.String,System.String)">
+            <summary>
+            Ensures the specified string is not blank.
+            </summary>
+            <param name="parameter">The parameter.</param>
+            <param name="parameterName">Name of the parameter.</param>
+        </member>
+        <member name="M:Telerik.JustMock.Guard.IsNotNullOrEmpty``1(``0[],System.String)">
+            <summary>
+            Ensures the specified array is not null or empty.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="parameter">The parameter.</param>
+            <param name="parameterName">Name of the parameter.</param>
+        </member>
+        <member name="M:Telerik.JustMock.Guard.IsNotNullOrEmpty``1(System.Collections.Generic.ICollection{``0},System.String)">
+            <summary>
+            Ensures the specified collection is not null or empty.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="parameter">The parameter.</param>
+            <param name="parameterName">Name of the parameter.</param>
+        </member>
+        <member name="M:Telerik.JustMock.Guard.AreArgumentCountEqual(System.Int32,System.Int32,System.String)">
+            <summary>
+            Ensures if both expected and acutal argument count are same.
+            </summary>
+            <param name="expected"></param>
+            <param name="actual"></param>
+            <param name="parameterName"></param>
+        </member>
+        <member name="T:Telerik.JustMock.Constants">
+            <summary>
+            Constains constants used in various part of the project.
+            </summary>
+        </member>
+        <member name="M:Telerik.JustMock.DynamicProxy.MethodEmitter.#ctor(Telerik.JustMock.DynamicProxy.TypeEmitter)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Telerik.JustMock.DynamicProxy.MethodEmitter"/> class.
+            </summary>
+            <param name="emitter">Contains the Type detail udner which methods should be emitted.</param>
+        </member>
+        <member name="T:Telerik.JustMock.CallProtector">
+            <summary>
+            Class ensuring original code is executed.
+            </summary>
+        </member>
+        <member name="M:Telerik.JustMock.CallProtector.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Telerik.JustMock.CallProtector"/> class.
+            </summary>
+        </member>
+        <member name="P:Telerik.JustMock.CallProtector.IsProtected">
+            <summary>
+            Gets if the context is protected.
+            </summary>
+        </member>
+        <member name="T:Telerik.JustMock.Abstraction.IParamsExtender">
+            <summary>
+            Extends params.
+            </summary>
+        </member>
+        <member name="M:Telerik.JustMock.Abstraction.IParamsExtender.Expand(System.Object[])">
+            <summary>
+            Expands the params as argument list.
+            </summary>
+            <param name="args">Arguments to expand</param>
+            <returns>Reference to <see cref="T:Telerik.JustMock.Abstraction.IParamsExtender"/></returns>
+        </member>
+        <member name="P:Telerik.JustMock.Abstraction.IParamsExtender.Types">
+            <summary>
+            Gets the arguments types.
+            </summary>
+        </member>
+        <member name="P:Telerik.JustMock.Abstraction.IParamsExtender.Arguments">
+            <summary>
+            Gets the array of argument values.
+            </summary>
+        </member>
+        <member name="T:Telerik.JustMock.MockAssertionException">
+            <summary>
+            Exception thrown after a mock assertion is failed.
+            </summary>
+        </member>
+        <member name="M:Telerik.JustMock.MockAssertionException.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Telerik.JustMock.MockAssertionException"/> class.
+            </summary>
+        </member>
+        <member name="M:Telerik.JustMock.MockAssertionException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Telerik.JustMock.MockAssertionException"/> class.
+            </summary>
+            <param name="message"></param>
+        </member>
+        <member name="M:Telerik.JustMock.MockAssertionException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Telerik.JustMock.MockAssertionException"/> class.
+            </summary>
+            <param name="message"></param>
+            <param name="innerException"></param>
+        </member>
+        <member name="T:Telerik.JustMock.Instruction">
+            <summary>
+            Defines the nature for the mock call.
+            </summary>
+        </member>
+        <member name="F:Telerik.JustMock.Instruction.Execute">
+            <summary>
+            Specifies that call is for executing the setups
+            </summary>
+        </member>
+        <member name="F:Telerik.JustMock.Instruction.Arrange">
+            <summary>
+            Sepcifies that call is made for arranging the setup
+            </summary>
+        </member>
+        <member name="F:Telerik.JustMock.Instruction.Assert">
+            <summary>
+            Specifies that call is made for asserting the expectation.
+            </summary>
+        </member>
+        <member name="T:Telerik.JustMock.Expectations.Funcpectation`1">
+            <summary>
+            Implements common expecations.
+            </summary>
+            <summary>
+            Defines the expectation for a sepcific method.
+            </summary>
+        </member>
+        <member name="T:Telerik.JustMock.Expectations.CommonExpectation`1">
+            <summary>
+            Implements common expecations.
+            </summary>
+            <summary>
+            Implements common expecations.
+            </summary>
+        </member>
+        <member name="T:Telerik.JustMock.Expectations.Abstraction.ICommon`1">
+            <summary>
+            Defines common expecations.
+            </summary>
+        </member>
+        <member name="T:Telerik.JustMock.Expectations.Abstraction.IAssertable">
+            <summary>
+            Mark the statement as assertable in <see cref="M:Telerik.JustMock.Mock.Assert``1(``0)"/>.
+            </summary>
+        </member>
+        <member name="T:Telerik.JustMock.Expectations.Abstraction.ISetupBehavior">
+            <summary>
+            Defines the expected behavior for a setup.
+            </summary>
+        </member>
+        <member name="M:Telerik.JustMock.Expectations.Abstraction.ISetupBehavior.Overridable">
+            <summary>
+            Marks the that a setup can be overriden
+            </summary>
+        </member>
+        <member name="M:Telerik.JustMock.Expectations.Abstraction.ISetupBehavior.InSequence">
+            <summary>
+            Marks the setup as in sequence.
+            </summary>
+        </member>
+        <member name="M:Telerik.JustMock.Expectations.Abstraction.IAssertable.MustBeCalled">
+            <summary>
+            Specifies that the mock call should be invoked to pass <see cref="M:Telerik.JustMock.Mock.Assert``1(``0)"/>
+            </summary>
+        </member>
+        <member name="M:Telerik.JustMock.Expectations.Abstraction.ICommon`1.DoInstead(Telerik.JustMock.Action2)">
+            <summary>
+            Defines the body of the expected method that will be executed instead of the orginal method body.
+            </summary>
+            <param name="action">delegate the method body</param>
+            <returns></returns>
+        </member>
+        <member name="M:Telerik.JustMock.Expectations.Abstraction.ICommon`1.DoInstead``1(Telerik.JustMock.Action2{``0})">
+            <summary>
+            Defines the body of the expected method that will be executed instead of the orginal method body.
+            </summary>
+            <param name="action">Delegate for the method body</param>
+            <typeparam name="T1">Argument from calling method</typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:Telerik.JustMock.Expectations.Abstraction.ICommon`1.DoInstead``2(Telerik.JustMock.Action2{``0,``1})">
+            <summary>
+            Defines the body of the expected method that will be executed instead of the orginal method body.
+            </summary>
+            <param name="action">Delegate for the method body</param>
+            <typeparam name="T1">Argument from calling method</typeparam>
+            <typeparam name="T2">Argument from calling method</typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:Telerik.JustMock.Expectations.Abstraction.ICommon`1.DoInstead``3(Telerik.JustMock.Action2{``0,``1,``2})">
+            <summary>
+            Defines the body of the expected method that will be executed instead of the orginal method body.
+            </summary>
+            <param name="action">Delegate for the method body</param>
+            <typeparam name="T1">Argument from calling method</typeparam>
+            <typeparam name="T2">Argument from calling method</typeparam>
+            <typeparam name="T3">Argument from calling method</typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:Telerik.JustMock.Expectations.Abstraction.ICommon`1.DoInstead``4(Telerik.JustMock.Action2{``0,``1,``2,``3})">
+            <summary>
+            Defines the body of the expected method that will be executed instead of the orginal method body.
+            </summary>
+            <param name="action">Delegate for the method body</param>
+            <typeparam name="T1">Argument from calling method</typeparam>
+            <typeparam name="T2">Argument from calling method</typeparam>
+            <typeparam name="T3">Argument from calling method</typeparam>
+            <typeparam name="T4">Argument from calling method</typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:Telerik.JustMock.Expectations.Abstraction.ICommon`1.DoInstead``5(Telerik.JustMock.Action2{``0,``1,``2,``3,``4})">
+            <summary>
+            Defines the body of the expected method that will be executed instead of the orginal method body.
+            </summary>
+            <param name="action">Delegate for the method body</param>
+            <typeparam name="T1">Argument from calling method</typeparam>
+            <typeparam name="T2">Argument from calling method</typeparam>
+            <typeparam name="T3">Argument from calling method</typeparam>
+            <typeparam name="T4">Argument from calling method</typeparam>
+            <typeparam name="T5">Argument from calling method</typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:Telerik.JustMock.Expectations.Abstraction.ICommon`1.DoInstead``6(Telerik.JustMock.Action2{``0,``1,``2,``3,``4,``5})">
+            <summary>
+            Defines the body of the expected method that will be executed instead of the orginal method body.
+            </summary>
+            <param name="action">Delegate for the method body</param>
+            <typeparam name="T1">Argument from calling method</typeparam>
+            <typeparam name="T2">Argument from calling method</typeparam>
+            <typeparam name="T3">Argument from calling method</typeparam>
+            <typeparam name="T4">Argument from calling method</typeparam>
+            <typeparam name="T5">Argument from calling method</typeparam>
+            <typeparam name="T6">Argument from calling method</typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:Telerik.JustMock.Expectations.Abstraction.ICommon`1.DoInstead``7(Telerik.JustMock.Action2{``0,``1,``2,``3,``4,``5,``6})">
+            <summary>
+            Defines the body of the expected method that will be executed instead of the orginal method body.
+            </summary>
+            <param name="action">Delegate for the method body</param>
+            <typeparam name="T1">Argument from calling method</typeparam>
+            <typeparam name="T2">Argument from calling method</typeparam>
+            <typeparam name="T3">Argument from calling method</typeparam>
+            <typeparam name="T4">Argument from calling method</typeparam>
+            <typeparam name="T5">Argument from calling method</typeparam>
+            <typeparam name="T6">Argument from calling method</typeparam>
+            <typeparam name="T7">Argument from calling method</typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:Telerik.JustMock.Expectations.Abstraction.ICommon`1.DoInstead``8(Telerik.JustMock.Action2{``0,``1,``2,``3,``4,``5,``6,``7})">
+            <summary>
+            Defines the body of the expected method that will be executed instead of the orginal method body.
+            </summary>
+            <param name="action">Delegate for the method body</param>
+            <typeparam name="T1">Argument from calling method</typeparam>
+            <typeparam name="T2">Argument from calling method</typeparam>
+            <typeparam name="T3">Argument from calling method</typeparam>
+            <typeparam name="T4">Argument from calling method</typeparam>
+            <typeparam name="T5">Argument from calling method</typeparam>
+            <typeparam name="T6">Argument from calling method</typeparam>
+            <typeparam name="T7">Argument from calling method</typeparam>
+            <typeparam name="T8">Argument from calling method</typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:Telerik.JustMock.Expectations.Abstraction.ICommon`1.DoInstead``9(Telerik.JustMock.Action2{``0,``1,``2,``3,``4,``5,``6,``7,``8})">
+            <summary>
+            Defines the body of the expected method that will be executed instead of the orginal method body.
+            </summary>
+            <param name="action">Delegate for the method body</param>
+            <typeparam name="T1">Argument from calling method</typeparam>
+            <typeparam name="T2">Argument from calling method</typeparam>
+            <typeparam name="T3">Argument from calling method</typeparam>
+            <typeparam name="T4">Argument from calling method</typeparam>
+            <typeparam name="T5">Argument from calling method</typeparam>
+            <typeparam name="T6">Argument from calling method</typeparam>
+            <typeparam name="T7">Argument from calling method</typeparam>
+            <typeparam name="T8">Argument from calling method</typeparam>
+            <typeparam name="T9">Argument from calling method</typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:Telerik.JustMock.Expectations.Abstraction.ICommon`1.Raises(Telerik.JustMock.Action2,System.Object[])">
+            <summary>
+             Raises the expected with sepecic arguments
+            </summary>
+            <param name="eventExpression"></param>
+            <param name="args"></param>
+            <returns></returns>
+            <exception cref="T:System.InvalidOperationException"></exception>
+        </member>
+        <member name="M:Telerik.JustMock.Expectations.Abstraction.ICommon`1.Raises(Telerik.JustMock.Action2,System.EventArgs)">
+            <summary>
+             Raises the expected with sepecic arguments
+            </summary>
+            <param name="eventExpression"></param>
+            <param name="args">Event arguments</param>
+            <returns></returns>
+            <exception cref="T:System.InvalidOperationException"></exception>
+        </member>
+        <member name="M:Telerik.JustMock.Expectations.Abstraction.ICommon`1.Raises``1(Telerik.JustMock.Action2,Telerik.JustMock.Func2{``0,System.EventArgs})">
+            <summary>
+             Raises the expected event for the setup.
+            </summary>
+            <param name="eventExpression"></param>
+            <param name="func">An function that will be used to construct event arguments</param>
+            <returns></returns>
+            <exception cref="T:System.InvalidOperationException"></exception>
+        </member>
+        <member name="M:Telerik.JustMock.Expectations.Abstraction.ICommon`1.Raises``2(Telerik.JustMock.Action2,Telerik.JustMock.Func2{``0,``1,System.EventArgs})">
+            <summary>
+             Raises the expected event for the setup.
+            </summary>
+            <param name="eventExpression"></param>
+            <param name="func">An function that will be used to construct event arguments</param>
+            <returns></returns>
+            <exception cref="T:System.InvalidOperationException"></exception>
+        </member>
+        <member name="M:Telerik.JustMock.Expectations.Abstraction.ICommon`1.Raises``3(Telerik.JustMock.Action2,Telerik.JustMock.Func2{``0,``1,``2,System.EventArgs})">
+            <summary>
+             Raises the expected event for the setup.
+            </summary>
+            <param name="eventExpression"></param>
+            <param name="func">An function that will be used to construct event arguments</param>
+            <returns></returns>
+            <exception cref="T:System.InvalidOperationException"></exception>
+        </member>
+        <member name="M:Telerik.JustMock.Expectations.Abstraction.ICommon`1.Raises``4(Telerik.JustMock.Action2,Telerik.JustMock.Func2{``0,``1,``2,``3,System.EventArgs})">
+            <summary>
+             Raises the expected event for the setup.
+            </summary>
+            <param name="eventExpression"></param>
+            <param name="func">An function that will be used to construct event arguments</param>
+            <returns></returns>
+            <exception cref="T:System.InvalidOperationException"></exception>
+        </member>
+        <member name="M:Telerik.JustMock.Expectations.Abstraction.ICommon`1.Throws(System.Exception)">
+            <summary>
+            Throws a the specified expection for target call.
+            </summary>
+            <param name="exception"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Telerik.JustMock.Expectations.Abstraction.ICommon`1.Throws``1">
+            <summary>
+            Throws a the specified expection for target call.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Telerik.JustMock.Expectations.Abstraction.ICommon`1.Throws``1(System.Object[])">
+            <summary>
+            Throws a the specified expection for target call.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Telerik.JustMock.Expectations.Abstraction.ICommon`1.CallOriginal">
+            <summary>
+            Use it to call the real implementation.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Telerik.JustMock.Expectations.CommonExpectation`1.#ctor(Telerik.JustMock.Setup.MethodCall)">
+            <summary>
+            Creates a new instance of <see cref="T:Telerik.JustMock.Expectations.Funcpectation`1"/> class.
+            </summary>
+            <param name="methodContainer">Contains method details.</param>
+        </member>
+        <member name="M:Telerik.JustMock.Expectations.CommonExpectation`1.DoInstead(Telerik.JustMock.Action2)">
+            <summary>
+            Defines the body of the expected method that will be executed instead of the orginal method body.
+            </summary>
+            <param name="action">delegate the method body</param>
+            <returns></returns>
+        </member>
+        <member name="M:Telerik.JustMock.Expectations.CommonExpectation`1.Raises(Telerik.JustMock.Action2,System.Object[])">
+            <summary>
+             Raises the expected with sepecic arguments
+            </summary>
+            <param name="eventExpression"></param>
+            <param name="args"></param>
+            <returns></returns>
+            <exception cref="T:System.InvalidOperationException"></exception>
+        </member>
+        <member name="M:Telerik.JustMock.Expectations.CommonExpectation`1.Raises(Telerik.JustMock.Action2,System.EventArgs)">
+            <summary>
+             Raises the expected event with provided <see cref="T:System.EventArgs"/>.
+            </summary>
+            <param name="eventExpression"></param>
+            <param name="args">Event arguments</param>
+            <returns></returns>
+            <exception cref="T:System.InvalidOperationException"></exception>
+        </member>
+        <member name="M:Telerik.JustMock.Expectations.CommonExpectation`1.Raises``1(Telerik.JustMock.Action2,Telerik.JustMock.Func2{``0,System.EventArgs})">
+            <summary>
+             Raises the expected event for the setup.
+            </summary>
+            <param name="eventExpression"></param>
+            <param name="func">Function that will be used to construct event arguments</param>
+            <returns></returns>
+            <exception cref="T:System.InvalidOperationException"></exception>
+        </member>
+        <member name="M:Telerik.JustMock.Expectations.CommonExpectation`1.Raises``2(Telerik.JustMock.Action2,Telerik.JustMock.Func2{``0,``1,System.EventArgs})">
+            <summary>
+             Raises the expected event for the setup.
+            </summary>
+            <param name="eventExpression"></param>
+            <param name="func">An function that will be used to construct event arguments</param>
+            <returns></returns>
+            <exception cref="T:System.InvalidOperationException"></exception>
+        </member>
+        <member name="M:Telerik.JustMock.Expectations.CommonExpectation`1.Raises``3(Telerik.JustMock.Action2,Telerik.JustMock.Func2{``0,``1,``2,System.EventArgs})">
+            <summary>
+             Raises the expected event for the setup.
+            </summary>
+            <param name="eventExpression"></param>
+            <param name="func">An function that will be used to construct event arguments</param>
+            <returns></returns>
+            <exception cref="T:System.InvalidOperationException"></exception>
+        </member>
+        <member name="M:Telerik.JustMock.Expectations.CommonExpectation`1.Raises``4(Telerik.JustMock.Action2,Telerik.JustMock.Func2{``0,``1,``2,``3,System.EventArgs})">
+            <summary>
+             Raises the expected event for the setup.
+            </summary>
+            <param name="eventExpression"></param>
+            <param name="func">An function that will be used to construct event arguments</param>
+            <returns></returns>
+            <exception cref="T:System.InvalidOperationException"></exception>
+        </member>
+        <member name="M:Telerik.JustMock.Expectations.CommonExpectation`1.Throws(System.Exception)">
+            <summary>
+            Throws a the specified expection for target call.
+            </summary>
+            <param name="exception"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Telerik.JustMock.Expectations.CommonExpectation`1.Throws``1">
+            <summary>
+            Throws a the specified expection for target call.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Telerik.JustMock.Expectations.CommonExpectation`1.Throws``1(System.Object[])">
+            <summary>
+            Throws a the specified expection for target call.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Telerik.JustMock.Expectations.CommonExpectation`1.CallOriginal">
+            <summary>
+            Use it to call the real implementation.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Telerik.JustMock.Expectations.CommonExpectation`1.MustBeCalled">
+            <summary>
+            Specifies that the mock call should be invoked to pass <see cref="M:Telerik.JustMock.Mock.Assert``1(``0)"/>
+            </summary>
+        </member>
+        <member name="M:Telerik.JustMock.Expectations.CommonExpectation`1.Overridable">
+            <summary>
+            Marks the that a setup can be overriden
+            </summary>
+        </member>
+        <member name="M:Telerik.JustMock.Expectations.CommonExpectation`1.InSequence">
+            <summary>
+            Marks the setup as in sequence, should not be used with Overridable.
+            </summary>
+        </member>
+        <member name="M:Telerik.JustMock.Expectations.CommonExpectation`1.DoInstead``1(Telerik.JustMock.Action2{``0})">
+            <summary>
+             Specifies the expected action that will be executed instead of the orginal method body.
+            </summary>
+            <param name="action">Delegate for the method body</param>
+        </member>
+        <member name="M:Telerik.JustMock.Expectations.CommonExpectation`1.DoInstead``2(Telerik.JustMock.Action2{``0,``1})">
+            <summary>
+             Specifies the expected action that will be executed instead of the orginal method body.
+            </summary>
+            <param name="action">Delegate for the method body</param>
+        </member>
+        <member name="M:Telerik.JustMock.Expectations.CommonExpectation`1.DoInstead``3(Telerik.JustMock.Action2{``0,``1,``2})">
+            <summary>
+             Specifies the expected action that will be executed instead of the orginal method body.
+            </summary>
+            <param name="action">Delegate for the method body</param>
+        </member>
+        <member name="M:Telerik.JustMock.Expectations.CommonExpectation`1.DoInstead``4(Telerik.JustMock.Action2{``0,``1,``2,``3})">
+            <summary>
+             Specifies the expected action that will be executed instead of the orginal method body.
+            </summary>
+            <param name="action">Delegate for the method body</param>
+        </member>
+        <member name="M:Telerik.JustMock.Expectations.CommonExpectation`1.DoInstead``5(Telerik.JustMock.Action2{``0,``1,``2,``3,``4})">
+            <summary>
+             Specifies the expected action that will be executed instead of the orginal method body.
+            </summary>
+            <param name="action">Delegate for the method body</param>
+        </member>
+        <member name="M:Telerik.JustMock.Expectations.CommonExpectation`1.DoInstead``6(Telerik.JustMock.Action2{``0,``1,``2,``3,``4,``5})">
+            <summary>
+             Specifies the expected action that will be executed instead of the orginal method body.
+            </summary>
+            <param name="action">Delegate for the method body</param>
+        </member>
+        <member name="M:Telerik.JustMock.Expectations.CommonExpectation`1.DoInstead``7(Telerik.JustMock.Action2{``0,``1,``2,``3,``4,``5,``6})">
+            <summary>
+             Specifies the expected action that will be executed instead of the orginal method body.
+            </summary>
+            <param name="action">Delegate for the method body</param>
+        </member>
+        <member name="M:Telerik.JustMock.Expectations.CommonExpectation`1.DoInstead``8(Telerik.JustMock.Action2{``0,``1,``2,``3,``4,``5,``6,``7})">
+            <summary>
+             Specifies the expected action that will be executed instead of the orginal method body.
+            </summary>
+            <param name="action">Delegate for the method body</param>
+        </member>
+        <member name="M:Telerik.JustMock.Expectations.CommonExpectation`1.DoInstead``9(Telerik.JustMock.Action2{``0,``1,``2,``3,``4,``5,``6,``7,``8})">
+            <summary>
+             Specifies the expected action that will be executed instead of the orginal method body.
+            </summary>
+            <param name="action">Delegate for the method body</param>
+        </member>
+        <member name="P:Telerik.JustMock.Expectations.CommonExpectation`1.ExpectationContainer">
+            <summary>
+            Speficifies the container that holds the current instance.
+            </summary>
+        </member>
+        <member name="M:Telerik.JustMock.Expectations.Funcpectation`1.Returns``1(Telerik.JustMock.Func2{``0,`0})">
+             <summary>
+             Speficifies the return value for the expected call.
+             </summary>
+            <typeparam name="T1">Function argument 1</typeparam>
+             <param name="func"></param>
+             <returns><see cref="T:Telerik.JustMock.Expectations.Abstraction.IAssertable"/></returns>
+        </member>
+        <member name="M:Telerik.JustMock.Expectations.Funcpectation`1.Returns``2(Telerik.JustMock.Func2{``0,``1,`0})">
+             <summary>
+             Speficifies the return value for the expected call.
+             </summary>
+            <typeparam name="T1">Function argument 1</typeparam>
+            <typeparam name="T2">Function argument 2</typeparam>
+             <param name="func"></param>
+             <returns><see cref="T:Telerik.JustMock.Expectations.Abstraction.IAssertable"/></returns>
+        </member>
+        <member name="M:Telerik.JustMock.Expectations.Funcpectation`1.Returns``3(Telerik.JustMock.Func2{``0,``1,``2,`0})">
+             <summary>
+             Speficifies the return value for the expected call.
+             </summary>
+            <typeparam name="T1">Function argument 1</typeparam>
+            <typeparam name="T2">Function argument 2</typeparam>
+            <typeparam name="T3">Function argument 3</typeparam>
+             <param name="func"></param>
+             <returns><see cref="T:Telerik.JustMock.Expectations.Abstraction.IAssertable"/></returns>
+        </member>
+        <member name="M:Telerik.JustMock.Expectations.Funcpectation`1.Returns``4(Telerik.JustMock.Func2{``0,``1,``2,``3,`0})">
+             <summary>
+             Speficifies the return value for the expected call.
+             </summary>
+            <typeparam name="T1">Function argument 1</typeparam>
+            <typeparam name="T2">Function argument 2</typeparam>
+            <typeparam name="T3">Function argument 3</typeparam>
+            <typeparam name="T4">Function argument 4</typeparam>
+             <param name="func"></param>
+             <returns><see cref="T:Telerik.JustMock.Expectations.Abstraction.IAssertable"/></returns>
+        </member>
+        <member name="M:Telerik.JustMock.Expectations.Funcpectation`1.Returns``5(Telerik.JustMock.Func2{``0,``1,``2,``3,``4,`0})">
+             <summary>
+             Speficifies the return value for the expected call.
+             </summary>
+            <typeparam name="T1">Function argument 1</typeparam>
+            <typeparam name="T2">Function argument 2</typeparam>
+            <typeparam name="T3">Function argument 3</typeparam>
+            <typeparam name="T4">Function argument 4</typeparam>
+            <typeparam name="T5">Function argument 5</typeparam>
+             <param name="func"></param>
+             <returns><see cref="T:Telerik.JustMock.Expectations.Abstraction.IAssertable"/></returns>
+        </member>
+        <member name="M:Telerik.JustMock.Expectations.Funcpectation`1.Returns``6(Telerik.JustMock.Func2{``0,``1,``2,``3,``4,``5,`0})">
+             <summary>
+             Speficifies the return value for the expected call.
+             </summary>
+            <typeparam name="T1">Function argument 1</typeparam>
+            <typeparam name="T2">Function argument 2</typeparam>
+            <typeparam name="T3">Function argument 3</typeparam>
+            <typeparam name="T4">Function argument 4</typeparam>
+            <typeparam name="T5">Function argument 5</typeparam>
+            <typeparam name="T6">Function argument 6</typeparam>
+             <param name="func"></param>
+             <returns><see cref="T:Telerik.JustMock.Expectations.Abstraction.IAssertable"/></returns>
+        </member>
+        <member name="M:Telerik.JustMock.Expectations.Funcpectation`1.Returns``7(Telerik.JustMock.Func2{``0,``1,``2,``3,``4,``5,``6,`0})">
+             <summary>
+             Speficifies the return value for the expected call.
+             </summary>
+            <typeparam name="T1">Function argument 1</typeparam>
+            <typeparam name="T2">Function argument 2</typeparam>
+            <typeparam name="T3">Function argument 3</typeparam>
+            <typeparam name="T4">Function argument 4</typeparam>
+            <typeparam name="T5">Function argument 5</typeparam>
+            <typeparam name="T6">Function argument 6</typeparam>
+            <typeparam name="T7">Function argument 7</typeparam>
+             <param name="func"></param>
+             <returns><see cref="T:Telerik.JustMock.Expectations.Abstraction.IAssertable"/></returns>
+        </member>
+        <member name="M:Telerik.JustMock.Expectations.Funcpectation`1.Returns``8(Telerik.JustMock.Func2{``0,``1,``2,``3,``4,``5,``6,``7,`0})">
+             <summary>
+             Speficifies the return value for the expected call.
+             </summary>
+            <typeparam name="T1">Function argument 1</typeparam>
+            <typeparam name="T2">Function argument 2</typeparam>
+            <typeparam name="T3">Function argument 3</typeparam>
+            <typeparam name="T4">Function argument 4</typeparam>
+            <typeparam name="T5">Function argument 5</typeparam>
+            <typeparam name="T6">Function argument 6</typeparam>
+            <typeparam name="T7">Function argument 7</typeparam>
+            <typeparam name="T8">Function argument 8</typeparam>
+             <param name="func"></param>
+             <returns><see cref="T:Telerik.JustMock.Expectations.Abstraction.IAssertable"/></returns>
+        </member>
+        <member name="M:Telerik.JustMock.Expectations.Funcpectation`1.Returns``9(Telerik.JustMock.Func2{``0,``1,``2,``3,``4,``5,``6,``7,``8,`0})">
+             <summary>
+             Speficifies the return value for the expected call.
+             </summary>
+            <typeparam name="T1">Function argument 1</typeparam>
+            <typeparam name="T2">Function argument 2</typeparam>
+            <typeparam name="T3">Function argument 3</typeparam>
+            <typeparam name="T4">Function argument 4</typeparam>
+            <typeparam name="T5">Function argument 5</typeparam>
+            <typeparam name="T6">Function argument 6</typeparam>
+            <typeparam name="T7">Function argument 7</typeparam>
+            <typeparam name="T8">Function argument 8</typeparam>
+            <typeparam name="T9">Function argument 9</typeparam>
+             <param name="func"></param>
+             <returns><see cref="T:Telerik.JustMock.Expectations.Abstraction.IAssertable"/></returns>
+        </member>
+        <member name="M:Telerik.JustMock.Expectations.Funcpectation`1.#ctor(Telerik.JustMock.Setup.MethodCall)">
+            <summary>
+            Creates a new instance of <see cref="T:Telerik.JustMock.Expectations.Funcpectation`1"/> class.
+            </summary>
+        </member>
+        <member name="M:Telerik.JustMock.Expectations.Funcpectation`1.Returns(`0)">
+            <summary>
+            Defines the return value for a sepecific method expecation.
+            </summary>
+            <param name="value">any object value</param>
+            <returns></returns>
+        </member>
+        <member name="M:Telerik.JustMock.Expectations.Funcpectation`1.Returns(Telerik.JustMock.Func2{`0})">
+            <summary>
+            Evaluates the acion and returns a value for the setup.
+            </summary>
+            <param name="func"></param>
+            <returns>object</returns>
+        </member>
+        <member name="M:Telerik.JustMock.Expectations.Funcpectation`1.ProcessReturn(System.Delegate)">
+            <summary>
+            Specifies the collection to return, should be assignable to the target return.
+            </summary>
+            <returns>Reference to <see cref="T:Telerik.JustMock.Expectations.Abstraction.IAssertable"/> </returns>
+        </member>
+        <member name="T:Telerik.JustMock.Action2">
+            <summary>
+            Delegate for wrapping actions
+            </summary>
+        </member>
+        <member name="T:Telerik.JustMock.Action2`1">
+             <summary>
+             Delegate for wrapping actions
+             </summary>
+            <typeparam name="T1">Type of argument of the method that the delegate encapsulates.</typeparam>
+        </member>
+        <member name="T:Telerik.JustMock.Action2`2">
+             <summary>
+             Delegate for wrapping actions
+             </summary>
+            <typeparam name="T1">Type of argument of the method that the delegate encapsulates.</typeparam>
+            <typeparam name="T2">Type of argument of the method that the delegate encapsulates.</typeparam>
+        </member>
+        <member name="T:Telerik.JustMock.Action2`3">
+             <summary>
+             Delegate for wrapping actions
+             </summary>
+            <typeparam name="T1">Type of argument of the method that the delegate encapsulates.</typeparam>
+            <typeparam name="T2">Type of argument of the method that the delegate encapsulates.</typeparam>
+            <typeparam name="T3">Type of argument of the method that the delegate encapsulates.</typeparam>
+        </member>
+        <member name="T:Telerik.JustMock.Action2`4">
+             <summary>
+             Delegate for wrapping actions
+             </summary>
+            <typeparam name="T1">Type of argument of the method that the delegate encapsulates.</typeparam>
+            <typeparam name="T2">Type of argument of the method that the delegate encapsulates.</typeparam>
+            <typeparam name="T3">Type of argument of the method that the delegate encapsulates.</typeparam>
+            <typeparam name="T4">Type of argument of the method that the delegate encapsulates.</typeparam>
+        </member>
+        <member name="T:Telerik.JustMock.Action2`5">
+             <summary>
+             Delegate for wrapping actions
+             </summary>
+            <typeparam name="T1">Type of argument of the method that the delegate encapsulates.</typeparam>
+            <typeparam name="T2">Type of argument of the method that the delegate encapsulates.</typeparam>
+            <typeparam name="T3">Type of argument of the method that the delegate encapsulates.</typeparam>
+            <typeparam name="T4">Type of argument of the method that the delegate encapsulates.</typeparam>
+            <typeparam name="T5">Type of argument of the method that the delegate encapsulates.</typeparam>
+        </member>
+        <member name="T:Telerik.JustMock.Action2`6">
+             <summary>
+             Delegate for wrapping actions
+             </summary>
+            <typeparam name="T1">Type of argument of the method that the delegate encapsulates.</typeparam>
+            <typeparam name="T2">Type of argument of the method that the delegate encapsulates.</typeparam>
+            <typeparam name="T3">Type of argument of the method that the delegate encapsulates.</typeparam>
+            <typeparam name="T4">Type of argument of the method that the delegate encapsulates.</typeparam>
+            <typeparam name="T5">Type of argument of the method that the delegate encapsulates.</typeparam>
+            <typeparam name="T6">Type of argument of the method that the delegate encapsulates.</typeparam>
+        </member>
+        <member name="T:Telerik.JustMock.Action2`7">
+             <summary>
+             Delegate for wrapping actions
+             </summary>
+            <typeparam name="T1">Type of argument of the method that the delegate encapsulates.</typeparam>
+            <typeparam name="T2">Type of argument of the method that the delegate encapsulates.</typeparam>
+            <typeparam name="T3">Type of argument of the method that the delegate encapsulates.</typeparam>
+            <typeparam name="T4">Type of argument of the method that the delegate encapsulates.</typeparam>
+            <typeparam name="T5">Type of argument of the method that the delegate encapsulates.</typeparam>
+            <typeparam name="T6">Type of argument of the method that the delegate encapsulates.</typeparam>
+            <typeparam name="T7">Type of argument of the method that the delegate encapsulates.</typeparam>
+        </member>
+        <member name="T:Telerik.JustMock.Action2`8">
+             <summary>
+             Delegate for wrapping actions
+             </summary>
+            <typeparam name="T1">Type of argument of the method that the delegate encapsulates.</typeparam>
+            <typeparam name="T2">Type of argument of the method that the delegate encapsulates.</typeparam>
+            <typeparam name="T3">Type of argument of the method that the delegate encapsulates.</typeparam>
+            <typeparam name="T4">Type of argument of the method that the delegate encapsulates.</typeparam>
+            <typeparam name="T5">Type of argument of the method that the delegate encapsulates.</typeparam>
+            <typeparam name="T6">Type of argument of the method that the delegate encapsulates.</typeparam>
+            <typeparam name="T7">Type of argument of the method that the delegate encapsulates.</typeparam>
+            <typeparam name="T8">Type of argument of the method that the delegate encapsulates.</typeparam>
+        </member>
+        <member name="T:Telerik.JustMock.Action2`9">
+             <summary>
+             Delegate for wrapping actions
+             </summary>
+            <typeparam name="T1">Type of argument of the method that the delegate encapsulates.</typeparam>
+            <typeparam name="T2">Type of argument of the method that the delegate encapsulates.</typeparam>
+            <typeparam name="T3">Type of argument of the method that the delegate encapsulates.</typeparam>
+            <typeparam name="T4">Type of argument of the method that the delegate encapsulates.</typeparam>
+            <typeparam name="T5">Type of argument of the method that the delegate encapsulates.</typeparam>
+            <typeparam name="T6">Type of argument of the method that the delegate encapsulates.</typeparam>
+            <typeparam name="T7">Type of argument of the method that the delegate encapsulates.</typeparam>
+            <typeparam name="T8">Type of argument of the method that the delegate encapsulates.</typeparam>
+            <typeparam name="T9">Type of argument of the method that the delegate encapsulates.</typeparam>
+        </member>
+        <member name="T:Telerik.JustMock.Expectations.Abstraction.IAction">
+            <summary>
+            Cotains action method expecatations.
+            </summary>
+        </member>
+        <member name="M:Telerik.JustMock.Expectations.Abstraction.IAction.DoNothing">
+            <summary>
+            Use it to set void methods to do nothing.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Telerik.JustMock.MockInitializer`1">
+            <summary>
+            Class definining members for partially setting up mock on a call.
+            </summary>
+            <summary>
+            Class definining members for partially setting up mock on a call.
+            </summary>
+            <typeparam name="T">Target</typeparam>
+        </member>
+        <member name="T:Telerik.JustMock.MockInitializer">
+            <summary>
+            Class for initalizing mock.
+            </summary>
+        </member>
+        <member name="M:Telerik.JustMock.MockInitializer.#ctor(System.Type)">
+            <summary>
+            Creates new Instance of  <see cref="T:Telerik.JustMock.MockInitializer"/> class.
+            </summary>
+            <param name="target">Target type for injecting interceptor.</param>
+        </member>
+        <member name="M:Telerik.JustMock.MockInitializer`1.For``2(System.Linq.Expressions.Expression{Telerik.JustMock.Func2{`0,``0,``1}})">
+            <summary>
+            Setups the mock code interceptor against a specific method.
+            </summary>
+        </member>
+        <member name="M:Telerik.JustMock.MockInitializer`1.For``1(System.Linq.Expressions.Expression{Telerik.JustMock.Action2{`0,``0}})">
+            <summary>
+            Setups the mock code interceptor against a specific method.
+            </summary>
+        </member>
+        <member name="M:Telerik.JustMock.MockInitializer`1.For``3(System.Linq.Expressions.Expression{Telerik.JustMock.Func2{`0,``0,``1,``2}})">
+            <summary>
+            Setups the mock code interceptor against a specific method.
+            </summary>
+        </member>
+        <member name="M:Telerik.JustMock.MockInitializer`1.For``2(System.Linq.Expressions.Expression{Telerik.JustMock.Action2{`0,``0,``1}})">
+            <summary>
+            Setups the mock code interceptor against a specific method.
+            </summary>
+        </member>
+        <member name="M:Telerik.JustMock.MockInitializer`1.For``4(System.Linq.Expressions.Expression{Telerik.JustMock.Func2{`0,``0,``1,``2,``3}})">
+            <summary>
+            Setups the mock code interceptor against a specific method.
+            </summary>
+        </member>
+        <member name="M:Telerik.JustMock.MockInitializer`1.For``3(System.Linq.Expressions.Expression{Telerik.JustMock.Action2{`0,``0,``1,``2}})">
+            <summary>
+            Setups the mock code interceptor against a specific method.
+            </summary>
+        </member>
+        <member name="M:Telerik.JustMock.MockInitializer`1.For``5(System.Linq.Expressions.Expression{Telerik.JustMock.Func2{`0,``0,``1,``2,``3,``4}})">
+            <summary>
+            Setups the mock code interceptor against a specific method.
+            </summary>
+        </member>
+        <member name="M:Telerik.JustMock.MockInitializer`1.For``4(System.Linq.Expressions.Expression{Telerik.JustMock.Action2{`0,``0,``1,``2,``3}})">
+            <summary>
+            Setups the mock code interceptor against a specific method.
+            </summary>
+        </member>
+        <member name="M:Telerik.JustMock.MockInitializer`1.For``6(System.Linq.Expressions.Expression{Telerik.JustMock.Func2{`0,``0,``1,``2,``3,``4,``5}})">
+            <summary>
+            Setups the mock code interceptor against a specific method.
+            </summary>
+        </member>
+        <member name="M:Telerik.JustMock.MockInitializer`1.For``5(System.Linq.Expressions.Expression{Telerik.JustMock.Action2{`0,``0,``1,``2,``3,``4}})">
+            <summary>
+            Setups the mock code interceptor against a specific method.
+            </summary>
+        </member>
+        <member name="M:Telerik.JustMock.MockInitializer`1.For``7(System.Linq.Expressions.Expression{Telerik.JustMock.Func2{`0,``0,``1,``2,``3,``4,``5,``6}})">
+            <summary>
+            Setups the mock code interceptor against a specific method.
+            </summary>
+        </member>
+        <member name="M:Telerik.JustMock.MockInitializer`1.For``6(System.Linq.Expressions.Expression{Telerik.JustMock.Action2{`0,``0,``1,``2,``3,``4,``5}})">
+            <summary>
+            Setups the mock code interceptor against a specific method.
+            </summary>
+        </member>
+        <member name="M:Telerik.JustMock.MockInitializer`1.For``8(System.Linq.Expressions.Expression{Telerik.JustMock.Func2{`0,``0,``1,``2,``3,``4,``5,``6,``7}})">
+            <summary>
+            Setups the mock code interceptor against a specific method.
+            </summary>
+        </member>
+        <member name="M:Telerik.JustMock.MockInitializer`1.For``7(System.Linq.Expressions.Expression{Telerik.JustMock.Action2{`0,``0,``1,``2,``3,``4,``5,``6}})">
+            <summary>
+            Setups the mock code interceptor against a specific method.
+            </summary>
+        </member>
+        <member name="M:Telerik.JustMock.MockInitializer`1.For``9(System.Linq.Expressions.Expression{Telerik.JustMock.Func2{`0,``0,``1,``2,``3,``4,``5,``6,``7,``8}})">
+            <summary>
+            Setups the mock code interceptor against a specific method.
+            </summary>
+        </member>
+        <member name="M:Telerik.JustMock.MockInitializer`1.For``8(System.Linq.Expressions.Expression{Telerik.JustMock.Action2{`0,``0,``1,``2,``3,``4,``5,``6,``7}})">
+            <summary>
+            Setups the mock code interceptor against a specific method.
+            </summary>
+        </member>
+        <member name="M:Telerik.JustMock.MockInitializer`1.#ctor">
+            <summary>
+            Creates a new instance of <see cref="T:Telerik.JustMock.MockInitializer"/> class.
+            </summary>
+        </member>
+        <member name="M:Telerik.JustMock.MockInitializer`1.For(System.Linq.Expressions.Expression{Telerik.JustMock.Action2{`0}})">
+            <summary>
+            Setups the mock code interceptor against a specific method.
+            </summary>
+            <param name="expression"></param>
+        </member>
+        <member name="M:Telerik.JustMock.MockInitializer`1.For(System.Linq.Expressions.Expression{Telerik.JustMock.Func2{`0}})">
+            <summary>
+            Setups the mock code interceptor against a specific method.
+            </summary>
+            <param name="expression"></param>
+        </member>
+        <member name="T:Telerik.JustMock.MockExpression">
+            <summary>
+            Defines the mocking expression.
+            </summary>
+        </member>
+        <member name="T:Telerik.JustMock.ExpressionVisitor">
+            <summary>
+             Expression visitor 
+            </summary>
+        </member>
+        <member name="M:Telerik.JustMock.ExpressionVisitor.Visit(System.Linq.Expressions.Expression)">
+            <summary>
+            Visits expression and delegates call to different to branch.
+            </summary>
+            <param name="expression"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Telerik.JustMock.ExpressionVisitor.VisiParameter(System.Linq.Expressions.ParameterExpression)">
+            <summary>
+            Visits parameter expression.
+            </summary>
+            <param name="expression"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Telerik.JustMock.ExpressionVisitor.VisitConstant(System.Linq.Expressions.ConstantExpression)">
+            <summary>
+            Visits the constance expression. To be implemented by user.
+            </summary>
+            <param name="expression"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Telerik.JustMock.ExpressionVisitor.VisitMemberAccess(System.Linq.Expressions.MemberExpression)">
+            <summary>
+            Visits the memeber access expression. To be implemented by user.
+            </summary>
+            <param name="expression"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Telerik.JustMock.ExpressionVisitor.VisitMethodCall(System.Linq.Expressions.MethodCallExpression)">
+            <summary>
+            Visits the method call expression. To be implemented by user.
+            </summary>
+            <param name="expression"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Telerik.JustMock.ExpressionVisitor.VisitBinary(System.Linq.Expressions.BinaryExpression)">
+            <summary>
+            Visits the binary expression.
+            </summary>
+            <param name="expression"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Telerik.JustMock.ExpressionVisitor.VisitUnary(System.Linq.Expressions.UnaryExpression)">
+            <summary>
+            Visits the unary expression.
+            </summary>
+            <param name="expression"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Telerik.JustMock.ExpressionVisitor.VisitLamda(System.Linq.Expressions.LambdaExpression)">
+            <summary>
+            Visits the lamda expression.
+            </summary>
+            <param name="lambdaExpression"></param>
+            <returns></returns>
+        </member>
+        <member name="P:Telerik.JustMock.MockExpression.MemberInfo">
+            <summary>
+            Gets or Sets the memeber info.
+            </summary>
+        </member>
+        <member name="P:Telerik.JustMock.MockExpression.Method">
+            <summary>
+            Gets <see cref="T:System.Reflection.MethodInfo"/> for current mock expression.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Telerik.JustMock.MockExpression.Target">
+            <summary>
+            Gets or Sets the type for the target.
+            </summary>
+        </member>
+        <member name="P:Telerik.JustMock.MockExpression.NodeType">
+            <summary>
+            Gets the current expression node type.
+            </summary>
+        </member>
+        <member name="P:Telerik.JustMock.MockExpression.Arguments">
+            <summary>
+            Gets the array of member arguments.
+            </summary>
+        </member>
+        <member name="P:Telerik.JustMock.MockExpression.MatcherIdxDictionary">
+            <summary>
+            Gets the matcher argument index mapping dictionary.
+            </summary>
+        </member>
+        <member name="T:Telerik.JustMock.MockExpression`1">
+            <summary>
+            Defines the Mocking expression with specific delegate.
+            </summary>
+        </member>
+        <member name="M:Telerik.JustMock.MockExpression`1.VisitLamda(System.Linq.Expressions.LambdaExpression)">
+            <summary>
+            Visists the lamda expression.
+            </summary>
+            <param name="lambdaExpression"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Telerik.JustMock.MockExpression`1.VisitUnary(System.Linq.Expressions.UnaryExpression)">
+            <summary>
+            Visits <see cref="T:System.Linq.Expressions.UnaryExpression"/>
+            </summary>
+            <param name="expression"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Telerik.JustMock.MockExpression`1.VisitMethodCall(System.Linq.Expressions.MethodCallExpression)">
+            <summary>
+            Visits the method call.
+            </summary>
+            <param name="expression"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Telerik.JustMock.MockExpression`1.VisitMemberAccess(System.Linq.Expressions.MemberExpression)">
+            <summary>
+            Visits <see cref="T:System.Linq.Expressions.MemberExpression"/>
+            </summary>
+            <param name="expression"></param>
+            <returns></returns>
+        </member>
+        <member name="P:Telerik.JustMock.MockExpression`1.MatcherPositions">
+            <summary>
+            Gets the matcher positions.
+            </summary>
+        </member>
+        <member name="P:Telerik.JustMock.MockExpression`1.Object">
+            <summary>
+            Gets / Sets the object instance for the target expression call.
+            </summary>
+        </member>
+        <member name="M:Telerik.JustMock.DynamicProxy.Utility.ToTypeArray(System.Reflection.ParameterInfo[])">
+            <summary>
+             Converts the <see cref="T:System.Reflection.ParameterInfo"/> array to its type array form.
+            </summary>
+            <param name="parameterInfos"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Telerik.JustMock.DynamicProxy.Ctor">
+            <summary>
+             Defines the user constructor for the proxy.
+            </summary>
+        </member>
+        <member name="M:Telerik.JustMock.DynamicProxy.Ctor.#ctor(System.Object[])">
+            <summary>
+            Initializes a new instance of the <see cref="T:Telerik.JustMock.DynamicProxy.Ctor"/> class.
+            </summary>
+            <param name="args"></param>
+        </member>
+        <member name="T:Telerik.JustMock.DynamicProxy.ProxyFactory">
+            <summary>
+            Proxy factory.
+            </summary>
+        </member>
+        <member name="T:Telerik.JustMock.DynamicProxy.Abstraction.IFactory">
+            <summary>
+            Interface containing proxy settings elements.
+            </summary>
+        </member>
+        <member name="P:Telerik.JustMock.DynamicProxy.Abstraction.IFactory.CallingConstructor">
+            <summary>
+            Defines the setttings for the target proxy constructor.
+            </summary>
+        </member>
+        <member name="M:Telerik.JustMock.DynamicProxy.ProxyFactory.#ctor(System.Type)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Telerik.JustMock.DynamicProxy.ProxyFactory"/> class.
+            </summary>
+        </member>
+        <member name="M:Telerik.JustMock.DynamicProxy.ProxyFactory.Register(Telerik.JustMock.DynamicProxy.Abstraction.IInterceptor)">
+            <summary>
+            Appends a new interceptor to the invocation list.
+            </summary>
+            <param name="interceptor"></param>
+        </member>
+        <member name="M:Telerik.JustMock.DynamicProxy.ProxyFactory.Create">
+            <summary>
+             Creates the new instance of the proxy.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Telerik.JustMock.DynamicProxy.ProxyFactory.CallingConstructor">
+            <summary>
+            Gets/Sets the initializing contructor for the proxy.
+            </summary>
+        </member>
+        <member name="P:Telerik.JustMock.DynamicProxy.ProxyFactory.IncludeObjectOverrides">
+            <summary>
+            If set to <value>true</value> 
+            the proxy will  intercept method overrides like
+            <example>GetHashCode(), Equals() and ToString()</example>.
+            </summary>
+        </member>
+        <member name="T:Telerik.JustMock.DynamicProxy.ProxyFactory`1">
+            <summary>
+             Factory class for creating the proxy.
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:Telerik.JustMock.DynamicProxy.ProxyFactory`1.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Telerik.JustMock.DynamicProxy.ProxyFactory`1"/> class.
+            </summary>
+        </member>
+        <member name="M:Telerik.JustMock.DynamicProxy.ProxyFactory`1.Create">
+            <summary>
+            Creates a new proxy from with the defined settings.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Telerik.JustMock.Utility">
+            <summary>
+            Contains Helper methods for use in various parts of the project.
+            </summary>
+        </member>
+        <member name="M:Telerik.JustMock.Utility.GetDefaultValue(System.Type)">
+            <summary>
+            Gets the default value for target.
+            </summary>
+            <param name="target"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Telerik.JustMock.Mock">
+            <summary>
+            Entry point class for setting up and asserting mocks.
+            </summary>
+            <summary>
+            Mock entry point for settting up expection, creating mock objects and verfiying results.
+            </summary>
+            <summary>
+            Mock entry point for settting up expection, creating mock objects and verfiying results.
+            </summary>
+        </member>
+        <member name="M:Telerik.JustMock.Mock.Arrange``1(System.Linq.Expressions.Expression{System.Func{``0}})">
+            <summary>
+            Prepares a call with user provided actions.
+            </summary>
+            <typeparam name="TResult"></typeparam>
+            <param name="expression">Provide the target method call</param>
+        </member>
+        <member name="M:Telerik.JustMock.Mock.Arrange``2(System.Linq.Expressions.Expression{System.Func{``1}})">
+            <summary>
+            Prepares a call with user provided actions.
+            For use with MsCorlib calls.
+            </summary>
+            <typeparam name="T">Target type</typeparam>
+            <typeparam name="TResult">Expected return</typeparam>
+            <param name="expression">Provide the target method call</param>
+        </member>
+        <member name="M:Telerik.JustMock.Mock.Arrange(System.Linq.Expressions.Expression{Telerik.JustMock.Action2})">
+            <summary>
+            Prepares a call with user provided actions.
+            </summary>
+            <param name="expression"></param>
+        </member>
+        <member name="M:Telerik.JustMock.Mock.ArrangeSet(Telerik.JustMock.Action2)">
+            <summary>
+            Prepares a property set operation with user specified action.  
+            <example>
+            <code>
+            Mock.ArrangeSet(() => foo.MyValue = 10).Throws(new InvalidOperationException());
+            </code>
+            This will throw InvalidOperationException for when foo.MyValue is set with 10.
+            </example>
+            </summary>
+            <param name="action">Target action</param>
+        </member>
+        <member name="M:Telerik.JustMock.Mock.Assert``1(System.Linq.Expressions.Expression{System.Func{``0}})">
+            <summary>
+             Assert the target mocking call.
+            </summary>
+            <param name="expression"></param>
+            <typeparam name="TReturn"></typeparam>
+        </member>
+        <member name="M:Telerik.JustMock.Mock.Assert``1(System.Linq.Expressions.Expression{System.Func{``0}},Telerik.JustMock.Occurs)">
+            <summary>
+             Asserts a specific mock call.
+            </summary>
+            <param name="expression"></param>
+            <param name="occurs"></param>
+            <typeparam name="TReturn"></typeparam>
+        </member>
+        <member name="M:Telerik.JustMock.Mock.Assert(System.Linq.Expressions.Expression{Telerik.JustMock.Action2})">
+            <summary>
+             Asserts a specific mock call.
+            </summary>
+            <param name="expression">Action2 expresison defining the action to verify.</param>
+        </member>
+        <member name="M:Telerik.JustMock.Mock.Assert(System.Linq.Expressions.Expression{Telerik.JustMock.Action2},Telerik.JustMock.Occurs)">
+            <summary>
+             Asserts a specific mock call.
+            </summary>
+            <param name="expression">The action to verify.</param>
+            <param name="occurs">Define, how many times a mock call should occur.</param>
+        </member>
+        <member name="M:Telerik.JustMock.Mock.AssertSet(Telerik.JustMock.Action2)">
+            <summary>
+            Asserts a specific set call.
+            </summary>
+            <param name="acton"></param>
+        </member>
+        <member name="M:Telerik.JustMock.Mock.AssertSet(Telerik.JustMock.Action2,Telerik.JustMock.Occurs)">
+            <summary>
+             Assert a specific set call.
+            </summary>
+            <param name="action">The action to verify.</param>
+            <param name="occurs">Define, how many times a mock call should occur.</param>
+        </member>
+        <member name="M:Telerik.JustMock.Mock.Assert``1(``0)">
+            <summary>
+            Asserts all mock calls that are marked with <see cref="M:Telerik.JustMock.Expectations.Abstraction.IAssertable.MustBeCalled"/> for the
+            speficifed mocked object.
+            </summary>
+            <typeparam name="T">Mocked object</typeparam>
+            <param name="mocked"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Telerik.JustMock.Mock.SetupStatic``1">
+            <summary>
+            Setups the target for mocking all static calls.
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:Telerik.JustMock.Mock.SetupStatic``1(Telerik.JustMock.BehaviorMode)">
+            <summary>
+            Setups the target for mocking all static calls.
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:Telerik.JustMock.Mock.SetupStatic(System.Type)">
+            <summary>
+            Setups the target for mocking all static calls.
+            </summary>
+            <param name="staticType">Static type</param>
+        </member>
+        <member name="M:Telerik.JustMock.Mock.SetupStatic(System.Type,Telerik.JustMock.BehaviorMode)">
+            <summary>
+            Setups the target for mocking all static calls.
+            </summary>
+            <param name="staticType">Static type</param>
+            <param name="mode"><see cref="T:Telerik.JustMock.BehaviorMode"/></param>
+        </member>
+        <member name="M:Telerik.JustMock.Mock.Create``1(System.Linq.Expressions.Expression{System.Func{``0}})">
+            <summary>
+            Create a mocked instance from specified real constructor.
+            </summary>
+            <typeparam name="T">Target type for the mocked instance</typeparam>
+            <param name="expression">Target expression for specifying the new type.</param>
+            <returns>Mocked object</returns>
+        </member>
+        <member name="M:Telerik.JustMock.Mock.Create``1(Telerik.JustMock.BehaviorMode,System.Object[])">
+            <summary>
+            Creates a mocked instance from a given type.
+            </summary>
+            <typeparam name="T">Mocked instance</typeparam>
+            <param name="behaviorMode"><see cref="T:Telerik.JustMock.BehaviorMode"/></param>
+            <param name="args">Constructor arguments</param>
+            <returns></returns>
+        </member>
+        <member name="M:Telerik.JustMock.Mock.Create``1">
+            <summary>
+            Creates a mocked instance from a given type.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:Telerik.JustMock.Mock.Create(System.Type,System.Object[])">
+            <summary>
+            Creates a mocked instance from a given type.
+            </summary>
+            <param name="target">Mocking type</param>
+            <param name="args">Constructor arguments</param>
+            <returns></returns>
+        </member>
+        <member name="M:Telerik.JustMock.Mock.Create(System.Type,Telerik.JustMock.BehaviorMode,System.Object[])">
+            <summary>
+            Creates a mock instance from a given type.
+            </summary>
+            <param name="target">Mocking type</param>
+            <param name="mode"><see cref="T:Telerik.JustMock.BehaviorMode"/>Mocking behavior</param>
+            <param name="args">Constructor arguments</param>
+            <returns></returns>
+        </member>
+        <member name="M:Telerik.JustMock.Mock.Create``1(System.Object[])">
+            <summary>
+            Creates a mocked instance from a given type.
+            </summary>
+            <typeparam name="T">Mocked object type.</typeparam>
+            <param name="args">Constructor argumetns</param>
+            <returns></returns>
+        </member>
+        <member name="M:Telerik.JustMock.Mock.Partial``1">
+            <summary>
+            Setups the target member for mocking.
+            Generally, used for frameowork method during test initalization or
+            forcefully mocking a member.
+            </summary>
+            <typeparam name="T">Target type containing the mocking member</typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:Telerik.JustMock.Mock.Assert``1(Telerik.JustMock.Action2{``0},``0)">
+             <summary>
+             Asserts a specific action call on the mock.
+             <remarks> For use in Visual Basic 3.5 to mock actions with parameters</remarks>.
+             </summary>
+             <param name="action">Method to Assert</param>
+            <param name="arg1">Method argument 1</param>
+        </member>
+        <member name="M:Telerik.JustMock.Mock.Assert``1(Telerik.JustMock.Action2{``0},``0,Telerik.JustMock.Occurs)">
+             <summary>
+             Asserts a specific action call on the mock.
+             <remarks> For use in Visual Basic 3.5 to mock actions with parameters</remarks>.
+             </summary>
+             <param name="action">Method to Assert</param>
+            <param name="arg1">Method argument 1</param>
+             <param name="occurs">Specify number times a call should occur</param>
+        </member>
+        <member name="M:Telerik.JustMock.Mock.Assert``2(Telerik.JustMock.Action2{``0,``1},``0,``1)">
+             <summary>
+             Asserts a specific action call on the mock.
+             <remarks> For use in Visual Basic 3.5 to mock actions with parameters</remarks>.
+             </summary>
+             <param name="action">Method to Assert</param>
+            <param name="arg1">Method argument 1</param>
+            <param name="arg2">Method argument 2</param>
+        </member>
+        <member name="M:Telerik.JustMock.Mock.Assert``2(Telerik.JustMock.Action2{``0,``1},``0,``1,Telerik.JustMock.Occurs)">
+             <summary>
+             Asserts a specific action call on the mock.
+             <remarks> For use in Visual Basic 3.5 to mock actions with parameters</remarks>.
+             </summary>
+             <param name="action">Method to Assert</param>
+            <param name="arg1">Method argument 1</param>
+            <param name="arg2">Method argument 2</param>
+             <param name="occurs">Specify number times a call should occur</param>
+        </member>
+        <member name="M:Telerik.JustMock.Mock.Assert``3(Telerik.JustMock.Action2{``0,``1,``2},``0,``1,``2)">
+             <summary>
+             Asserts a specific action call on the mock.
+             <remarks> For use in Visual Basic 3.5 to mock actions with parameters</remarks>.
+             </summary>
+             <param name="action">Method to Assert</param>
+            <param name="arg1">Method argument 1</param>
+            <param name="arg2">Method argument 2</param>
+            <param name="arg3">Method argument 3</param>
+        </member>
+        <member name="M:Telerik.JustMock.Mock.Assert``3(Telerik.JustMock.Action2{``0,``1,``2},``0,``1,``2,Telerik.JustMock.Occurs)">
+             <summary>
+             Asserts a specific action call on the mock.
+             <remarks> For use in Visual Basic 3.5 to mock actions with parameters</remarks>.
+             </summary>
+             <param name="action">Method to Assert</param>
+            <param name="arg1">Method argument 1</param>
+            <param name="arg2">Method argument 2</param>
+            <param name="arg3">Method argument 3</param>
+             <param name="occurs">Specify number times a call should occur</param>
+        </member>
+        <member name="M:Telerik.JustMock.Mock.Assert``4(Telerik.JustMock.Action2{``0,``1,``2,``3},``0,``1,``2,``3)">
+             <summary>
+             Asserts a specific action call on the mock.
+             <remarks> For use in Visual Basic 3.5 to mock actions with parameters</remarks>.
+             </summary>
+             <param name="action">Method to Assert</param>
+            <param name="arg1">Method argument 1</param>
+            <param name="arg2">Method argument 2</param>
+            <param name="arg3">Method argument 3</param>
+            <param name="arg4">Method argument 4</param>
+        </member>
+        <member name="M:Telerik.JustMock.Mock.Assert``4(Telerik.JustMock.Action2{``0,``1,``2,``3},``0,``1,``2,``3,Telerik.JustMock.Occurs)">
+             <summary>
+             Asserts a specific action call on the mock.
+             <remarks> For use in Visual Basic 3.5 to mock actions with parameters</remarks>.
+             </summary>
+             <param name="action">Method to Assert</param>
+            <param name="arg1">Method argument 1</param>
+            <param name="arg2">Method argument 2</param>
+            <param name="arg3">Method argument 3</param>
+            <param name="arg4">Method argument 4</param>
+             <param name="occurs">Specify number times a call should occur</param>
+        </member>
+        <member name="M:Telerik.JustMock.Mock.Assert``5(Telerik.JustMock.Action2{``0,``1,``2,``3,``4},``0,``1,``2,``3,``4)">
+             <summary>
+             Asserts a specific action call on the mock.
+             <remarks> For use in Visual Basic 3.5 to mock actions with parameters</remarks>.
+             </summary>
+             <param name="action">Method to Assert</param>
+            <param name="arg1">Method argument 1</param>
+            <param name="arg2">Method argument 2</param>
+            <param name="arg3">Method argument 3</param>
+            <param name="arg4">Method argument 4</param>
+            <param name="arg5">Method argument 5</param>
+        </member>
+        <member name="M:Telerik.JustMock.Mock.Assert``5(Telerik.JustMock.Action2{``0,``1,``2,``3,``4},``0,``1,``2,``3,``4,Telerik.JustMock.Occurs)">
+             <summary>
+             Asserts a specific action call on the mock.
+             <remarks> For use in Visual Basic 3.5 to mock actions with parameters</remarks>.
+             </summary>
+             <param name="action">Method to Assert</param>
+            <param name="arg1">Method argument 1</param>
+            <param name="arg2">Method argument 2</param>
+            <param name="arg3">Method argument 3</param>
+            <param name="arg4">Method argument 4</param>
+            <param name="arg5">Method argument 5</param>
+             <param name="occurs">Specify number times a call should occur</param>
+        </member>
+        <member name="M:Telerik.JustMock.Mock.Assert``6(Telerik.JustMock.Action2{``0,``1,``2,``3,``4,``5},``0,``1,``2,``3,``4,``5)">
+             <summary>
+             Asserts a specific action call on the mock.
+             <remarks> For use in Visual Basic 3.5 to mock actions with parameters</remarks>.
+             </summary>
+             <param name="action">Method to Assert</param>
+            <param name="arg1">Method argument 1</param>
+            <param name="arg2">Method argument 2</param>
+            <param name="arg3">Method argument 3</param>
+            <param name="arg4">Method argument 4</param>
+            <param name="arg5">Method argument 5</param>
+            <param name="arg6">Method argument 6</param>
+        </member>
+        <member name="M:Telerik.JustMock.Mock.Assert``6(Telerik.JustMock.Action2{``0,``1,``2,``3,``4,``5},``0,``1,``2,``3,``4,``5,Telerik.JustMock.Occurs)">
+             <summary>
+             Asserts a specific action call on the mock.
+             <remarks> For use in Visual Basic 3.5 to mock actions with parameters</remarks>.
+             </summary>
+             <param name="action">Method to Assert</param>
+            <param name="arg1">Method argument 1</param>
+            <param name="arg2">Method argument 2</param>
+            <param name="arg3">Method argument 3</param>
+            <param name="arg4">Method argument 4</param>
+            <param name="arg5">Method argument 5</param>
+            <param name="arg6">Method argument 6</param>
+             <param name="occurs">Specify number times a call should occur</param>
+        </member>
+        <member name="M:Telerik.JustMock.Mock.Assert``7(Telerik.JustMock.Action2{``0,``1,``2,``3,``4,``5,``6},``0,``1,``2,``3,``4,``5,``6)">
+             <summary>
+             Asserts a specific action call on the mock.
+             <remarks> For use in Visual Basic 3.5 to mock actions with parameters</remarks>.
+             </summary>
+             <param name="action">Method to Assert</param>
+            <param name="arg1">Method argument 1</param>
+            <param name="arg2">Method argument 2</param>
+            <param name="arg3">Method argument 3</param>
+            <param name="arg4">Method argument 4</param>
+            <param name="arg5">Method argument 5</param>
+            <param name="arg6">Method argument 6</param>
+            <param name="arg7">Method argument 7</param>
+        </member>
+        <member name="M:Telerik.JustMock.Mock.Assert``7(Telerik.JustMock.Action2{``0,``1,``2,``3,``4,``5,``6},``0,``1,``2,``3,``4,``5,``6,Telerik.JustMock.Occurs)">
+             <summary>
+             Asserts a specific action call on the mock.
+             <remarks> For use in Visual Basic 3.5 to mock actions with parameters</remarks>.
+             </summary>
+             <param name="action">Method to Assert</param>
+            <param name="arg1">Method argument 1</param>
+            <param name="arg2">Method argument 2</param>
+            <param name="arg3">Method argument 3</param>
+            <param name="arg4">Method argument 4</param>
+            <param name="arg5">Method argument 5</param>
+            <param name="arg6">Method argument 6</param>
+            <param name="arg7">Method argument 7</param>
+             <param name="occurs">Specify number times a call should occur</param>
+        </member>
+        <member name="M:Telerik.JustMock.Mock.Assert``8(Telerik.JustMock.Action2{``0,``1,``2,``3,``4,``5,``6,``7},``0,``1,``2,``3,``4,``5,``6,``7)">
+             <summary>
+             Asserts a specific action call on the mock.
+             <remarks> For use in Visual Basic 3.5 to mock actions with parameters</remarks>.
+             </summary>
+             <param name="action">Method to Assert</param>
+            <param name="arg1">Method argument 1</param>
+            <param name="arg2">Method argument 2</param>
+            <param name="arg3">Method argument 3</param>
+            <param name="arg4">Method argument 4</param>
+            <param name="arg5">Method argument 5</param>
+            <param name="arg6">Method argument 6</param>
+            <param name="arg7">Method argument 7</param>
+            <param name="arg8">Method argument 8</param>
+        </member>
+        <member name="M:Telerik.JustMock.Mock.Assert``8(Telerik.JustMock.Action2{``0,``1,``2,``3,``4,``5,``6,``7},``0,``1,``2,``3,``4,``5,``6,``7,Telerik.JustMock.Occurs)">
+             <summary>
+             Asserts a specific action call on the mock.
+             <remarks> For use in Visual Basic 3.5 to mock actions with parameters</remarks>.
+             </summary>
+             <param name="action">Method to Assert</param>
+            <param name="arg1">Method argument 1</param>
+            <param name="arg2">Method argument 2</param>
+            <param name="arg3">Method argument 3</param>
+            <param name="arg4">Method argument 4</param>
+            <param name="arg5">Method argument 5</param>
+            <param name="arg6">Method argument 6</param>
+            <param name="arg7">Method argument 7</param>
+            <param name="arg8">Method argument 8</param>
+             <param name="occurs">Specify number times a call should occur</param>
+        </member>
+        <member name="M:Telerik.JustMock.Mock.Assert``9(Telerik.JustMock.Action2{``0,``1,``2,``3,``4,``5,``6,``7,``8},``0,``1,``2,``3,``4,``5,``6,``7,``8)">
+             <summary>
+             Asserts a specific action call on the mock.
+             <remarks> For use in Visual Basic 3.5 to mock actions with parameters</remarks>.
+             </summary>
+             <param name="action">Method to Assert</param>
+            <param name="arg1">Method argument 1</param>
+            <param name="arg2">Method argument 2</param>
+            <param name="arg3">Method argument 3</param>
+            <param name="arg4">Method argument 4</param>
+            <param name="arg5">Method argument 5</param>
+            <param name="arg6">Method argument 6</param>
+            <param name="arg7">Method argument 7</param>
+            <param name="arg8">Method argument 8</param>
+            <param name="arg9">Method argument 9</param>
+        </member>
+        <member name="M:Telerik.JustMock.Mock.Assert``9(Telerik.JustMock.Action2{``0,``1,``2,``3,``4,``5,``6,``7,``8},``0,``1,``2,``3,``4,``5,``6,``7,``8,Telerik.JustMock.Occurs)">
+             <summary>
+             Asserts a specific action call on the mock.
+             <remarks> For use in Visual Basic 3.5 to mock actions with parameters</remarks>.
+             </summary>
+             <param name="action">Method to Assert</param>
+            <param name="arg1">Method argument 1</param>
+            <param name="arg2">Method argument 2</param>
+            <param name="arg3">Method argument 3</param>
+            <param name="arg4">Method argument 4</param>
+            <param name="arg5">Method argument 5</param>
+            <param name="arg6">Method argument 6</param>
+            <param name="arg7">Method argument 7</param>
+            <param name="arg8">Method argument 8</param>
+            <param name="arg9">Method argument 9</param>
+             <param name="occurs">Specify number times a call should occur</param>
+        </member>
+        <member name="M:Telerik.JustMock.Mock.Arrange``1(Telerik.JustMock.Action2{``0},``0)">
+             <summary>
+             Prepares a mock call with user expectations.
+             <remarks> For use in Visual Basic 3.5 to mock actions with parameters</remarks>.
+             </summary>
+             <param name="action"></param>
+            <param name="arg1">Method argument 1</param>
+        </member>
+        <member name="M:Telerik.JustMock.Mock.Arrange``2(Telerik.JustMock.Action2{``0,``1},``0,``1)">
+             <summary>
+             Prepares a mock call with user expectations.
+             <remarks> For use in Visual Basic 3.5 to mock actions with parameters</remarks>.
+             </summary>
+             <param name="action"></param>
+            <param name="arg1">Method argument 1</param>
+            <param name="arg2">Method argument 2</param>
+        </member>
+        <member name="M:Telerik.JustMock.Mock.Arrange``3(Telerik.JustMock.Action2{``0,``1,``2},``0,``1,``2)">
+             <summary>
+             Prepares a mock call with user expectations.
+             <remarks> For use in Visual Basic 3.5 to mock actions with parameters</remarks>.
+             </summary>
+             <param name="action"></param>
+            <param name="arg1">Method argument 1</param>
+            <param name="arg2">Method argument 2</param>
+            <param name="arg3">Method argument 3</param>
+        </member>
+        <member name="M:Telerik.JustMock.Mock.Arrange``4(Telerik.JustMock.Action2{``0,``1,``2,``3},``0,``1,``2,``3)">
+             <summary>
+             Prepares a mock call with user expectations.
+             <remarks> For use in Visual Basic 3.5 to mock actions with parameters</remarks>.
+             </summary>
+             <param name="action"></param>
+            <param name="arg1">Method argument 1</param>
+            <param name="arg2">Method argument 2</param>
+            <param name="arg3">Method argument 3</param>
+            <param name="arg4">Method argument 4</param>
+        </member>
+        <member name="M:Telerik.JustMock.Mock.Arrange``5(Telerik.JustMock.Action2{``0,``1,``2,``3,``4},``0,``1,``2,``3,``4)">
+             <summary>
+             Prepares a mock call with user expectations.
+             <remarks> For use in Visual Basic 3.5 to mock actions with parameters</remarks>.
+             </summary>
+             <param name="action"></param>
+            <param name="arg1">Method argument 1</param>
+            <param name="arg2">Method argument 2</param>
+            <param name="arg3">Method argument 3</param>
+            <param name="arg4">Method argument 4</param>
+            <param name="arg5">Method argument 5</param>
+        </member>
+        <member name="M:Telerik.JustMock.Mock.Arrange``6(Telerik.JustMock.Action2{``0,``1,``2,``3,``4,``5},``0,``1,``2,``3,``4,``5)">
+             <summary>
+             Prepares a mock call with user expectations.
+             <remarks> For use in Visual Basic 3.5 to mock actions with parameters</remarks>.
+             </summary>
+             <param name="action"></param>
+            <param name="arg1">Method argument 1</param>
+            <param name="arg2">Method argument 2</param>
+            <param name="arg3">Method argument 3</param>
+            <param name="arg4">Method argument 4</param>
+            <param name="arg5">Method argument 5</param>
+            <param name="arg6">Method argument 6</param>
+        </member>
+        <member name="M:Telerik.JustMock.Mock.Arrange``7(Telerik.JustMock.Action2{``0,``1,``2,``3,``4,``5,``6},``0,``1,``2,``3,``4,``5,``6)">
+             <summary>
+             Prepares a mock call with user expectations.
+             <remarks> For use in Visual Basic 3.5 to mock actions with parameters</remarks>.
+             </summary>
+             <param name="action"></param>
+            <param name="arg1">Method argument 1</param>
+            <param name="arg2">Method argument 2</param>
+            <param name="arg3">Method argument 3</param>
+            <param name="arg4">Method argument 4</param>
+            <param name="arg5">Method argument 5</param>
+            <param name="arg6">Method argument 6</param>
+            <param name="arg7">Method argument 7</param>
+        </member>
+        <member name="M:Telerik.JustMock.Mock.Arrange``8(Telerik.JustMock.Action2{``0,``1,``2,``3,``4,``5,``6,``7},``0,``1,``2,``3,``4,``5,``6,``7)">
+             <summary>
+             Prepares a mock call with user expectations.
+             <remarks> For use in Visual Basic 3.5 to mock actions with parameters</remarks>.
+             </summary>
+             <param name="action"></param>
+            <param name="arg1">Method argument 1</param>
+            <param name="arg2">Method argument 2</param>
+            <param name="arg3">Method argument 3</param>
+            <param name="arg4">Method argument 4</param>
+            <param name="arg5">Method argument 5</param>
+            <param name="arg6">Method argument 6</param>
+            <param name="arg7">Method argument 7</param>
+            <param name="arg8">Method argument 8</param>
+        </member>
+        <member name="M:Telerik.JustMock.Mock.Arrange``9(Telerik.JustMock.Action2{``0,``1,``2,``3,``4,``5,``6,``7,``8},``0,``1,``2,``3,``4,``5,``6,``7,``8)">
+             <summary>
+             Prepares a mock call with user expectations.
+             <remarks> For use in Visual Basic 3.5 to mock actions with parameters</remarks>.
+             </summary>
+             <param name="action"></param>
+            <param name="arg1">Method argument 1</param>
+            <param name="arg2">Method argument 2</param>
+            <param name="arg3">Method argument 3</param>
+            <param name="arg4">Method argument 4</param>
+            <param name="arg5">Method argument 5</param>
+            <param name="arg6">Method argument 6</param>
+            <param name="arg7">Method argument 7</param>
+            <param name="arg8">Method argument 8</param>
+            <param name="arg9">Method argument 9</param>
+        </member>
+        <member name="P:Telerik.JustMock.Mock.IsProfilerEnabled">
+            <summary>
+            Returns boolean value indicating if JustMock profiler is enabled
+            for mocking concrete types.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Telerik.JustMock.MockContext">
+            <summary>
+            Contains the current mock object context.
+            </summary>
+        </member>
+        <member name="M:Telerik.JustMock.MockContext.#ctor(Telerik.JustMock.Instruction)">
+            <summary>
+            Creates the instance of <see cref="T:Telerik.JustMock.MockContext"/> class for the mocked object.
+            </summary>
+        </member>
+        <member name="M:Telerik.JustMock.MockContext.Setup``1(Telerik.JustMock.Instruction,Telerik.JustMock.Action2{Telerik.JustMock.MockContext{``0}})">
+            <summary>
+            Setups the MockContext and executes the specified action
+            inside it.
+            </summary>
+            <param name="instruction"></param>
+            <param name="action"></param>
+        </member>
+        <member name="M:Telerik.JustMock.MockContext.Setup``2(Telerik.JustMock.Instruction,Telerik.JustMock.Func2{Telerik.JustMock.MockContext{``0},``1})">
+            <summary>
+            Setups the MockContext and executes the specified action
+            inside it.
+            </summary>
+            <param name="instruction"></param>
+            <param name="function"></param>
+        </member>
+        <member name="M:Telerik.JustMock.MockContext.Dispose">
+            <summary>
+            Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+            </summary>
+            <filterpriority>2</filterpriority>
+        </member>
+        <member name="P:Telerik.JustMock.MockContext.Containers">
+             <summary>
+            Gets current class Container.
+             </summary>
+        </member>
+        <member name="P:Telerik.JustMock.MockContext.Instruction">
+            <summary>
+            Gets/ Sets value indicating call registration.
+            </summary>
+        </member>
+        <member name="P:Telerik.JustMock.MockContext.MethodTokenDictionary">
+            <summary>
+            Gets 
+            </summary>
+        </member>
+        <member name="T:Telerik.JustMock.Properties.Messages">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Telerik.JustMock.Properties.Messages.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Telerik.JustMock.Properties.Messages.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:Telerik.JustMock.Properties.Messages.ArgCallNotupportedInVerification">
+            <summary>
+              Looks up a localized string similar to Arg matchers  in Mock.Verity(..) is not supported. .
+            </summary>
+        </member>
+        <member name="P:Telerik.JustMock.Properties.Messages.ArgumentCountDoesNotMatch">
+            <summary>
+              Looks up a localized string similar to Argument count does not match. Expected {0} but was {1}..
+            </summary>
+        </member>
+        <member name="P:Telerik.JustMock.Properties.Messages.ArrayCannotBeEmpty">
+            <summary>
+              Looks up a localized string similar to &quot;{0}&quot; array cannot be empty..
+            </summary>
+        </member>
+        <member name="P:Telerik.JustMock.Properties.Messages.CannotBeNegative">
+            <summary>
+              Looks up a localized string similar to &quot;{0}&quot; cannot be negative..
+            </summary>
+        </member>
+        <member name="P:Telerik.JustMock.Properties.Messages.CannotBeNegativeOrZero">
+            <summary>
+              Looks up a localized string similar to &quot;{0}&quot; cannot be negative or zero..
+            </summary>
+        </member>
+        <member name="P:Telerik.JustMock.Properties.Messages.CannotBeNull">
+            <summary>
+              Looks up a localized string similar to &quot;{0}&quot; cannot be null..
+            </summary>
+        </member>
+        <member name="P:Telerik.JustMock.Properties.Messages.CannotBeNullOrEmpty">
+            <summary>
+              Looks up a localized string similar to &quot;{0}&quot; cannot be null or empty..
+            </summary>
+        </member>
+        <member name="P:Telerik.JustMock.Properties.Messages.CannotEnsureOnTargetCall">
+            <summary>
+              Looks up a localized string similar to Can not sure set on {0}. Make sure it is a property and not readonly..
+            </summary>
+        </member>
+        <member name="P:Telerik.JustMock.Properties.Messages.CollectionCannotBeEmpty">
+            <summary>
+              Looks up a localized string similar to &quot;{0}&quot; collection cannot be empty..
+            </summary>
+        </member>
+        <member name="P:Telerik.JustMock.Properties.Messages.CouldNotAssert">
+            <summary>
+              Looks up a localized string similar to Could not assert {0}..
+            </summary>
+        </member>
+        <member name="P:Telerik.JustMock.Properties.Messages.CouldNotCreateMockFromTarget">
+            <summary>
+              Looks up a localized string similar to Could not create a mock from the specified target..
+            </summary>
+        </member>
+        <member name="P:Telerik.JustMock.Properties.Messages.DirectCallOnInterfaceNotSupported">
+            <summary>
+              Looks up a localized string similar to Direct call on interface is not supported..
+            </summary>
+        </member>
+        <member name="P:Telerik.JustMock.Properties.Messages.DuplicateExpectedMethod">
+            <summary>
+              Looks up a localized string similar to Your expectation contains method with same arguments..
+            </summary>
+        </member>
+        <member name="P:Telerik.JustMock.Properties.Messages.EitherAllOrNoneShouldHaveMatchers">
+            <summary>
+              Looks up a localized string similar to Mathers should not be used partially. All arguments should contain them to avoid inconsistancy..
+            </summary>
+        </member>
+        <member name="P:Telerik.JustMock.Properties.Messages.ErrorInterceptingCall">
+            <summary>
+              Looks up a localized string similar to Opps , there were some error intercepting target call..
+            </summary>
+        </member>
+        <member name="P:Telerik.JustMock.Properties.Messages.ExpecationMustBeCalled">
+            <summary>
+              Looks up a localized string similar to Mock contains calls that are marked as &quot;MustBeCalled&quot; but acutally never called..
+            </summary>
+        </member>
+        <member name="P:Telerik.JustMock.Properties.Messages.ExpectationForMethodNotMet">
+            <summary>
+              Looks up a localized string similar to {0} method has fewer calls than originally expected..
+            </summary>
+        </member>
+        <member name="P:Telerik.JustMock.Properties.Messages.ExpectationForPropertyNotMet">
+            <summary>
+              Looks up a localized string similar to Expectation for {0} property is not met properly. Check if your expected property is used according to its expectation..
+            </summary>
+        </member>
+        <member name="P:Telerik.JustMock.Properties.Messages.ExpectedCallNeverInvoked">
+            <summary>
+              Looks up a localized string similar to Expected {0} never invoked..
+            </summary>
+        </member>
+        <member name="P:Telerik.JustMock.Properties.Messages.ExpectedValueNotGet">
+            <summary>
+              Looks up a localized string similar to Expected value is not get or quried for {0} property.
+            </summary>
+        </member>
+        <member name="P:Telerik.JustMock.Properties.Messages.ExpectedValueNotSet">
+            <summary>
+              Looks up a localized string similar to Expected value is not set for {0} property.
+            </summary>
+        </member>
+        <member name="P:Telerik.JustMock.Properties.Messages.InvalidCall">
+            <summary>
+              Looks up a localized string similar to Invalid calll..
+            </summary>
+        </member>
+        <member name="P:Telerik.JustMock.Properties.Messages.InvalidEventToMock">
+            <summary>
+              Looks up a localized string similar to Can not mock the expected event..
+            </summary>
+        </member>
+        <member name="P:Telerik.JustMock.Properties.Messages.InvalidTarget">
+            <summary>
+              Looks up a localized string similar to Must provide a valid target..
+            </summary>
+        </member>
+        <member name="P:Telerik.JustMock.Properties.Messages.ItemWithSpecifiedSourceAlreadyExists">
+            <summary>
+              Looks up a localized string similar to Item with specified source already exists..
+            </summary>
+        </member>
+        <member name="P:Telerik.JustMock.Properties.Messages.MatcherCountShouldEqualToArgumentCountForNonExpression">
+            <summary>
+              Looks up a localized string similar to Matchers count should be equal the arguments count for non expression based calls (Ex. acton calls in VB)..
+            </summary>
+        </member>
+        <member name="P:Telerik.JustMock.Properties.Messages.MethodNotArranged">
+            <summary>
+              Looks up a localized string similar to Can not call method(s) other than the ones arranged..
+            </summary>
+        </member>
+        <member name="P:Telerik.JustMock.Properties.Messages.MustBeArranged">
+            <summary>
+              Looks up a localized string similar to All calls on the mocking object should be arranged first..
+            </summary>
+        </member>
+        <member name="P:Telerik.JustMock.Properties.Messages.MustInitClassContainer">
+            <summary>
+              Looks up a localized string similar to Must initialize a Container to mock methods..
+            </summary>
+        </member>
+        <member name="P:Telerik.JustMock.Properties.Messages.NameCannotBeBlank">
+            <summary>
+              Looks up a localized string similar to Name cannot be blank..
+            </summary>
+        </member>
+        <member name="P:Telerik.JustMock.Properties.Messages.NoCallsMade">
+            <summary>
+              Looks up a localized string similar to No calls have been made for the expected..
+            </summary>
+        </member>
+        <member name="P:Telerik.JustMock.Properties.Messages.NoReturnIsSet">
+            <summary>
+              Looks up a localized string similar to No return value is set for {0} call..
+            </summary>
+        </member>
+        <member name="P:Telerik.JustMock.Properties.Messages.NoSetupFound">
+            <summary>
+              Looks up a localized string similar to {0} does not have a proper setup to verify..
+            </summary>
+        </member>
+        <member name="P:Telerik.JustMock.Properties.Messages.NotAValidArgumentType">
+            <summary>
+              Looks up a localized string similar to Not a valid argument type..
+            </summary>
+        </member>
+        <member name="P:Telerik.JustMock.Properties.Messages.PropertyNotArranged">
+            <summary>
+              Looks up a localized string similar to Can not get/set other than the properties that are arranged..
+            </summary>
+        </member>
+        <member name="P:Telerik.JustMock.Properties.Messages.ShouldContainAValidCallToAssert">
+            <summary>
+              Looks up a localized string similar to Should contain a valid call to assert..
+            </summary>
+        </member>
+        <member name="P:Telerik.JustMock.Properties.Messages.ShouldHaveAValidPublicConstructor">
+            <summary>
+              Looks up a localized string similar to Target object should have a valid public constructor to mock..
+            </summary>
+        </member>
+        <member name="P:Telerik.JustMock.Properties.Messages.ShouldOccurAtLeast">
+            <summary>
+              Looks up a localized string similar to Expected call on the mock should occur at least {0}, But was {0} times..
+            </summary>
+        </member>
+        <member name="P:Telerik.JustMock.Properties.Messages.ShouldOccurAtleastOnce">
+            <summary>
+              Looks up a localized string similar to Expected call on the mock should be at least once. But was {0} times..
+            </summary>
+        </member>
+        <member name="P:Telerik.JustMock.Properties.Messages.ShouldOccurAtMost">
+            <summary>
+              Looks up a localized string similar to Expected call on the mock should occur at most {0}, But was {0} times..
+            </summary>
+        </member>
+        <member name="P:Telerik.JustMock.Properties.Messages.ShouldOccurExactly">
+            <summary>
+              Looks up a localized string similar to Expected call on the mock should occur exactly {0}, But was {0} times..
+            </summary>
+        </member>
+        <member name="P:Telerik.JustMock.Properties.Messages.ShouldOccurNever">
+            <summary>
+              Looks up a localized string similar to Expected call on the mock should be never. But was {0} times..
+            </summary>
+        </member>
+        <member name="P:Telerik.JustMock.Properties.Messages.ShouldOccurOnce">
+            <summary>
+              Looks up a localized string similar to Exepcted call on the mock should be once.But was {0} times..
+            </summary>
+        </member>
+        <member name="M:Telerik.JustMock.MockParamsExtender.#ctor(System.Reflection.MethodInfo)">
+            <summary>
+            Creates a new instance <see cref="T:Telerik.JustMock.MockParamsExtender"/> class.
+            </summary>
+            <param name="methodInfo"><see cref="T:System.Reflection.MethodInfo"/></param>
+        </member>
+        <member name="M:Telerik.JustMock.MockParamsExtender.Expand(System.Object[])">
+            <summary>
+            Expands the params as argument list.
+            </summary>
+        </member>
+        <member name="P:Telerik.JustMock.MockParamsExtender.Types">
+            <summary>
+            Gets the arguments types.
+            </summary>
+        </member>
+        <member name="P:Telerik.JustMock.MockParamsExtender.Arguments">
+            <summary>
+            Gets the array of argument values.
+            </summary>
+        </member>
+        <member name="T:Telerik.JustMock.DynamicProxy.Bindings">
+            <summary>
+            Defines method bindings.
+            </summary>
+        </member>
+        <member name="F:Telerik.JustMock.DynamicProxy.Bindings.Private">
+            <summary>
+            Private binding
+            </summary>
+        </member>
+        <member name="F:Telerik.JustMock.DynamicProxy.Bindings.Public">
+            <summary>
+            Public binding.
+            </summary>
+        </member>
+        <member name="T:Telerik.JustMock.Expectations.Expectation">
+            <summary>
+            Fluent entry point for expected method, properties and events call.
+            </summary>
+        </member>
+        <member name="T:Telerik.JustMock.Expectations.Abstraction.IExpectation">
+            <summary>
+            Base class for setting up expectations.
+            </summary>
+        </member>
+        <member name="M:Telerik.JustMock.Expectations.Abstraction.IExpectation.Process``1(Telerik.JustMock.Invocation)">
+            <summary>
+            Sets up a method expectaion and with fiter.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Telerik.JustMock.Expectations.Abstraction.IExpectation.Process(Telerik.JustMock.Invocation)">
+            <summary>
+            Sets up a void method expecation.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Telerik.JustMock.Expectations.Expectation.Process``1(Telerik.JustMock.Invocation)">
+            <summary>
+            Setups the target func call.
+            </summary>
+            <typeparam name="TResult"></typeparam>
+            <param name="invocation"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Telerik.JustMock.Expectations.Expectation.Process(Telerik.JustMock.Invocation)">
+            <summary>
+            Setups the target action.
+            </summary>
+            <param name="invocation"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Telerik.JustMock.Interceptors.IMockInterceptor">
+            <summary>
+            Interface to intercept calls.
+            </summary>
+        </member>
+        <member name="M:Telerik.JustMock.Interceptors.IMockInterceptor.Intercept(Telerik.JustMock.MockInvocation)">
+            <summary>
+            Intercepts mock call.
+            </summary>
+            <param name="mockInvocation"></param>
+        </member>
+        <member name="T:Telerik.JustMock.Setup.ArgumentContainer`1">
+            <summary>
+            Generic class for <see cref="T:Telerik.JustMock.Setup.ArgumentContainer"/>
+            </summary>
+        </member>
+        <member name="T:Telerik.JustMock.Setup.ArgumentContainer">
+            <summary>
+            Contains the details for the method argument.
+            </summary>
+        </member>
+        <member name="M:Telerik.JustMock.Setup.ArgumentContainer.#ctor">
+            <summary>
+            Creates a new instance of <see cref="T:Telerik.JustMock.Setup.ArgumentContainer"/> class.
+            </summary>
+        </member>
+        <member name="M:Telerik.JustMock.Setup.ArgumentContainer.#ctor(System.Predicate{System.Object})">
+            <summary>
+            Creates a new instance of <see cref="T:Telerik.JustMock.Setup.ArgumentContainer"/> class.
+            </summary>
+            <param name="condition">Expression condition</param>
+        </member>
+        <member name="M:Telerik.JustMock.Setup.ArgumentContainer.#ctor(System.Delegate)">
+            <summary>
+             Creates a new instance of <see cref="T:Telerik.JustMock.Setup.ArgumentContainer"/> class.
+            </summary>
+            <param name="delegate"></param>
+        </member>
+        <member name="M:Telerik.JustMock.Setup.ArgumentContainer.IsMatched(System.Object)">
+            <summary>
+            Checks if the value matches the stored condition.
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="P:Telerik.JustMock.Setup.ArgumentContainer.ArgumentType">
+            <summary>
+            Gets the argument type.
+            </summary>
+        </member>
+        <member name="P:Telerik.JustMock.Setup.ArgumentContainer.IsDiffered">
+            <summary>
+            Gets or sets if an argment value is differed by lazy calls.
+            </summary>
+        </member>
+        <member name="P:Telerik.JustMock.Setup.ArgumentContainer.Value">
+            <summary>
+            Gets or Sets value from the underlying argument.
+            </summary>
+        </member>
+        <member name="P:Telerik.JustMock.Setup.ArgumentContainer.IsOutput">
+            <summary>
+            Gets/Sets if the argument is output type.
+            </summary>
+        </member>
+        <member name="P:Telerik.JustMock.Setup.ArgumentContainer.Ignore">
+            <summary>
+            Gets / Set if value should be ignored.
+            </summary>
+        </member>
+        <member name="P:Telerik.JustMock.Setup.ArgumentContainer.IsMatcher">
+            <summary>
+            Gets or Sets if an argument is matcher expression.
+            </summary>
+        </member>
+        <member name="P:Telerik.JustMock.Setup.ArgumentContainer.Delegate">
+            <summary>
+            Gets the current condition delegate.
+            </summary>
+        </member>
+        <member name="M:Telerik.JustMock.Setup.ArgumentContainer`1.#ctor">
+            <summary>
+             Creates a new instance of <see cref="T:Telerik.JustMock.Setup.ArgumentContainer"/> class.
+            </summary>
+        </member>
+        <member name="M:Telerik.JustMock.Setup.ArgumentContainer`1.#ctor(System.Delegate)">
+            <summary>
+             Creates a new instance of <see cref="T:Telerik.JustMock.Setup.ArgumentContainer"/> class.
+            </summary>
+            <param name="delegate"></param>
+        </member>
+        <member name="M:Telerik.JustMock.Setup.ArgumentContainer`1.#ctor(System.Predicate{System.Object})">
+            <summary>
+            Creates a new instance of <see cref="T:Telerik.JustMock.Setup.ArgumentContainer`1"/> class.
+            </summary>
+            <param name="condition">Expression condition</param>
+        </member>
+        <member name="M:Telerik.JustMock.Setup.ArgumentContainer`1.op_Implicit(Telerik.JustMock.Setup.ArgumentContainer{`0})~`0">
+            <summary>
+            Converts the <see cref="T:Telerik.JustMock.Setup.ArgumentContainer`1"/> to the target type.
+            </summary>
+            <param name="container"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Telerik.JustMock.DynamicProxy.Fluent.FluentProxy">
+            <summary>
+            Fluent proxy
+            </summary>
+        </member>
+        <member name="T:Telerik.JustMock.DynamicProxy.Fluent.Abstraction.IFluentSettings">
+            <summary>
+            Defines fluent memeber for defining the proxy.
+            </summary>
+        </member>
+        <member name="M:Telerik.JustMock.DynamicProxy.Fluent.Abstraction.IFluentSettings.Register(Telerik.JustMock.DynamicProxy.Abstraction.IInterceptor)">
+            <summary>
+            Define the interceptor to hook.
+            </summary>
+            <param name="interceptor"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Telerik.JustMock.DynamicProxy.Fluent.Abstraction.IFluentSettings.CallConstructor(System.Object[])">
+            <summary>
+            Pass the constructor that will be invoked during proxy creation.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Telerik.JustMock.DynamicProxy.Fluent.Abstraction.IFluentSettings.IncludeObjectOverrides">
+            <summary>
+            Defines that object overrides like "Equals", "ToString", "GetHashCode" should
+            be ignored.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Telerik.JustMock.DynamicProxy.Fluent.FluentProxy.#ctor(System.Type)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Telerik.JustMock.DynamicProxy.Fluent.FluentProxy"/> class.
+            </summary>
+            <param name="target"></param>
+        </member>
+        <member name="M:Telerik.JustMock.DynamicProxy.Fluent.FluentProxy.Register(Telerik.JustMock.DynamicProxy.Abstraction.IInterceptor)">
+            <summary>
+            Define the interceptor to hook.
+            </summary>
+            <param name="interceptor"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Telerik.JustMock.DynamicProxy.Fluent.FluentProxy.CallConstructor(System.Object[])">
+            <summary>
+            Pass the constructor that will be invoked during proxy creation.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Telerik.JustMock.DynamicProxy.Fluent.FluentProxy.IncludeObjectOverrides">
+            <summary>
+            Defines that object overrides like "Equals", "ToString", "GetHashCode" should
+            be ignored.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Telerik.JustMock.DynamicProxy.Fluent.FluentProxy.NewInstance">
+            <summary>
+            Creates the new instance.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Telerik.JustMock.Setup.Bindings">
+            <summary>
+            Enum declaring the binds for class members.
+            </summary>
+        </member>
+        <member name="F:Telerik.JustMock.Setup.Bindings.Public">
+            <summary>
+            Public
+            </summary>
+        </member>
+        <member name="F:Telerik.JustMock.Setup.Bindings.Private">
+             <summary>
+            Private 
+             </summary>
+        </member>
+        <member name="T:Telerik.JustMock.Setup.Container">
+            <summary>
+            Contains the expected metadata for the underlying object.
+            </summary>
+        </member>
+        <member name="M:Telerik.JustMock.Setup.Container.#ctor(Telerik.JustMock.BehaviorMode)">
+            <summary>
+            Creates a new instance of <see cref="T:Telerik.JustMock.Setup.Container"/> class.
+            </summary>
+        </member>
+        <member name="M:Telerik.JustMock.Setup.Container.GetContainer(System.Reflection.MethodInfo)">
+            <summary>
+            Returns the method descriptor for a method.
+            </summary>
+            <param name="info"><see cref="T:System.Reflection.MethodInfo"/></param>
+        </member>
+        <member name="M:Telerik.JustMock.Setup.Container.GetKey(System.Reflection.MethodInfo,System.Type[])">
+            <summary>
+            Gets the unique key for a method.
+            </summary>
+            <param name="info"></param>
+            <param name="parameters"></param>
+            <returns></returns>
+        </member>
+        <member name="P:Telerik.JustMock.Setup.Container.MemberBindings">
+            <summary>
+            Gets/Sets the bindings for seaching members.
+            </summary>
+        </member>
+        <member name="P:Telerik.JustMock.Setup.Container.Target">
+            <summary>
+            Gets/Sets the parent object/ containter.
+            </summary>
+        </member>
+        <member name="P:Telerik.JustMock.Setup.Container.DeclaringType">
+            <summary>
+            Gets/ Sets the declaring type for the container.
+            </summary>
+        </member>
+        <member name="P:Telerik.JustMock.Setup.Container.Kind">
+            <summary>
+            Returns the type of mock.
+            </summary>
+        </member>
+        <member name="P:Telerik.JustMock.Setup.Container.MethodContainers">
+            <summary>
+            Contains <see cref="T:Telerik.JustMock.Setup.MethodInstance"/> for method hashCode.
+            </summary>
+        </member>
+        <member name="P:Telerik.JustMock.Setup.Container.ExpectedInterface">
+            <summary>
+            Interface to be mocked for a given class.
+            </summary>
+        </member>
+        <member name="P:Telerik.JustMock.Setup.Container.InterfacesToImplement">
+            <summary>
+            Contains type of interfaces the class would implement.
+            </summary>
+        </member>
+        <member name="P:Telerik.JustMock.Setup.Container.EventMappings">
+            <summary>
+            Gets the event mapping for a particular class.
+            </summary>
+        </member>
+        <member name="T:Telerik.JustMock.Occurrence">
+            <summary>
+            Defines occurrence of call(s) on the mock.
+            </summary>
+        </member>
+        <member name="F:Telerik.JustMock.Occurrence.AtLeast">
+            <summary>
+            At least the number of times
+            </summary>
+        </member>
+        <member name="F:Telerik.JustMock.Occurrence.AtLeastOnce">
+            <summary>
+            At least once
+            </summary>
+        </member>
+        <member name="F:Telerik.JustMock.Occurrence.AtMost">
+            <summary>
+            At most the number of times.
+            </summary>
+        </member>
+        <member name="F:Telerik.JustMock.Occurrence.Exactly">
+            <summary>
+            Exactly the number of times.
+            </summary>
+        </member>
+        <member name="F:Telerik.JustMock.Occurrence.Never">
+            <summary>
+            Never
+            </summary>
+        </member>
+        <member name="F:Telerik.JustMock.Occurrence.Once">
+            <summary>
+            Once
+            </summary>
+        </member>
+        <member name="F:Telerik.JustMock.Occurrence.NotDefined">
+            <summary>
+            Not defined.
+            </summary>
+        </member>
+        <member name="T:Telerik.JustMock.Occurs">
+            <summary>
+            Defines filters for calls , used in conjunction with assert.
+            </summary>
+        </member>
+        <member name="M:Telerik.JustMock.Occurs.#ctor(System.Func{System.Int32,System.Boolean},Telerik.JustMock.Occurrence,System.Int32)">
+            <summary>
+            Creates a new instance of <see cref="T:Telerik.JustMock.Occurs"/> class.
+            </summary>
+            <param name="condition">Occurrence condition.</param>
+            <param name="occurrence">Result</param>
+            <param name="acutalNumberOfTimes">Acutal number of times call should occur</param>
+        </member>
+        <member name="M:Telerik.JustMock.Occurs.Never">
+            <summary>
+            Asserts that the call should never occur on the mock.
+            </summary>
+        </member>
+        <member name="M:Telerik.JustMock.Occurs.Once">
+            <summary>
+            Asserts that the call should occur once.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Telerik.JustMock.Occurs.AtLeast(System.Int32)">
+            <summary>
+            Asserts that the call should occur at least the specific times.
+            </summary>
+            <param name="numberOfTimes"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Telerik.JustMock.Occurs.AtLeastOnce">
+            <summary>
+            Asserts that the call should occur at least once.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Telerik.JustMock.Occurs.AtMost(System.Int32)">
+            <summary>
+            Asserts that the call should occur at most the specific times.
+            </summary>
+            <param name="numberOfTimes"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Telerik.JustMock.Occurs.Exactly(System.Int32)">
+            <summary>
+            Asserts that the call should occur exactly the specific times.
+            </summary>
+            <param name="numberOfTimes"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Telerik.JustMock.Occurs.NotAvailable">
+            <summary>
+            Invalid occurrence
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Telerik.JustMock.Occurs.Occurrence">
+            <summary>
+            Gets the occurrence for the object.
+            </summary>
+        </member>
+        <member name="P:Telerik.JustMock.Occurs.ActualNumberOfTimes">
+            <summary>
+            Gets the acutal number of times a call is expected.
+            </summary>
+        </member>
+        <member name="T:Telerik.JustMock.Interceptors.MockInterceptor">
+            <summary>
+            Setups / Intercepts inovcation with proper action.
+            </summary>
+        </member>
+        <member name="M:Telerik.JustMock.Interceptors.MockInterceptor.#ctor(Telerik.JustMock.Setup.Container)">
+            <summary>
+            Creates a new instance of<see cref="T:Telerik.JustMock.Interceptors.MockInterceptor"/> class.
+            </summary>
+        </member>
+        <member name="M:Telerik.JustMock.Interceptors.MockInterceptor.Intercept(Telerik.JustMock.MockInvocation)">
+            <summary>
+             Intercept method call.
+            </summary>
+        </member>
+        <member name="M:Telerik.JustMock.Interceptors.MockInterceptor.OnExecution(Telerik.JustMock.MethodInvocation)">
+            <summary>
+            Executes mock according to user setup.
+            </summary>
+            <returns>original/expected value</returns>
+        </member>
+        <member name="M:Telerik.JustMock.Interceptors.MockInterceptor.OnPreExecution(Telerik.JustMock.MethodInvocation)">
+            <summary>
+            Fires before the acutal execution takes place.
+            </summary>
+            <param name="invocation">Details of the current method invocation.</param>
+            <returns><see cref="T:Telerik.JustMock.ExecutionResult"/> indicating whether the custom code should execute.</returns>
+        </member>
+        <member name="M:Telerik.JustMock.Interceptors.MockInterceptor.Execute(Telerik.JustMock.MethodInvocation)">
+            <summary>
+            Executes the method.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Telerik.JustMock.Invocation">
+            <summary>
+            Contains details for the invocation on mock.
+            </summary>
+        </member>
+        <member name="M:Telerik.JustMock.Invocation.Clear">
+            <summary>
+            Clears out any invocation details.
+            </summary>
+        </member>
+        <member name="P:Telerik.JustMock.Invocation.Current">
+            <summary>
+            Gets  the last call by proxy.
+            </summary>
+        </member>
+        <member name="P:Telerik.JustMock.Invocation.Method">
+            <summary>
+            Gets/ Sets the last method call.
+            </summary>
+        </member>
+        <member name="P:Telerik.JustMock.Invocation.Event">
+            <summary>
+            Gets / Sets the event.
+            </summary>
+        </member>
+        <member name="P:Telerik.JustMock.Invocation.Arguments">
+            <summary>
+            Gets the container for a existing default value.
+            </summary>
+        </member>
+        <member name="P:Telerik.JustMock.Invocation.MatcherPositions">
+            <summary>
+            Gets the argument index for a matcher call.
+            </summary>
+        </member>
+        <member name="T:Telerik.JustMock.Weaver.WeaverHelper">
+            <summary>
+            Contains helper methods for loading weaver types.
+            </summary>
+        </member>
+        <member name="T:Telerik.JustMock.Enhancers.MethodInfoEnhancer">
+            <summary>
+            Contains the exetions methods used in various parts of the project.
+            </summary>
+        </member>
+        <member name="M:Telerik.JustMock.Enhancers.MethodInfoEnhancer.GetElementHashCode(System.Reflection.MethodInfo)">
+            <summary>
+            Gets the hashcode for original, in case of generic method.
+            </summary>
+            <param name="method"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Telerik.JustMock.Setup.MethodInstance">
+            <summary>
+            Contains the different values instance for expectations.
+            </summary>
+        </member>
+        <member name="T:Telerik.JustMock.Setup.Abstraction.IExecutionTracer">
+            <summary>
+            Defines members to trace method calls.
+            </summary>
+        </member>
+        <member name="P:Telerik.JustMock.Setup.Abstraction.IExecutionTracer.NumerOfTimesExecuted">
+            <summary>
+            Gets/ Sets number of times a method is excuted.
+            </summary>
+        </member>
+        <member name="M:Telerik.JustMock.Setup.MethodInstance.Validate(System.Object[],System.Boolean)">
+            <summary>
+            Validats the arguments for the method.
+            </summary>
+            <param name="arguments">Argumetns</param>
+            <param name="assertCall">Defines if the invocation is from a assert call</param> 
+            <returns></returns>
+        </member>
+        <member name="M:Telerik.JustMock.Setup.MethodInstance.IsAlreadyExecutedByUser">
+            <summary>
+            Gets a value indicating whether the method is already executed by user.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Telerik.JustMock.Setup.MethodInstance.GetOutputArguments">
+            <summary>
+            Gets the an array of expected arguments.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Telerik.JustMock.Setup.MethodInstance.Args">
+            <summary>
+            Gets/Sets argruments list for the expected method.
+            </summary>
+        </member>
+        <member name="P:Telerik.JustMock.Setup.MethodInstance.Expecation">
+            <summary>
+            Gets user set expectataions.
+            </summary>
+        </member>
+        <member name="P:Telerik.JustMock.Setup.MethodInstance.Id">
+            <summary>
+            Gets the unique id for current instance.
+            </summary>
+        </member>
+        <member name="P:Telerik.JustMock.Setup.MethodInstance.Index">
+            <summary>
+            Gets/Sets the index for the instance.
+            </summary>
+        </member>
+        <member name="P:Telerik.JustMock.Setup.MethodInstance.IsSetup">
+            <summary>
+            Gets / Sets if the instane is setup by user.
+            </summary>
+        </member>
+        <member name="P:Telerik.JustMock.Setup.MethodInstance.UserArgs">
+            <summary>
+            Gets or Sets method arguments during execution.
+            </summary>
+        </member>
+        <member name="P:Telerik.JustMock.Setup.MethodInstance.Parent">
+            <summary>
+            Gets or sets the parent container.
+            </summary>
+        </member>
+        <member name="P:Telerik.JustMock.Setup.MethodInstance.NumerOfTimesExecuted">
+            <summary>
+            Gets/ Sets number of times a method is excuted.
+            </summary>
+        </member>
+        <member name="P:Telerik.JustMock.Setup.MethodInstance.IsExecuted">
+            <summary>
+            Gets if a method setup is already executed.
+            </summary>
+        </member>
+        <member name="P:Telerik.JustMock.Setup.MethodInstance.Sequence">
+            <summary>
+            Gets/ Sets the sequence.
+            </summary>
+        </member>
+        <member name="T:Telerik.JustMock.MockClassAttribute">
+            <summary>
+            Mock attribute for mocking MsCorlib members.
+            </summary>
+        </member>
+        <member name="T:Telerik.JustMock.MockAssertion">
+            <summary>
+            Defines number of a times a called should occur in a
+            mocked object.
+            </summary>
+        </member>
+        <member name="M:Telerik.JustMock.MockAssertion.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Telerik.JustMock.MockAssertion"/> class.
+            </summary>
+        </member>
+        <member name="M:Telerik.JustMock.MockAssertion.#ctor(Telerik.JustMock.Occurs)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Telerik.JustMock.MockAssertion"/> class.
+            </summary>
+            <param name="occurs"></param>
+        </member>
+        <member name="M:Telerik.JustMock.MockAssertion.Assert(System.Object)">
+            <summary>
+            Asserts the mocked object for any expecations.
+            </summary>
+            <param name="mocked"></param>
+        </member>
+        <member name="M:Telerik.JustMock.MockAssertion.AssertCall(Telerik.JustMock.Setup.MethodCall)">
+            <summary>
+            Asserts specified method call.
+            </summary>
+        </member>
+        <member name="T:Telerik.JustMock.Setup.Abstraction.IStubContainer`1">
+            <summary>
+            StubContainer interface for implementing type.
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:Telerik.JustMock.Setup.Abstraction.IStubContainer`1.Implements``1">
+            <summary>
+            Implements the specific interface on the existing type.
+            </summary>
+            <typeparam name="T1"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="T:Telerik.JustMock.DynamicProxy.MethodInvocation">
+            <summary>
+            MethodInovcation entry-point class.
+            </summary>
+        </member>
+        <member name="T:Telerik.JustMock.DynamicProxy.Abstraction.IInvocation">
+            <summary>
+            Interface describing method invocation details.
+            </summary>
+        </member>
+        <member name="T:Telerik.JustMock.DynamicProxy.IReturnValueInvocation">
+            <summary>
+            Internally used for handling return value on invocation.
+            </summary>
+        </member>
+        <member name="P:Telerik.JustMock.DynamicProxy.IReturnValueInvocation.ReturnValue">
+            <summary>
+            Gets the return value.
+            </summary>
+        </member>
+        <member name="M:Telerik.JustMock.DynamicProxy.Abstraction.IInvocation.SetReturn(System.Object)">
+            <summary>
+            Sets the return value for the interception.
+            </summary>
+            <param name="value"></param>
+        </member>
+        <member name="M:Telerik.JustMock.DynamicProxy.Abstraction.IInvocation.Continue">
+            <summary>
+            Exectues the orignal method.
+            </summary>
+        </member>
+        <member name="P:Telerik.JustMock.DynamicProxy.Abstraction.IInvocation.DeclaringType">
+            <summary>
+            Gets the declaring type of the invocation.
+            </summary>
+        </member>
+        <member name="P:Telerik.JustMock.DynamicProxy.Abstraction.IInvocation.Target">
+            <summary>
+            Gets the invocation target
+            </summary>
+        </member>
+        <member name="P:Telerik.JustMock.DynamicProxy.Abstraction.IInvocation.Arguments">
+            <summary>
+            Gets the arguments for invoked method.
+            </summary>
+        </member>
+        <member name="P:Telerik.JustMock.DynamicProxy.Abstraction.IInvocation.Method">
+            <summary>
+            Gets the invoked member itself.
+            </summary>
+        </member>
+        <member name="M:Telerik.JustMock.DynamicProxy.MethodInvocation.#ctor(System.Object,System.Reflection.MethodInfo,Telerik.JustMock.DynamicProxy.Argument[])">
+            <summary>
+            Initializes a new instance of the <see cref="T:Telerik.JustMock.DynamicProxy.MethodInvocation"/> class.
+            </summary>
+            <param name="target">Target proxy</param>
+            <param name="method">Taget <see cref="T:System.Reflection.MethodInfo"/></param>
+            <param name="args"></param>
+        </member>
+        <member name="M:Telerik.JustMock.DynamicProxy.MethodInvocation.SetReturnInternal``1(``0)">
+            <summary>
+            Sets the return valu from interceptor.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="value"></param>
+        </member>
+        <member name="M:Telerik.JustMock.DynamicProxy.MethodInvocation.SetReturn(System.Object)">
+            <summary>
+            Sets the return value for the interception.
+            </summary>
+            <param name="value"></param>
+        </member>
+        <member name="M:Telerik.JustMock.DynamicProxy.MethodInvocation.Continue">
+            <summary>
+            Exectuation flow goes from next interceptor to original method.
+            </summary>
+        </member>
+        <member name="P:Telerik.JustMock.DynamicProxy.MethodInvocation.Name">
+            <summary>
+            Gets the name of the invocation.
+            </summary>
+        </member>
+        <member name="P:Telerik.JustMock.DynamicProxy.MethodInvocation.Index">
+            <summary>
+            Gets or set the current interceptor index
+            </summary>
+        </member>
+        <member name="P:Telerik.JustMock.DynamicProxy.MethodInvocation.DeclaringType">
+            <summary>
+            Gets the declaring type.
+            </summary>
+        </member>
+        <member name="P:Telerik.JustMock.DynamicProxy.MethodInvocation.Target">
+            <summary>
+            Gets the invocation target,generally instantiated proxy.
+            </summary>
+        </member>
+        <member name="P:Telerik.JustMock.DynamicProxy.MethodInvocation.Arguments">
+            <summary>
+            Gets the arguments for current invocation.
+            </summary>
+        </member>
+        <member name="P:Telerik.JustMock.DynamicProxy.MethodInvocation.InvokeBase">
+            <summary>
+            Gets / Sets a boolean value regarding whether or not the proxy
+            should call the base method.
+            </summary>
+        </member>
+        <member name="P:Telerik.JustMock.DynamicProxy.MethodInvocation.Method">
+            <summary>
+            Gets the name of callee
+            </summary>
+        </member>
+        <member name="P:Telerik.JustMock.DynamicProxy.MethodInvocation.ReturnValue">
+            <summary>
+            Gets the user set return value for the current invocation.
+            </summary>
+        </member>
+        <member name="T:Telerik.JustMock.DynamicProxy.Abstraction.IInterceptor">
+            <summary>
+            Interface defining the entry point for proxy calls.
+            </summary>
+        </member>
+        <member name="M:Telerik.JustMock.DynamicProxy.Abstraction.IInterceptor.Intercept(Telerik.JustMock.DynamicProxy.Abstraction.IInvocation)">
+            <summary>
+            Interceps method call.
+            </summary>
+            <param name="invocation"></param>
+        </member>
+        <member name="T:Telerik.JustMock.Setup.MethodCategory">
+            <summary>
+            Category of methods
+            </summary>
+        </member>
+        <member name="F:Telerik.JustMock.Setup.MethodCategory.Setup">
+            <summary>
+            Set up method
+            </summary>
+        </member>
+        <member name="F:Telerik.JustMock.Setup.MethodCategory.Excuting">
+            <summary>
+            Executing method
+            </summary>
+        </member>
+        <member name="T:Telerik.JustMock.Setup.MethodCall">
+            <summary>
+            Contains expected method details.
+            </summary>
+        </member>
+        <member name="M:Telerik.JustMock.Setup.MethodCall.AddMethod(Telerik.JustMock.Setup.MethodInstance)">
+            <summary>
+            Adds a new instance for current signature.
+            </summary>
+            <param name="methodInstance"></param>
+        </member>
+        <member name="M:Telerik.JustMock.Setup.MethodCall.GetInstance(System.Object,System.Object[],System.Boolean)">
+            <summary>
+            Gets a valued method instance.
+            </summary>
+            <param name="target"></param>
+            <param name="args"></param>
+            <param name="assertCall">Spefices if the invocation is from a assert call</param>
+            <returns></returns>
+        </member>
+        <member name="M:Telerik.JustMock.Setup.MethodCall.GetNewInstance(System.Object[],System.Type[])">
+            <summary>
+            for underlying types and value.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Telerik.JustMock.Setup.MethodCall.MethodInfo">
+            <summary>
+            Gets the <see cref="P:Telerik.JustMock.Setup.MethodCall.MethodInfo"/> for current call.
+            </summary>
+        </member>
+        <member name="P:Telerik.JustMock.Setup.MethodCall.FullName">
+            <summary>
+            Gets the fully qualified name of the method.
+            </summary>
+        </member>
+        <member name="P:Telerik.JustMock.Setup.MethodCall.Container">
+            <summary>
+            Gets the containing <see cref="T:Telerik.JustMock.Setup.Container"/> instance.
+            </summary>
+        </member>
+        <member name="P:Telerik.JustMock.Setup.MethodCall.Instance">
+            <summary>
+            Gets the current method instance.
+            </summary>
+        </member>
+        <member name="T:Telerik.JustMock.Weaver.DynamicInjector">
+            <summary>
+            Class for binding methods to weaver dynamically.
+            </summary>
+        </member>
+        <member name="M:Telerik.JustMock.Weaver.DynamicInjector.Inject">
+            <summary>
+            Weaves the class with mock interceptors. 
+            </summary>
+        </member>
+        <member name="T:Telerik.JustMock.Setup.Abstraction.IStubContainerExtended`1">
+            <summary>
+            StubContainer interface for implementing type and genering stubs.
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:Telerik.JustMock.Setup.Abstraction.IStubContainerExtended`1.Implements``1">
+            <summary>
+            Implements the specific interface on the existing type.
+            </summary>
+            <typeparam name="T1"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:Telerik.JustMock.Setup.Abstraction.IStubContainerExtended`1.Generate">
+            <summary>
+            Generates the stub for the specific type.
+            </summary>
+        </member>
+        <member name="M:Telerik.JustMock.DynamicProxy.TypeEmitter.#ctor(System.Type)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Telerik.JustMock.DynamicProxy.TypeEmitter"/> class.
+            </summary>
+            <param name="target"></param>
+        </member>
+        <member name="M:Telerik.JustMock.DynamicProxy.TypeEmitter.CreateType">
+            <summary>
+            Creates the underlying type.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Telerik.JustMock.DynamicProxy.TypeEmitter.Interceptors">
+            <summary>
+             Gets the interceptor associated with this type.
+            </summary>
+        </member>
+        <member name="P:Telerik.JustMock.DynamicProxy.TypeEmitter.Builder">
+            <summary>
+            Gets the typebuilder associatedw the emitter.
+            </summary>
+        </member>
+        <member name="P:Telerik.JustMock.DynamicProxy.TypeEmitter.Target">
+            <summary>
+             Gets the target type, optionally generic if generic defination is set to true.
+            </summary>
+        </member>
+        <member name="P:Telerik.JustMock.DynamicProxy.TypeEmitter.IncldueObjectOverrides">
+            <summary>
+            Gets / Sets value indicating whether the object overrides
+            should be ignored.
+            </summary>
+        </member>
+        <member name="T:Telerik.JustMock.DynamicProxy.Abstraction.IProxy">
+            <summary>
+            Marker interface for identifying the proxy.
+            </summary>
+        </member>
+        <member name="M:Telerik.JustMock.Weaver.Utility.GetGenericTypeKeys(System.Reflection.MethodInfo)">
+            <summary>
+            Helper method. The result is used to define whether the dynamic delegate is generic type.
+            </summary>
+            <param name="methodInfo"></param>
+            <returns>Array of generic parameter names</returns>
+        </member>
+        <member name="T:Telerik.JustMock.BehaviorMode">
+            <summary>
+            Mode of mock: Strict or Loose(default).
+            </summary>
+        </member>
+        <member name="F:Telerik.JustMock.BehaviorMode.Loose">
+            <summary>
+            Behavior : Loose
+            </summary>
+        </member>
+        <member name="F:Telerik.JustMock.BehaviorMode.Strict">
+            <summary>
+            Behavior : Strict
+            </summary>
+        </member>
+        <member name="T:Telerik.JustMock.MockException">
+            <summary>
+            Mock exception.
+            </summary>
+        </member>
+        <member name="M:Telerik.JustMock.MockException.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Telerik.JustMock.MockException"/> class.
+            </summary>
+        </member>
+        <member name="M:Telerik.JustMock.MockException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Telerik.JustMock.MockException"/> class.
+            </summary>
+            <param name="message"></param>
+        </member>
+        <member name="M:Telerik.JustMock.MockException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Telerik.JustMock.MockException"/> class.
+            </summary>
+            <param name="message"></param>
+            <param name="innerException"></param>
+        </member>
+        <member name="T:Telerik.JustMock.Weaver.Interceptors.Abstraction.IWeaverInterceptor">
+            <summary>
+            Interface for intercepting weaver calls.
+            </summary>
+        </member>
+        <member name="M:Telerik.JustMock.Weaver.Interceptors.Abstraction.IWeaverInterceptor.Intercept(Telerik.JustMock.Weaver.Abstraction.IInvocation)">
+            <summary>
+            Callback from weaver method.
+            </summary>
+            <param name="invocation"></param>
+        </member>
+        <member name="T:Telerik.JustMock.RangeKind">
+            <summary>
+             Defines the kind of range value to consider.
+            </summary>
+        </member>
+        <member name="F:Telerik.JustMock.RangeKind.Exclusive">
+            <summary>
+            Does not consider first and last value.
+            </summary>
+        </member>
+        <member name="F:Telerik.JustMock.RangeKind.Insclusive">
+            <summary>
+            Considers the First and last value.
+            </summary>  
+        </member>
+        <member name="M:Telerik.JustMock.RangeExpression`1.#ctor">
+            <summary>
+            Creates a new instance of <see ref="RangeExpression"/> class.
+            </summary>
+        </member>
+        <member name="M:Telerik.JustMock.RangeExpression`1.ToExpresson">
+            <summary>
+            Converts the range values to its equivalant expresson form.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Telerik.JustMock.RangeExpression`1.op_Implicit(Telerik.JustMock.RangeExpression{`0})~System.Linq.Expressions.Expression{System.Predicate{`0}}">
+            <summary>
+            Implictly converts the range values to its equivalant expression form.
+            </summary>
+            <param name="range"></param>
+            <returns></returns>
+        </member>
+        <member name="P:Telerik.JustMock.RangeExpression`1.From">
+            <summary>
+            Gets or Set starting value
+            </summary>
+        </member>
+        <member name="P:Telerik.JustMock.RangeExpression`1.To">
+            <summary>
+            Gets or Sets the end value
+            </summary>
+        </member>
+        <member name="P:Telerik.JustMock.RangeExpression`1.Kind">
+            <summary>
+            Gets/Set a value defining the boundary.
+            </summary>
+        </member>
+        <member name="M:Telerik.JustMock.DynamicProxy.ILEmitter.WrapArgsInObjArray(System.Type[],System.Int32)">
+            <summary>
+            Decalares and initializes a variable with parameter values.
+            </summary>
+            <param name="parameterTypes"></param>
+            <param name="offset">Starting index for the provided types.</param>
+            <returns><see cref="T:System.Reflection.Emit.LocalBuilder"/></returns>
+        </member>
+        <member name="M:Telerik.JustMock.DynamicProxy.ILEmitter.Emit(System.Reflection.Emit.OpCode,System.Int32)">
+            <summary>
+            Puts the specific instruction on to MSIL stack
+            </summary>
+        </member>
+        <member name="M:Telerik.JustMock.DynamicProxy.ILEmitter.Emit(System.Reflection.Emit.OpCode,System.Type)">
+            <summary>
+            Puts the specific instruction on to MSIL stack
+            </summary>
+        </member>
+        <member name="M:Telerik.JustMock.DynamicProxy.ILEmitter.Emit(System.Reflection.Emit.OpCode,System.Reflection.MethodInfo)">
+            <summary>
+            Puts the specific instruction on to MSIL stack
+            </summary>
+            <param name="code"></param>
+            <param name="method"></param>
+        </member>
+        <member name="M:Telerik.JustMock.DynamicProxy.ILEmitter.Emit(System.Reflection.Emit.OpCode,System.Reflection.Emit.LocalBuilder)">
+            <summary>
+            Puts the specific instruction on to MSIL stack
+            </summary>
+        </member>
+        <member name="M:Telerik.JustMock.DynamicProxy.ILEmitter.Emit(System.Reflection.Emit.OpCode)">
+            <summary>
+            Puts the specific instruction on to MSIL stack
+            </summary>
+        </member>
+        <member name="M:Telerik.JustMock.DynamicProxy.ILEmitter.CopyToLocalArray(System.Type[])">
+            <summary>
+            Declares and initializes a variable with the given type array.
+            </summary>
+            <param name="types"></param>
+        </member>
+        <member name="M:Telerik.JustMock.DynamicProxy.ILEmitter.DeclareLocArrayFromGenArgs(System.Type[])">
+            <summary>
+            Gets the user provided types from generic paramters.
+            </summary>
+            <param name="parameters"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Telerik.JustMock.DynamicProxy.ILEmitter.UnboxIfReq(System.Reflection.MethodInfo)">
+            <summary>
+            Unboxes the target type.
+            </summary>
+            <param name="method"></param>
+        </member>
+        <member name="M:Telerik.JustMock.DynamicProxy.ILEmitter.EmitOutInstruction(System.Type)">
+            <summary>
+            Emits the il for out type param
+            </summary>
+            <param name="target"></param>
+        </member>
+        <member name="M:Telerik.JustMock.DynamicProxy.ILEmitter.EmitObjectRef(System.Type)">
+            <summary>
+            Emits IL for setting out params.
+            </summary>
+            <param name="target"></param>
+        </member>
+        <member name="M:Telerik.JustMock.DynamicProxy.ILEmitter.ThrowException(System.Type,System.String)">
+            <summary>
+            Thows expection with for the given type.
+            </summary>
+            <param name="expectionTarget">Target type for the expection.</param>
+            <param name="message">Message that will be thrown for the exception.</param>
+        </member>
+        <member name="T:Telerik.JustMock.Weaver.Interceptors.WeaverInterceptor">
+            <summary>
+            Entry point interceptor for Weaver calls.
+            </summary>
+        </member>
+        <member name="M:Telerik.JustMock.Weaver.Interceptors.WeaverInterceptor.#ctor">
+            <summary>
+            Creates a new instance of <see cref="T:Telerik.JustMock.Weaver.Interceptors.WeaverInterceptor"/> class.
+            </summary>
+        </member>
+        <member name="M:Telerik.JustMock.MockObject.#ctor(System.Type,Telerik.JustMock.BehaviorMode)">
+            <summary>
+            Prepares the target with for static mocking.
+            </summary>
+            <param name="target"></param>
+            <param name="mode"></param>
+        </member>
+        <member name="M:Telerik.JustMock.MockObject.#ctor(System.Type,Telerik.JustMock.BehaviorMode,System.Object[])">
+            <summary>
+            Prepares the target for mocking and creates the instance with spefied arguments.
+            </summary>
+            <param name="target"></param>
+            <param name="mode"></param>
+            <param name="args"></param>
+        </member>
+        <member name="T:Telerik.JustMock.Weaver.WeaverInvocation">
+            <summary>
+            WeaverInvocation wrapper.
+            </summary>
+        </member>
+        <member name="T:Telerik.JustMock.Weaver.Abstraction.IInvocation">
+            <summary>
+            IInvocation 
+            </summary>
+        </member>
+        <member name="M:Telerik.JustMock.Weaver.Abstraction.IInvocation.ContinueToOriginal">
+            <summary>
+            Continues to original statement
+            </summary>
+        </member>
+        <member name="M:Telerik.JustMock.Weaver.Abstraction.IInvocation.SetReturn(System.Object)">
+            <summary>
+            Set the return value for func type calls.
+            </summary>
+            <param name="value"></param>
+        </member>
+        <member name="P:Telerik.JustMock.Weaver.Abstraction.IInvocation.Args">
+            <summary>
+            Gets the arguments
+            </summary>
+        </member>
+        <member name="P:Telerik.JustMock.Weaver.Abstraction.IInvocation.Method">
+            <summary>
+            Gets the target method
+            </summary>
+        </member>
+        <member name="P:Telerik.JustMock.Weaver.Abstraction.IInvocation.InterceptorMethod">
+            <summary>
+            Gets the intercepting method.
+            </summary>
+        </member>
+        <member name="P:Telerik.JustMock.Weaver.Abstraction.IInvocation.Target">
+            <summary>
+            Gets the target
+            </summary>
+        </member>
+        <member name="M:Telerik.JustMock.Weaver.WeaverInvocation.#ctor(System.Object,System.Reflection.MethodInfo,System.Reflection.MethodInfo,System.Object[])">
+            <summary>
+            Creates the instance of <see cref="T:Telerik.JustMock.Weaver.WeaverInvocation"/> class.
+            </summary>
+            <param name="target"></param>
+            <param name="method"></param>
+            <param name="interceptorMethod"></param>
+            <param name="args"></param>
+        </member>
+        <member name="M:Telerik.JustMock.Weaver.WeaverInvocation.ContinueToOriginal">
+            <summary>
+            Gets/ Sets if the original should be executed.
+            </summary>
+        </member>
+        <member name="M:Telerik.JustMock.Weaver.WeaverInvocation.SetReturn(System.Object)">
+            <summary>
+            Sets the return value.
+            </summary>
+            <param name="value"></param>
+        </member>
+        <member name="P:Telerik.JustMock.Weaver.WeaverInvocation.Args">
+            <summary>
+            Gets the arguments for the weaved call.
+            </summary>
+        </member>
+        <member name="P:Telerik.JustMock.Weaver.WeaverInvocation.Method">
+            <summary>
+            Gets the method detail for the weaved call.
+            </summary>
+        </member>
+        <member name="P:Telerik.JustMock.Weaver.WeaverInvocation.InterceptorMethod">
+            <summary>
+            Gets the interceptor method.
+            </summary>
+        </member>
+        <member name="P:Telerik.JustMock.Weaver.WeaverInvocation.Target">
+            <summary>
+            Gets the target for the weaved call.
+            </summary>
+        </member>
+        <member name="P:Telerik.JustMock.Weaver.WeaverInvocation.ReturnValue">
+            <summary>
+            Gets the return value for weaved call.
+            </summary>
+        </member>
+        <member name="P:Telerik.JustMock.Weaver.WeaverInvocation.ExecuteUserCode">
+            <summary>
+            Returns a value indicating that code should continue to original block.
+            Note: Used internally.
+            </summary>
+        </member>
+        <member name="T:Telerik.JustMock.Setup.UserExpectation">
+            <summary>
+            Defines user expecations.
+            </summary>
+        </member>
+        <member name="M:Telerik.JustMock.Setup.UserExpectation.#ctor(System.Reflection.MethodInfo)">
+            <summary>
+            Creates new instance of <see cref="T:Telerik.JustMock.Setup.UserExpectation"/> class.
+            </summary>
+            <param name="method">Containing method</param>
+        </member>
+        <member name="P:Telerik.JustMock.Setup.UserExpectation.Method">
+            <summary>
+            Gets /Sets the method for which the expectation is created.
+            </summary>
+        </member>
+        <member name="P:Telerik.JustMock.Setup.UserExpectation.IsReturnSet">
+            <summary>
+            Gets if an return value is set by user for a setup.
+            </summary>
+        </member>
+        <member name="P:Telerik.JustMock.Setup.UserExpectation.PassArgumentsToReturn">
+            <summary>
+            Gets / Sets if user arugments needs to pass in <code>Returns</code> call.
+            </summary>
+        </member>
+        <member name="P:Telerik.JustMock.Setup.UserExpectation.PassArgumentsToCallback">
+            <summary>
+            Gets/ Sets if user arguments need to pass to <code>DoInstead</code> call.
+            </summary>
+        </member>
+        <member name="P:Telerik.JustMock.Setup.UserExpectation.IsMust">
+            <summary>
+            Gets <value>true</value> if an method is assertable.
+            </summary>
+        </member>
+        <member name="P:Telerik.JustMock.Setup.UserExpectation.IsOverriable">
+            <summary>
+            Gets/Sets a value indicating that setup can be overriden.
+            </summary>
+        </member>
+        <member name="P:Telerik.JustMock.Setup.UserExpectation.Expection">
+            <summary>
+            Gets/Sets the exceptions to be thrown.
+            </summary>
+        </member>
+        <member name="P:Telerik.JustMock.Setup.UserExpectation.AcutalTimesItIsCalled">
+            <summary>
+            Gets / Sets the number of times a method or setup is called.
+            </summary>
+        </member>
+        <member name="P:Telerik.JustMock.Setup.UserExpectation.Returns">
+            <summary>
+            Gets/Sets return value for the expected method.
+            </summary>
+        </member>
+        <member name="P:Telerik.JustMock.Setup.UserExpectation.MethodBody">
+            <summary>
+            Contains the delegate to the setup method body.
+            </summary>
+        </member>
+        <member name="P:Telerik.JustMock.Setup.UserExpectation.EventContainer">
+            <summary>
+            Contains the info about Expected event.
+            </summary>
+        </member>
+        <member name="P:Telerik.JustMock.Setup.UserExpectation.ReturnCallback">
+            <summary>
+            Gets callback for the expected method.
+            </summary>
+        </member>
+        <member name="P:Telerik.JustMock.Setup.UserExpectation.Return">
+            <summary>
+            Gets / sets the return value.
+            </summary>
+        </member>
+        <member name="P:Telerik.JustMock.Setup.UserExpectation.CallBase">
+            <summary>
+            Gets/Sets if the original method is to be called.
+            </summary>
+        </member>
+        <member name="T:Telerik.JustMock.Expectations.Abstraction.IEventExpectation`2">
+            <summary>
+            Interface for containing events expectations.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <typeparam name="TEvent"></typeparam>
+        </member>
+        <member name="M:Telerik.JustMock.Expectations.Abstraction.IEventExpectation`2.Raises(Telerik.JustMock.Action2{`0},System.Object[])">
+            <summary>
+            Raises ans Acton for the expected event.
+            </summary>
+            <param name="action">Action2 to exectue.</param>
+            <param name="args">arguments for the event.</param>
+            <returns>Reference to <see cref="T:Telerik.JustMock.Expectations.Abstraction.IExpectation"/></returns>
+        </member>
+        <member name="T:Telerik.JustMock.DynamicProxy.Proxy">
+            <summary>
+            Entry-point for creating proxy from a given type.
+            </summary>
+        </member>
+        <member name="M:Telerik.JustMock.DynamicProxy.Proxy.Create``1(Telerik.JustMock.DynamicProxy.Abstraction.IInterceptor,System.Object[])">
+            <summary>
+             Creates the proxy for the specified interface.
+            </summary>
+            <param name="interceptor"></param>
+            <param name="args"></param>
+            <typeparam name="T"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:Telerik.JustMock.DynamicProxy.Proxy.Create(System.Type,Telerik.JustMock.DynamicProxy.Abstraction.IInterceptor,System.Object[])">
+            <summary>
+            Creates a new proxy from the specified type
+            </summary>
+            <param name="target"></param>
+            <param name="interceptor"></param>
+            <param name="args"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Telerik.JustMock.DynamicProxy.Proxy.Create(System.Type,System.Boolean,System.Object[])">
+            <summary>
+            Creates a new proxy from the specified type
+            </summary>
+            <param name="target"></param>
+            <param name="includeObjectOverrides">Marks if the proxy needs to include all the object methods.</param>
+            <param name="args"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Telerik.JustMock.DynamicProxy.Proxy.Create``1(System.Action{Telerik.JustMock.DynamicProxy.Fluent.Abstraction.IFluentSettings})">
+            <summary>
+            Creates a new proxy with specific settings.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:Telerik.JustMock.DynamicProxy.Proxy.Create(System.Type,System.Action{Telerik.JustMock.DynamicProxy.Fluent.Abstraction.IFluentSettings})">
+            <summary>
+            Creates a new proxy with specific settings.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Telerik.JustMock.DynamicProxy.Proxy.GetInterceptors(System.Object)">
+            <summary>
+            Gets the registered interceptors for specified target.
+            </summary>
+            <param name="target"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Telerik.JustMock.DynamicProxy.Proxy.GetInterceptors(System.Object,System.String)">
+            <summary>
+            Gets the registered interceptors for specified target.
+            </summary>
+            <param name="target"></param>
+            <param name="interceptorsFldName"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Telerik.JustMock.Arg">
+            <summary>
+            Class providing various argument matching methods.
+            </summary>
+        </member>
+        <member name="M:Telerik.JustMock.Arg.Matches``1(System.Linq.Expressions.Expression{System.Predicate{``0}})">
+            <summary>
+            Matchs argument with expected condition.
+            </summary>
+            <param name="match"></param>
+            <returns><see cref="T:Telerik.JustMock.Setup.ArgumentContainer"/></returns>
+        </member>
+        <member name="M:Telerik.JustMock.Arg.MatchesWithoutTracking``1(System.Linq.Expressions.Expression{System.Predicate{``0}})">
+            <summary>
+            Matchs argument with expected condition, but does track it.
+            </summary>
+            <param name="match"></param>
+            <returns><see cref="T:Telerik.JustMock.Setup.ArgumentContainer"/></returns>
+        </member>
+        <member name="M:Telerik.JustMock.Arg.IsInRange``1(``0,``0,Telerik.JustMock.RangeKind)">
+            <summary>
+            Match the argument in range.
+            </summary>
+            <typeparam name="T">Type of the argument.</typeparam>
+            <param name="from">starting value.</param>
+            <param name="to">ending value.</param>
+            <param name="kind">Kind of Range</param>
+            <returns></returns>
+        </member>
+        <member name="M:Telerik.JustMock.Arg.Any``1">
+            <summary>
+            Matched argument with any value.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="T:Telerik.JustMock.Interceptors.InterceptorEventArgs">
+            <summary>
+            Inceptor event args.
+            </summary>
+        </member>
+        <member name="P:Telerik.JustMock.Interceptors.InterceptorEventArgs.Result">
+            <summary>
+            Gets or Sets the result.
+            </summary>
+        </member>
+        <member name="P:Telerik.JustMock.Interceptors.InterceptorEventArgs.Target">
+            <summary>
+            Gets / Sets the target type.
+            </summary>
+        </member>
+        <member name="M:Telerik.JustMock.Enhancers.ILGenEnhancer.DeclareLocalWith(System.Reflection.Emit.ILGenerator,System.Type[])">
+            <summary>
+            Declares and initializes a variable with the given type array.
+            </summary>
+            <param name="ilGenerator"></param>
+            <param name="types"></param>
+        </member>
+        <member name="T:Telerik.JustMock.DynamicProxy.AutoClass">
+            <summary>
+             Class used for creating proxy on top of interface.
+            </summary>
+        </member>
+        <member name="T:Telerik.JustMock.DynamicProxy.Argument">
+            <summary>
+            Wrapper for invocation arguments.
+            </summary>
+        </member>
+        <member name="M:Telerik.JustMock.DynamicProxy.Argument.#ctor(System.Object,System.Type,System.Boolean)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Telerik.JustMock.DynamicProxy.Argument"/> class.
+            </summary>
+            <param name="value">Defines the value of the argument</param>
+            <param name="type">Defines the type of the argument</param>
+            <param name="isOut">Defines if the argument has an output modifier</param>
+        </member>
+        <member name="P:Telerik.JustMock.DynamicProxy.Argument.Value">
+            <summary>
+            Gets the argument value/ Set it for output argument.
+            </summary>
+        </member>
+        <member name="P:Telerik.JustMock.DynamicProxy.Argument.Type">
+            <summary>
+            Gets type of the argument.
+            </summary>
+        </member>
+        <member name="P:Telerik.JustMock.DynamicProxy.Argument.IsOut">
+            <summary>
+            Gets <value>true</value> for output param.
+            </summary>
+        </member>
+        <member name="P:Telerik.JustMock.ExpressionVisitors.NewExpressionVisitor.Arguments">
+            <summary>
+            Gets associated aruments with the specified constructor.
+            </summary>
+        </member>
+        <member name="T:Telerik.JustMock.Interceptors.MethodInterceptor">
+            <summary>
+            Handles expected calls
+            </summary>
+        </member>
+        <member name="T:Telerik.JustMock.Interceptors.IMethodInterceptor">
+            <summary>
+            Contains method interceptions.
+            </summary>
+        </member>
+        <member name="M:Telerik.JustMock.Interceptors.IMethodInterceptor.OnMethodExecuting(Telerik.JustMock.MethodInvocation)">
+            <summary>
+            Called, when an expected method is executing.
+            </summary>
+            <returns>original/expected value</returns>
+        </member>
+        <member name="M:Telerik.JustMock.Interceptors.IMethodInterceptor.OnMethodExecuted(System.Object,Telerik.JustMock.Interceptors.InterceptorEventArgs)">
+            <summary>
+            Processes post excution tasks.
+            </summary>
+            <param name="sender"></param>
+            <param name="arg"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Telerik.JustMock.Interceptors.MethodInterceptor.#ctor(Telerik.JustMock.BehaviorMode)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Telerik.JustMock.Interceptors.MethodInterceptor"/> class.
+            </summary>
+            <param name="mode"></param>
+        </member>
+        <member name="M:Telerik.JustMock.Interceptors.MethodInterceptor.OnMethodExecuting(Telerik.JustMock.MethodInvocation)">
+            <summary>
+            Called, when an expected method is executing.
+            </summary>
+            <param name="invocation">Contains the detail for method invocation.</param>
+            <returns>Expected value</returns>
+        </member>
+        <member name="M:Telerik.JustMock.Interceptors.MethodInterceptor.OnMethodExecuted(System.Object,Telerik.JustMock.Interceptors.InterceptorEventArgs)">
+            <summary>
+            Processes post excution tasks.
+            </summary>
+            <param name="sender"></param>
+            <param name="arg"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Telerik.JustMock.ExecutionResult">
+            <summary>
+            Enum defining execution flow for the mock.
+            </summary>
+        </member>
+        <member name="F:Telerik.JustMock.ExecutionResult.InvokeBase">
+            <summary>
+            Specify to inovke the base method.
+            </summary>
+        </member>
+        <member name="F:Telerik.JustMock.ExecutionResult.Proceed">
+            <summary>
+            Specify to continue with the current flow.
+            </summary>
+        </member>
+        <member name="T:Telerik.JustMock.MethodInvocation">
+            <summary>
+            Contains Invocation details.
+            </summary>
+        </member>
+        <member name="M:Telerik.JustMock.MethodInvocation.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Telerik.JustMock.MethodInvocation"/> class.
+            </summary>
+        </member>
+        <member name="P:Telerik.JustMock.MethodInvocation.Method">
+            <summary>
+            Gets/ sets the executing method.
+            </summary>
+        </member>
+        <member name="P:Telerik.JustMock.MethodInvocation.Instance">
+            <summary>
+            Gets / Sets the instance for current method.
+            </summary>
+        </member>
+        <member name="P:Telerik.JustMock.MethodInvocation.Args">
+            <summary>
+            Gets/Sets the method args.
+            </summary>
+        </member>
+        <member name="P:Telerik.JustMock.MethodInvocation.Return">
+            <summary>
+            Gets or Sets the result.
+            </summary>
+        </member>
+        <member name="P:Telerik.JustMock.MethodInvocation.ExecutionResult">
+            <summary>
+            Gets/Sets the execution result that defines how the builder should handle post execution.
+            </summary>
+        </member>
+        <member name="P:Telerik.JustMock.MethodInvocation.Target">
+            <summary>
+            Gets the invocation target;
+            </summary>
+        </member>
+        <member name="T:Telerik.JustMock.Interceptors.ProxyInterceptor">
+            <summary>
+            Entry point interceptor to be called by dynamic proxy.
+            </summary>
+        </member>
+        <member name="M:Telerik.JustMock.Interceptors.ProxyInterceptor.#ctor(Telerik.JustMock.Setup.Container)">
+            <summary>
+            Creates a new instance of <see cref="T:Telerik.JustMock.Interceptors.ProxyInterceptor"/> class.
+            </summary>
+            <param name="container"></param>
+        </member>
+        <member name="M:Telerik.JustMock.Interceptors.ProxyInterceptor.Intercept(Telerik.JustMock.DynamicProxy.Abstraction.IInvocation)">
+            <summary>
+            Intercepts proxied method calls.
+            </summary>
+            <param name="invocation"></param>
+        </member>
+        <member name="T:Telerik.JustMock.MockInvocation">
+            <summary>
+            Mock wrapper for inovcations.
+            </summary>
+        </member>
+        <member name="M:Telerik.JustMock.MockInvocation.SetReturn(System.Object)">
+            <summary>
+            Sets the return value.
+            </summary>
+            <param name="value"></param>
+        </member>
+        <member name="M:Telerik.JustMock.MockInvocation.CallBase(System.Boolean)">
+            <summary>
+            Skips the mock call.
+            </summary>
+            <param name="value"></param>
+        </member>
+        <member name="P:Telerik.JustMock.MockInvocation.Method">
+            <summary>
+            Gets the calling method.
+            </summary>
+        </member>
+        <member name="M:Telerik.JustMock.Weaver.ContainerCache.GetContainer(System.Int32)">
+            <summary>
+            Gets the current Interceptor associtated with the method.
+            </summary>
+            <param name="token"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Telerik.JustMock.Abstraction.IOccurrence">
+            <summary>
+            Defines number of times an expectations will be called.
+            </summary>
+        </member>
+        <member name="M:Telerik.JustMock.Abstraction.IOccurrence.WasCalledOnce">
+            <summary>
+            Calls(s) should occur only once. -> NotImplemented
+            </summary>
+        </member>
+        <member name="M:Telerik.JustMock.Abstraction.IOccurrence.Never">
+            <summary>
+            Call(s) should never be occured in user code.-> NotImplemented
+            </summary>
+        </member>
+        <member name="M:Telerik.JustMock.Abstraction.IOccurrence.WasCalledAtMost(System.Int32)">
+            <summary>
+            Call(s) should occur at most the specified times.-> NotImplemented
+            </summary>
+            <param name="numberOfTimes"></param>
+        </member>
+        <member name="M:Telerik.JustMock.Abstraction.IOccurrence.WasCalledAtLeast(System.Int32)">
+            <summary>
+            Call(s) should occur at least the specified times.-> NotImplemented
+            </summary>
+            <param name="numberOfTimes"></param>
+        </member>
+        <member name="P:Telerik.JustMock.Weaver.WeaverInterceptorBuilder.IsStartRepalceCall">
+            <summary>
+            Gets / Sets if the interceptor is for StartReplace call.
+            </summary>
+        </member>
+        <member name="T:Telerik.JustMock.Setup.EventContainer">
+            <summary>
+            Contains subscribed event details.
+            </summary>
+        </member>
+        <member name="M:Telerik.JustMock.Setup.EventContainer.#ctor(System.Reflection.EventInfo,System.Object[])">
+            <summary>
+            Creates a new instance of <see cref="T:Telerik.JustMock.Setup.EventContainer"/> class
+            </summary>
+            <param name="eventInfo">Delegate to be inoked</param>
+            <param name="args">arguments that will be passed dynamically to the delegate</param>
+        </member>
+        <member name="M:Telerik.JustMock.Setup.EventContainer.#ctor(System.Reflection.EventInfo,System.Delegate)">
+            <summary>
+            Creates a new instance of <see cref="T:Telerik.JustMock.Setup.EventContainer"/> class
+            </summary>
+            <param name="eventInfo">Delegate to be inoked</param>
+            <param name="eventArgs">Custom event arguments.</param>
+        </member>
+        <member name="M:Telerik.JustMock.Setup.EventContainer.DynamicInvoke(Telerik.JustMock.Setup.Container,System.Object,System.Object[])">
+            <summary>
+            invokes the delegates with params, for a specific context.
+            </summary>
+        </member>
+        <member name="P:Telerik.JustMock.Setup.EventContainer.Arguments">
+            <summary>
+            contains the arguments for the raised event.
+            </summary>
+        </member>
+        <member name="T:Telerik.JustMock.Expectations.ActionExpectation">
+            <summary>
+            Defines action related setups.
+            </summary>
+        </member>
+        <member name="M:Telerik.JustMock.Expectations.ActionExpectation.#ctor(Telerik.JustMock.Setup.MethodCall)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Telerik.JustMock.Expectations.ActionExpectation"/> class.
+            </summary>
+        </member>
+        <member name="M:Telerik.JustMock.Expectations.ActionExpectation.DoNothing">
+            <summary>
+            Use it to set void methods to do nothing.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Telerik.JustMock.DynamicProxy.Enhancers.BasicEnhancer">
+            <summary>
+             Contains helper methods for various repeatative tasks.
+            </summary>
+        </member>
+        <member name="M:Telerik.JustMock.DynamicProxy.Enhancers.BasicEnhancer.GetRealType(System.Type)">
+            <summary>
+            Gets the original type omitting any out/ref initials.
+            </summary>
+            <param name="parameter"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Telerik.JustMock.DynamicProxy.Enhancers.BasicEnhancer.ExtractCorrectType(System.Type,System.Collections.Generic.IDictionary{System.String,System.Reflection.Emit.GenericTypeParameterBuilder})">
+            <summary>
+             Extracts the correct type for defined generic types.
+            </summary>
+            <param name="paramType"></param>
+            <param name="genericTypeMaps"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Telerik.JustMock.Expectations.Abstraction.IProtectedExpectation`1">
+            <summary>
+            Interface for containing protected expectations.
+            </summary>
+        </member>
+        <member name="M:Telerik.JustMock.Expectations.Abstraction.IProtectedExpectation`1.Method``1(System.String,Telerik.JustMock.Setup.ArgumentContainer[])">
+            <summary>
+            Sets up a void method expecation for projected method.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Telerik.JustMock.Func2`1">
+             <summary>
+             Delegate for wrapping Func2 calls
+             </summary>
+            <typeparam name="TRet">Type of the return value of the method that the delegate encapsulates.</typeparam>
+             <returns></returns>
+        </member>
+        <member name="T:Telerik.JustMock.Func2`2">
+             <summary>
+             Delegate for wrapping func calls
+             </summary>
+            <typeparam name="T1">Type of argument of the method that the delegate encapsulates.</typeparam>
+            <typeparam name="TRet">Type of the return value of the method that the delegate encapsulates.</typeparam>
+             <returns></returns>
+        </member>
+        <member name="T:Telerik.JustMock.Func2`3">
+             <summary>
+             Delegate for wrapping func calls
+             </summary>
+            <typeparam name="T1">Type of argument of the method that the delegate encapsulates.</typeparam>
+            <typeparam name="T2">Type of argument of the method that the delegate encapsulates.</typeparam>
+            <typeparam name="TRet">Type of the return value of the method that the delegate encapsulates.</typeparam>
+             <returns></returns>
+        </member>
+        <member name="T:Telerik.JustMock.Func2`4">
+             <summary>
+             Delegate for wrapping func calls
+             </summary>
+            <typeparam name="T1">Type of argument of the method that the delegate encapsulates.</typeparam>
+            <typeparam name="T2">Type of argument of the method that the delegate encapsulates.</typeparam>
+            <typeparam name="T3">Type of argument of the method that the delegate encapsulates.</typeparam>
+            <typeparam name="TRet">Type of the return value of the method that the delegate encapsulates.</typeparam>
+             <returns></returns>
+        </member>
+        <member name="T:Telerik.JustMock.Func2`5">
+             <summary>
+             Delegate for wrapping func calls
+             </summary>
+            <typeparam name="T1">Type of argument of the method that the delegate encapsulates.</typeparam>
+            <typeparam name="T2">Type of argument of the method that the delegate encapsulates.</typeparam>
+            <typeparam name="T3">Type of argument of the method that the delegate encapsulates.</typeparam>
+            <typeparam name="T4">Type of argument of the method that the delegate encapsulates.</typeparam>
+            <typeparam name="TRet">Type of the return value of the method that the delegate encapsulates.</typeparam>
+             <returns></returns>
+        </member>
+        <member name="T:Telerik.JustMock.Func2`6">
+             <summary>
+             Delegate for wrapping func calls
+             </summary>
+            <typeparam name="T1">Type of argument of the method that the delegate encapsulates.</typeparam>
+            <typeparam name="T2">Type of argument of the method that the delegate encapsulates.</typeparam>
+            <typeparam name="T3">Type of argument of the method that the delegate encapsulates.</typeparam>
+            <typeparam name="T4">Type of argument of the method that the delegate encapsulates.</typeparam>
+            <typeparam name="T5">Type of argument of the method that the delegate encapsulates.</typeparam>
+            <typeparam name="TRet">Type of the return value of the method that the delegate encapsulates.</typeparam>
+             <returns></returns>
+        </member>
+        <member name="T:Telerik.JustMock.Func2`7">
+             <summary>
+             Delegate for wrapping func calls
+             </summary>
+            <typeparam name="T1">Type of argument of the method that the delegate encapsulates.</typeparam>
+            <typeparam name="T2">Type of argument of the method that the delegate encapsulates.</typeparam>
+            <typeparam name="T3">Type of argument of the method that the delegate encapsulates.</typeparam>
+            <typeparam name="T4">Type of argument of the method that the delegate encapsulates.</typeparam>
+            <typeparam name="T5">Type of argument of the method that the delegate encapsulates.</typeparam>
+            <typeparam name="T6">Type of argument of the method that the delegate encapsulates.</typeparam>
+            <typeparam name="TRet">Type of the return value of the method that the delegate encapsulates.</typeparam>
+             <returns></returns>
+        </member>
+        <member name="T:Telerik.JustMock.Func2`8">
+             <summary>
+             Delegate for wrapping func calls
+             </summary>
+            <typeparam name="T1">Type of argument of the method that the delegate encapsulates.</typeparam>
+            <typeparam name="T2">Type of argument of the method that the delegate encapsulates.</typeparam>
+            <typeparam name="T3">Type of argument of the method that the delegate encapsulates.</typeparam>
+            <typeparam name="T4">Type of argument of the method that the delegate encapsulates.</typeparam>
+            <typeparam name="T5">Type of argument of the method that the delegate encapsulates.</typeparam>
+            <typeparam name="T6">Type of argument of the method that the delegate encapsulates.</typeparam>
+            <typeparam name="T7">Type of argument of the method that the delegate encapsulates.</typeparam>
+            <typeparam name="TRet">Type of the return value of the method that the delegate encapsulates.</typeparam>
+             <returns></returns>
+        </member>
+        <member name="T:Telerik.JustMock.Func2`9">
+             <summary>
+             Delegate for wrapping func calls
+             </summary>
+            <typeparam name="T1">Type of argument of the method that the delegate encapsulates.</typeparam>
+            <typeparam name="T2">Type of argument of the method that the delegate encapsulates.</typeparam>
+            <typeparam name="T3">Type of argument of the method that the delegate encapsulates.</typeparam>
+            <typeparam name="T4">Type of argument of the method that the delegate encapsulates.</typeparam>
+            <typeparam name="T5">Type of argument of the method that the delegate encapsulates.</typeparam>
+            <typeparam name="T6">Type of argument of the method that the delegate encapsulates.</typeparam>
+            <typeparam name="T7">Type of argument of the method that the delegate encapsulates.</typeparam>
+            <typeparam name="T8">Type of argument of the method that the delegate encapsulates.</typeparam>
+            <typeparam name="TRet">Type of the return value of the method that the delegate encapsulates.</typeparam>
+             <returns></returns>
+        </member>
+        <member name="T:Telerik.JustMock.Func2`10">
+             <summary>
+             Delegate for wrapping func calls
+             </summary>
+            <typeparam name="T1">Type of argument of the method that the delegate encapsulates.</typeparam>
+            <typeparam name="T2">Type of argument of the method that the delegate encapsulates.</typeparam>
+            <typeparam name="T3">Type of argument of the method that the delegate encapsulates.</typeparam>
+            <typeparam name="T4">Type of argument of the method that the delegate encapsulates.</typeparam>
+            <typeparam name="T5">Type of argument of the method that the delegate encapsulates.</typeparam>
+            <typeparam name="T6">Type of argument of the method that the delegate encapsulates.</typeparam>
+            <typeparam name="T7">Type of argument of the method that the delegate encapsulates.</typeparam>
+            <typeparam name="T8">Type of argument of the method that the delegate encapsulates.</typeparam>
+            <typeparam name="T9">Type of argument of the method that the delegate encapsulates.</typeparam>
+            <typeparam name="TRet">Type of the return value of the method that the delegate encapsulates.</typeparam>
+             <returns></returns>
+        </member>
+    </members>
+</doc>

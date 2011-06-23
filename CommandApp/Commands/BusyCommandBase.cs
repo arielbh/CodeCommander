@@ -6,12 +6,16 @@ using CodeValue.CodeCommander.Interfaces;
 
 namespace CommandApp.Commands
 {
-
-    public abstract class BusyCommandBase : CommandBase
+    public interface IBusyCommandBase
     {
     }
 
-    public abstract class BusyCommandBase<T> : CommandBase<T>
+
+    public abstract class BusyCommandBase : CommandBase, IBusyCommandBase
+    {
+    }
+
+    public abstract class BusyCommandBase<T> : CommandBase<T>, IBusyCommandBase
     {
         
     }

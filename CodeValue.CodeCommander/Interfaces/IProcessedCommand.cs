@@ -7,7 +7,7 @@ namespace CodeValue.CodeCommander.Interfaces
     public interface IProcessedCommand : ICommandBase
     {
         string CommandId { get; }
-        int SerialNumber { get;}
+        int SerialNumber { get; }
         string CommandGroup { get; }
         Unit ReturnValue { get; }
         CommandState CurrentState { get; }
@@ -17,10 +17,10 @@ namespace CodeValue.CodeCommander.Interfaces
         Action<IProcessedCommand> FullfillmentAction { get; set; }
         Action<IProcessedCommand> BeforeExecuteAction { get; set; }
 
-        bool ShouldFailIfFiltered { get;  }
-        int? PendingTimeout { get;  }
-        int? ExecutingTimeout { get;  }
-        bool ShouldExecuteForever { get;  }
+        bool ShouldFailIfFiltered { get; }
+        int? PendingTimeout { get; }
+        int? ExecutingTimeout { get; }
+        bool ShouldExecuteForever { get; }
 
         ReactiveCollection<CommandTrace> CommandTraces { get; }
 
@@ -34,10 +34,6 @@ namespace CodeValue.CodeCommander.Interfaces
     public interface IProcessedCommand<T> : IProcessedCommand
     {
         new T ReturnValue { get; }
-        new Action<IProcessedCommand<T>> CompleteAction { get; set; }
-        new Action<IProcessedCommand<T>, Exception> ErrorAction { get; set; }
-        new Action<IProcessedCommand<T>> FullfillmentAction { get; set; }
-        new Action<IProcessedCommand<T>> BeforeExecuteAction { get; set; }
 
         IDisposable Subscribe(IObserver<ICommandResponse<T>> observer);
     }

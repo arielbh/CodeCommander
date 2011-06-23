@@ -6,6 +6,7 @@ using System.Reactive;
 using System.Reactive.Linq;
 using System.Reactive.Subjects;
 using System.Text;
+using CodeValue.CodeCommander.Exceptions;
 using CodeValue.CodeCommander.Interfaces;
 using ReactiveUI;
 
@@ -72,7 +73,7 @@ namespace CodeValue.CodeCommander
 
         private void AddCommand(CommandBase command)
         {
-            if (command.CurrentState != CommandState.New) throw new Exception("Command is not new");
+            if (command.CurrentState != CommandState.New) throw new CommandProcessorException("Command is not new");
             lock (_lockingQueue)
             {
                 _outstandingCommands.Add(command);
@@ -96,18 +97,25 @@ namespace CodeValue.CodeCommander
             command.StartRequest(nextState);
         }
 
-        public IObservable<ICommandResponse<Unit>> PublishCommand(CommandBase command)
+        public IDisposable PublishCommand(CommandBase command, IObserver<ICommandResponse<Unit>> observer = null)
         {
+            IDisposable subscription = null;
+            if (observer != null)
+                subscription = command.Subscribe(observer);
             AddCommand(command);
-            return command;
+            return subscription;
+
 
         }
-
-        public IObservable<ICommandResponse<T>> PublishCommand<T>(CommandBase<T> command)
+        public IDisposable PublishCommand<T>(CommandBase<T> command, IObserver<ICommandResponse<T>> observer = null)
         {
+            IDisposable subscription = null;
+            if (observer != null)
+                subscription = command.Subscribe(observer);
             AddCommand(command);
-            return command;
+            return subscription;            
         }
+
 
         public void CancelCommand(CommandBase command)
         {
@@ -123,7 +131,7 @@ namespace CodeValue.CodeCommander
 
         public void RerunBlockedCommand(CommandBase command)
         {
-            if (command.CurrentState != CommandState.Blocked) throw new Exception("Command is not blocked");
+            if (command.CurrentState != CommandState.Blocked) throw new CommandProcessorException("Command is not blocked");
             HandleAddedCommand(command);
         }
 

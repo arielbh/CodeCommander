@@ -26,11 +26,12 @@
                         Command="{Binding CreateCommandCommand}"
                         CommandParameter="ExecuteCommand"
                         Height="30" />
+                <CheckBox Content="Allow Execute?"
+                          IsChecked="{Binding AllowExecute}" />
                 <Button Content="GetValue Command"
                         Command="{Binding CreateCommandCommand}"
                         CommandParameter="GetValueCommand"
                         Height="30" />
-                <CheckBox Content="Allow Execute?" IsChecked="{Binding AllowExecute}"/>
                 <Button Content="Release Blocked Command"
                         Command="{Binding ReleaseBlockedCommand}"
                         CommandParameter="{Binding SelectedItem.CommandId, ElementName=commandsGrid}" 
@@ -38,6 +39,9 @@
                 <Button Content="Cancel Command"
                         Command="{Binding CancelCommandCommand}"
                         CommandParameter="{Binding SelectedItem.CommandId, ElementName=commandsGrid}"
+                        Height="30" />
+                <Button Content="Create Many"
+                        Command="{Binding CreateManyCommand}"
                         Height="30" />
             </StackPanel>
         </GroupBox>
