@@ -409,6 +409,13 @@
             The last provided value from the Observable. 
             </summary>
         </member>
+        <member name="P:ReactiveUI.ObservableAsPropertyHelper`1.BindingException">
+            <summary>
+            Returns the Exception which has been provided by the Observable; normally
+            steps should be taken to ensure that Observables provided to OAPH should
+            never complete or fail.
+            </summary>
+        </member>
         <member name="M:ReactiveUI.OAPHCreationHelperMixin.ObservableToProperty``2(``0,System.IObservable{``1},System.Linq.Expressions.Expression{System.Func{``0,``1}},``1,System.Reactive.Concurrency.IScheduler)">
             <summary>
             Converts an Observable to an ObservableAsPropertyHelper and
@@ -833,6 +840,22 @@
             <param name="newValue">The new value to set the property to, almost
             always the 'value' keyword.</param>
             <returns>The newly set value, normally discarded.</returns>
+        </member>
+        <member name="M:ReactiveUI.ReactiveObjectExpressionMixin.RaisePropertyChanging``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}})">
+            <summary>
+            Use this method in your ReactiveObject classes when creating custom
+            properties where raiseAndSetIfChanged doesn't suffice.
+            </summary>
+            <param name="property">An Expression representing the property (i.e.
+            'x => x.SomeProperty'</param>
+        </member>
+        <member name="M:ReactiveUI.ReactiveObjectExpressionMixin.RaisePropertyChanged``2(``0,System.Linq.Expressions.Expression{System.Func{``0,``1}})">
+            <summary>
+            Use this method in your ReactiveObject classes when creating custom
+            properties where raiseAndSetIfChanged doesn't suffice.
+            </summary>
+            <param name="property">An Expression representing the property (i.e.
+            'x => x.SomeProperty'</param>
         </member>
         <member name="M:ReactiveUI.ReactiveObjectTestMixin.RaisePropertyChanging(ReactiveUI.ReactiveObject,System.String)">
             <summary>

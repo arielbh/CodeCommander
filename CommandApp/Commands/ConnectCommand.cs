@@ -1,4 +1,5 @@
 using System;
+using System.Threading.Tasks;
 using CodeValue.CodeCommander;
 using CodeValue.CodeCommander.Interfaces;
 
@@ -26,11 +27,11 @@ namespace CommandApp
             _mainViewModel.CanConnect = false;
         }
 
+        
+
         public override void Execute()
         {
-            
             _mainViewModel.AddMessage("Connect Message Executed");
-            
         }
 
         public override CommandState? InterpretResponse(ProcessorInput response, CommandState currentState)
