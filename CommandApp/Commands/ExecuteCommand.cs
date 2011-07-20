@@ -1,3 +1,4 @@
+using System;
 using CodeValue.CodeCommander;
 using CodeValue.CodeCommander.Interfaces;
 using CommandApp.Commands;
@@ -11,7 +12,7 @@ namespace CommandApp
         public ExecuteCommand(MainViewModel mainViewModel)
         {
             _mainViewModel = mainViewModel;
-            PendingTimeout = 10000;
+            PendingTimeout = new TimeSpan(10000); ;
            
         }
 

@@ -8,6 +8,7 @@ namespace CodeValue.CodeCommander.Interfaces
     {
         string CommandId { get; }
         int SerialNumber { get; }
+        int Order { get; }
         string CommandGroup { get; }
         Unit ReturnValue { get; }
         CommandState CurrentState { get; }
@@ -18,17 +19,16 @@ namespace CodeValue.CodeCommander.Interfaces
         Action<IProcessedCommand> BeforeExecuteAction { get; set; }
 
         bool ShouldFailIfFiltered { get; }
-        int? PendingTimeout { get; }
-        int? ExecutingTimeout { get; }
+        TimeSpan? PendingTimeout { get; }
+        TimeSpan? ExecutingTimeout { get; }
+        bool ShouldFailIfBlocked { get; }
         bool ShouldExecuteForever { get; }
+        bool ShouldExecuteInTask { get; }
 
         ReactiveCollection<CommandTrace> CommandTraces { get; }
 
         IDisposable RegisterForStateChange(IObserver<IObservedChange<CommandBase, CommandState>> observer);
         IDisposable Subscribe(IObserver<ICommandResponse<Unit>> observer);
-        //void StartRequest(CommandState currentState);
-        //CommandState? InterpretResponse(ProcessorInput response, CommandState currentState);
-        //IDisposable Subscribe(IObserver<CommandResponse<Unit>> observer);
     }
 
     public interface IProcessedCommand<T> : IProcessedCommand

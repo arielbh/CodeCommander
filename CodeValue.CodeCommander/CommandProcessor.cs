@@ -26,7 +26,7 @@ namespace CodeValue.CodeCommander
             _filterManager = filterManager;
             filterManager.ItemsChanged.Subscribe(
                 o =>
-                _outstandingCommands.Where(c => c.CurrentState == CommandState.Pending).ToList().ForEach(PushToFilter));
+                _outstandingCommands.Where(c => c.CurrentState == CommandState.Pending).OrderBy(c => c.Order).ToList().ForEach(PushToFilter));
 
             _outstandingCommands.ItemsAdded.Subscribe(HandleAddedCommand);
 

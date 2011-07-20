@@ -13,7 +13,7 @@ namespace CommandApp
         {
             _mainViewModel = mainViewModel;
             ShouldFailIfFiltered = true;
-            ExecutingTimeout = 5000;
+            ExecutingTimeout = new TimeSpan(5000);
         }
 
         public override bool CanExecute()

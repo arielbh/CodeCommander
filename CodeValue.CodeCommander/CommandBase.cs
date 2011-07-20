@@ -5,6 +5,7 @@ using System.Reactive;
 using System.Reactive.Linq;
 using System.Reactive.Subjects;
 using System.Text;
+using System.Threading.Tasks;
 using CodeValue.CodeCommander.Exceptions;
 using CodeValue.CodeCommander.Interfaces;
 using ReactiveUI;
@@ -53,7 +54,7 @@ namespace CodeValue.CodeCommander
         {
             if (currentState == CommandState.Pending && PendingTimeout.HasValue)
             {
-                Observable.Timer(new TimeSpan(0, 0, 0, 0, PendingTimeout.Value)).Subscribe(
+                Observable.Timer(PendingTimeout.Value).Subscribe(
                     a =>
                     {
                         if (CurrentState == CommandState.Pending)
@@ -66,7 +67,7 @@ namespace CodeValue.CodeCommander
             }
             if (currentState == CommandState.Executing && ExecutingTimeout.HasValue)
             {
-                Observable.Timer(new TimeSpan(0, 0, 0, 0, ExecutingTimeout.Value)).Subscribe(
+                Observable.Timer(ExecutingTimeout.Value).Subscribe(
                     a =>
                     {
                         if (CurrentState == CommandState.Executing)
@@ -139,8 +140,10 @@ namespace CodeValue.CodeCommander
         public virtual void StartRequest(CommandState currentState)
         {
             CurrentState = currentState;
+
             if (currentState == CommandState.Executing)
             {
+
                 SignalCommandCanStartExecuting();
                 return;
             }
@@ -241,12 +244,25 @@ namespace CodeValue.CodeCommander
         public Action<IProcessedCommand> BeforeExecuteAction { get; set; }
         public ReactiveCollection<CommandTrace> CommandTraces { get; private set; }
         public bool ShouldFailIfFiltered { get; protected set; }
-        public int? PendingTimeout { get; protected set; }
-        public int? ExecutingTimeout { get; protected set; }
+        public TimeSpan? PendingTimeout { get; protected set; }
+        public TimeSpan? ExecutingTimeout { get; protected set; }
         public bool ShouldExecuteForever { get; protected set; }
         public bool ShouldFailIfBlocked { get; protected set; }
         public string CommandGroup { get; protected set; }
         public int SerialNumber { get; internal set; }
+        private int? _order;
+        public int Order
+        {
+            get
+            {
+                if (!_order.HasValue)
+                {
+                    return SerialNumber;
+                }
+                return _order.Value;
+            }
+            set { _order = value; }
+        }
     }
 
     public abstract class CommandBase<T> : CommandBase, IObservable<ICommandResponse<T>>, IProcessedCommand<T>
