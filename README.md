@@ -10,6 +10,11 @@ ReactiveUI framework.
 3.  Efficient command execution and filtering. 
 4.  Supporting typical scenarios for commands: one-way, async, lifetime, limited, etc. 
 
+## Documentation
+
+A PDF document is provided with the code base.
+
+
 ## Full Sample included
 
 When you download the code you have a full featured sample app you can execute and explore the various features.
@@ -36,4 +41,9 @@ CommandProcessor.
 
 6. Register for notifications with the Observerable returned by the publish, and keep track of 
 your command. 
+
+## Contact
+
+Contact me at twitter : @arielbh.
+I would love to hear your feedback on that.
  
