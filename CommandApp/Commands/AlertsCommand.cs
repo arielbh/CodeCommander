@@ -13,7 +13,7 @@ namespace CommandApp
             ShouldExecuteForever = true;
         }
 
-        public override CommandState? InterpretResponse(ProcessorInput response, CommandState currentState)
+        public override bool InterpretResponse(ProcessorInput response, CommandState currentState)
         {
             DeviceResult<string> res = response as DeviceResult<string>;
             if (res != null)
@@ -21,10 +21,10 @@ namespace CommandApp
                 if (CommandId == res.CommandId)
                 {
                     ReturnValue = res.Input;
-                    return CommandState.Successed;
+                    return true;
                 }
             }
-            return null;
+            return false;
         }
 
         public override bool CanExecute()

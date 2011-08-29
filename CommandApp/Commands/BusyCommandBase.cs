@@ -22,9 +22,9 @@ namespace CommandApp.Commands
 
     public class StopCommand : CommandBase
     {
-        public override CommandState? InterpretResponse(ProcessorInput response, CommandState currentState)
+        public override bool InterpretResponse(ProcessorInput response, CommandState currentState)
         {
-            return CommandState.Successed;
+            return true;
 
         }
 
