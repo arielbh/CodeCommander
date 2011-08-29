@@ -13,7 +13,7 @@ namespace CommandApp
         {
             _mainViewModel = mainViewModel;
             PendingTimeout = new TimeSpan(10000);
-            //ShouldCompleteAfterExecute = true;
+            ShouldCompleteAfterExecute = true;
 
         }
 
