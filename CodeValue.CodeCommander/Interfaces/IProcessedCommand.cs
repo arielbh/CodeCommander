@@ -23,6 +23,8 @@ namespace CodeValue.CodeCommander.Interfaces
         TimeSpan? ExecutingTimeout { get; }
         bool ShouldFailIfBlocked { get; }
         bool ShouldExecuteForever { get; }
+        bool ShouldCompleteAfterExecute { get; }
+
 
         ReactiveCollection<CommandTrace> CommandTraces { get; }
 

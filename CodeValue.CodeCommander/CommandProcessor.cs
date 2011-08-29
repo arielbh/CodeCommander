@@ -35,24 +35,26 @@ namespace CodeValue.CodeCommander
                 _subscriptions[item].Dispose();
                 _subscriptions.Remove(item);
             });
-
-            inputsSource.SelectMany(resp =>
+            if (inputsSource != null)
             {
-                foreach (var cmd in _outstandingCommands)
+                inputsSource.SelectMany(resp =>
                 {
-                    var result = cmd.InterpretResponse(resp, cmd.CurrentState);
-                    if (result != null)
+                    foreach (var cmd in _outstandingCommands)
                     {
-                        cmd.CurrentState = result.Value;
-                        return Observable.Return(result.Value);
+                        var result = cmd.InterpretResponse(resp, cmd.CurrentState);
+                        if (result)
+                        {
+                            cmd.CurrentState = CommandState.Successed;
+                            return Observable.Return(cmd.CurrentState);
+                        }
                     }
-                }
 
-                return Observable.Empty<CommandState>();
-            }).Subscribe(newState =>
-            {
-                
-            });
+                    return Observable.Empty<CommandState>();
+                }).Subscribe(newState =>
+                {
+
+                });
+            }
         }
 
         private void HandleAddedCommand(CommandBase item)
@@ -113,7 +115,7 @@ namespace CodeValue.CodeCommander
             if (observer != null)
                 subscription = command.Subscribe(observer);
             AddCommand(command);
-            return subscription;            
+            return subscription;
         }
 
 
@@ -155,5 +157,5 @@ namespace CodeValue.CodeCommander
 
 
 
-    
+
 }

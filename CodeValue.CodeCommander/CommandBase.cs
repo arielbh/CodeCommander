@@ -164,7 +164,7 @@ namespace CodeValue.CodeCommander
             //        queued, do nothing.
         }
 
-        public abstract CommandState? InterpretResponse(ProcessorInput response, CommandState currentState);
+        public abstract bool InterpretResponse(ProcessorInput response, CommandState currentState);
         // The contract of this command is that it should return:
         //
         //      * null if it is not interested in the command, or if command
@@ -194,6 +194,10 @@ namespace CodeValue.CodeCommander
                         BeforeExecuteAction(this);
                     }
                     Execute();
+                    if (ShouldCompleteAfterExecute)
+                    {
+                        CurrentState = CommandState.Successed;
+                    }
                 }
                 else
                 {
@@ -248,6 +252,7 @@ namespace CodeValue.CodeCommander
         public TimeSpan? ExecutingTimeout { get; protected set; }
         public bool ShouldExecuteForever { get; protected set; }
         public bool ShouldFailIfBlocked { get; protected set; }
+        public bool ShouldCompleteAfterExecute { get; protected set; }
         public string CommandGroup { get; protected set; }
         public int SerialNumber { get; internal set; }
         private int? _order;

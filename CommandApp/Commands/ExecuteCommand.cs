@@ -12,8 +12,9 @@ namespace CommandApp
         public ExecuteCommand(MainViewModel mainViewModel)
         {
             _mainViewModel = mainViewModel;
-            PendingTimeout = new TimeSpan(10000); ;
-           
+            PendingTimeout = new TimeSpan(10000);
+            //ShouldCompleteAfterExecute = true;
+
         }
 
         public override bool CanExecute()
@@ -28,17 +29,17 @@ namespace CommandApp
 
         }
 
-        public override CommandState? InterpretResponse(ProcessorInput response, CommandState currentState)
+        public override bool InterpretResponse(ProcessorInput response, CommandState currentState)
         {
             DeviceResult res = response as DeviceResult;
             if (res != null)
             {
                 if (CommandId == res.CommandId)
                 {
-                    return CommandState.Successed;
+                    return true;
                 }
             }
-            return null;
+            return false;
         }
 
     }

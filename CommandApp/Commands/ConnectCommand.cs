@@ -1,5 +1,4 @@
 using System;
-using System.Threading.Tasks;
 using CodeValue.CodeCommander;
 using CodeValue.CodeCommander.Interfaces;
 
@@ -13,7 +12,7 @@ namespace CommandApp
         {
             _mainViewModel = mainViewModel;
             ShouldFailIfFiltered = true;
-            ExecutingTimeout = new TimeSpan(5000);
+            //ExecutingTimeout = new TimeSpan(5000);
         }
 
         public override bool CanExecute()
@@ -27,14 +26,14 @@ namespace CommandApp
             _mainViewModel.CanConnect = false;
         }
 
-        
-
         public override void Execute()
         {
+            
             _mainViewModel.AddMessage("Connect Message Executed");
+            
         }
 
-        public override CommandState? InterpretResponse(ProcessorInput response, CommandState currentState)
+        public override bool InterpretResponse(ProcessorInput response, CommandState currentState)
         {
 
             DeviceResult<bool> res = response as DeviceResult<bool>;
@@ -45,10 +44,10 @@ namespace CommandApp
                     ReturnValue = res.Input;
                     _mainViewModel.CanConnect = ReturnValue;
 
-                    return CommandState.Successed;
+                    return true;
                 }
             }
-            return null;
+            return false;
         }
 
          
