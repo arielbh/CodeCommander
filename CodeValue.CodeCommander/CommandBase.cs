@@ -137,7 +137,7 @@ namespace CodeValue.CodeCommander
             return Inner.Subscribe(observer);
         }
 
-        public virtual void StartRequest(CommandState currentState)
+        public virtual void StartRequest(CommandState currentState, Exception exception)
         {
             CurrentState = currentState;
 
@@ -149,7 +149,15 @@ namespace CodeValue.CodeCommander
             }
             if (CurrentState == CommandState.Failed)
             {
-                CompleteCommand(new CommandFailureException("Command can not be started. Most likely due to filers"));
+                if (exception != null)
+                {
+                    CompleteCommand(exception);
+                }
+                else
+                {
+                    CompleteCommand(new CommandFailureException("Command can not be started. Most likely due to filers"));
+                    
+                }
             }
             // This method is called at the start of every request - this method
             // should do the following:

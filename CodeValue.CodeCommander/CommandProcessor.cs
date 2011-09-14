@@ -92,11 +92,23 @@ namespace CodeValue.CodeCommander
 
         private void PushToFilter(CommandBase command)
         {
-            bool result = _filterManager.Process(command);
+            Exception exception = null;
+            bool result;
+            try
+            {
+                result = _filterManager.Process(command);
+            }
+            catch (Exception ex)
+            {
+                result = false;
+                exception = ex;
+
+            }
+
             CommandState nextState = result
                                          ? CommandState.Executing
                                          : command.ShouldFailIfFiltered ? CommandState.Failed : CommandState.Pending;
-            command.StartRequest(nextState);
+            command.StartRequest(nextState, exception);
         }
 
         public IDisposable PublishCommand(CommandBase command, IObserver<ICommandResponse<Unit>> observer = null)

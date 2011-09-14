@@ -1,3 +1,4 @@
+using System;
 using CodeValue.CodeCommander;
 using CodeValue.CodeCommander.Interfaces;
 
@@ -8,7 +9,13 @@ namespace CommandApp
     
         public override bool Process(ICommandBase command)
         {
-            return command is ConnectCommand;
+            
+            var res = command is ConnectCommand;
+            if (!res)
+            {
+                throw new Exception("My Exception");
+            }
+            return res;
         }
     }
 }
