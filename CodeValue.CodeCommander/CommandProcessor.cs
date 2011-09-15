@@ -41,7 +41,16 @@ namespace CodeValue.CodeCommander
                 {
                     foreach (var cmd in _outstandingCommands)
                     {
-                        var result = cmd.InterpretResponse(resp, cmd.CurrentState);
+                        bool result = false;
+                        try
+                        {
+                            result = cmd.InterpretResponse(resp, cmd.CurrentState);
+                        }
+                        catch (Exception ex)
+                        {
+                            cmd.CompleteCommand(ex);
+                        }
+
                         if (result)
                         {
                             cmd.CurrentState = CommandState.Successed;

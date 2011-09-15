@@ -85,7 +85,7 @@ namespace CodeValue.CodeCommander
             Inner.OnNext(new CommandResponse<Unit>(this, new Unit()));
         }
 
-        protected virtual void CompleteCommand(Exception ex = null)
+        internal protected virtual void CompleteCommand(Exception ex = null)
         {
             if (ex != null)
             {

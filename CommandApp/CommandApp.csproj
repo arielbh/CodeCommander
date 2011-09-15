@@ -40,20 +40,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.Practices.Prism">
-      <HintPath>..\..\..\..\Microsoft\Prism4\PrismLibrary\Desktop\Prism.UnityExtensions.Tests\bin\Debug\Microsoft.Practices.Prism.dll</HintPath>
+    <Reference Include="Microsoft.Practices.Prism, Version=4.0.0.0, Culture=neutral, PublicKeyToken=c4def769cd5b7e21, processorArchitecture=MSIL">
+      <HintPath>..\3rd Party\Microsoft.Practices.Prism.dll</HintPath>
     </Reference>
-    <Reference Include="ReactiveUI">
+    <Reference Include="ReactiveUI, Version=2.3.2.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\3rd Party\ReactiveUI.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Reactive, Version=1.1.10605.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\3rd Party\System.Reactive.dll</HintPath>
     </Reference>
     <Reference Include="System.Reactive.Windows.Threading, Version=1.1.10605.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\3rd Party\System.Reactive.Windows.Threading.dll</HintPath>
     </Reference>
     <Reference Include="System.Xml" />
