@@ -156,7 +156,7 @@ namespace CodeValue.CodeCommander
                 else
                 {
                     CompleteCommand(new CommandFailureException("Command can not be started. Most likely due to filers"));
-                    
+
                 }
             }
             // This method is called at the start of every request - this method
@@ -172,7 +172,7 @@ namespace CodeValue.CodeCommander
             //        queued, do nothing.
         }
 
-        public abstract bool InterpretResponse(ProcessorInput response, CommandState currentState);
+        public abstract bool InterpretResponse(ProcessorInput response);
         // The contract of this command is that it should return:
         //
         //      * null if it is not interested in the command, or if command

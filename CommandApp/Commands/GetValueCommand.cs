@@ -14,7 +14,7 @@ namespace CommandApp
             ShouldFailIfFiltered = true;
         }
 
-        public override bool InterpretResponse(ProcessorInput response, CommandState currentState)
+        public override bool InterpretResponse(ProcessorInput response)
         {
             DeviceResult<string> res = response as DeviceResult<string>;
             if (res != null)
@@ -38,7 +38,7 @@ namespace CommandApp
         public override void Execute()
         {
             _mainViewModel.AddMessage("Execute Message Executed");
-            
+
         }
     }
 }

@@ -40,8 +40,8 @@
                         Command="{Binding CancelCommandCommand}"
                         CommandParameter="{Binding SelectedItem.CommandId, ElementName=commandsGrid}"
                         Height="30" />
-                <Button Content="Create Many"
-                        Command="{Binding CreateManyCommand}"
+                <Button Content="Create Sequence Commands"
+                        Command="{Binding CreateSequnceCommand}"
                         Height="30" />
             </StackPanel>
         </GroupBox>
@@ -68,11 +68,11 @@
                         Command="{Binding SendSignalCommand}"
                         CommandParameter="{Binding SelectedItem.CommandId, ElementName=commandsGrid}" />
                 <TextBox Text="{Binding SignalValue}" />
-                
+
             </StackPanel>
-            
+
         </GroupBox>
-   
+
         <ListBox Grid.Row="1" Grid.ColumnSpan="3"
                  ItemsSource="{Binding Messages}">
             <ListBox.ItemTemplate>
@@ -113,7 +113,7 @@
                 <DataGrid ItemsSource="{Binding Filters}"
                           IsReadOnly="True"
                           AutoGenerateColumns="True">
-          
+
                 </DataGrid>
             </GroupBox>
 

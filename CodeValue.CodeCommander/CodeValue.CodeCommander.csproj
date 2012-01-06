@@ -95,6 +95,7 @@
     <Compile Include="FilterBase.cs" />
     <Compile Include="Interfaces\ICommandResponse.cs" />
     <Compile Include="Interfaces\IProcessedCommand.cs" />
+    <Compile Include="Ordered\OrderedCommandsFilter.cs" />
     <Compile Include="ProcessorInput.cs" />
     <Compile Include="FilterManager.cs" />
     <Compile Include="Interfaces\ICommandBase.cs" />

@@ -17,12 +17,12 @@ namespace CommandApp.Commands
 
     public abstract class BusyCommandBase<T> : CommandBase<T>, IBusyCommandBase
     {
-        
+
     }
 
     public class StopCommand : CommandBase
     {
-        public override bool InterpretResponse(ProcessorInput response, CommandState currentState)
+        public override bool InterpretResponse(ProcessorInput response)
         {
             return true;
 
@@ -43,7 +43,7 @@ namespace CommandApp.Commands
         public override bool Process(ICommandBase command)
         {
             // When there will be stop command
-            return command is StopCommand;                                
+            return command is StopCommand;
         }
     }
 }

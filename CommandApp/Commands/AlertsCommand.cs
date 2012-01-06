@@ -13,7 +13,7 @@ namespace CommandApp
             ShouldExecuteForever = true;
         }
 
-        public override bool InterpretResponse(ProcessorInput response, CommandState currentState)
+        public override bool InterpretResponse(ProcessorInput response)
         {
             DeviceResult<string> res = response as DeviceResult<string>;
             if (res != null)

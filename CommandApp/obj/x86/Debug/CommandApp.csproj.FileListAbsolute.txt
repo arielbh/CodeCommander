@@ -9,7 +9,6 @@ C:\Ariel\Projects\CodeValue\CodeLight\CodeCommander\CommandApp\bin\Debug\CodeVal
 C:\Ariel\Projects\CodeValue\CodeLight\CodeCommander\CommandApp\bin\Debug\Microsoft.Practices.Prism.pdb
 C:\Ariel\Projects\CodeValue\CodeLight\CodeCommander\CommandApp\bin\Debug\ReactiveUI.pdb
 C:\Ariel\Projects\CodeValue\CodeLight\CodeCommander\CommandApp\bin\Debug\ReactiveUI.xml
-C:\Ariel\Projects\CodeValue\CodeLight\CodeCommander\CommandApp\bin\Debug\System.Reactive.pdb
 C:\Ariel\Projects\CodeValue\CodeLight\CodeCommander\CommandApp\bin\Debug\System.Reactive.xml
 C:\Ariel\Projects\CodeValue\CodeLight\CodeCommander\CommandApp\bin\Debug\System.Reactive.Windows.Threading.xml
 C:\Ariel\Projects\CodeValue\CodeLight\CodeCommander\CommandApp\obj\x86\Debug\ResolveAssemblyReference.cache
@@ -23,3 +22,4 @@ C:\Ariel\Projects\CodeValue\CodeLight\CodeCommander\CommandApp\obj\x86\Debug\Gen
 C:\Ariel\Projects\CodeValue\CodeLight\CodeCommander\CommandApp\obj\x86\Debug\GenerateResource.write.1.tlog
 C:\Ariel\Projects\CodeValue\CodeLight\CodeCommander\CommandApp\obj\x86\Debug\CommandApp.exe
 C:\Ariel\Projects\CodeValue\CodeLight\CodeCommander\CommandApp\obj\x86\Debug\CommandApp.pdb
+C:\Ariel\Projects\CodeValue\CodeLight\CodeCommander\CommandApp\bin\Debug\System.Reactive.pdb

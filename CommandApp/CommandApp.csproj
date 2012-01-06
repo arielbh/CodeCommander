@@ -73,6 +73,7 @@
     </ApplicationDefinition>
     <Compile Include="Commands\AlertsCommand.cs" />
     <Compile Include="Commands\BusyCommandBase.cs" />
+    <Compile Include="Commands\SequenceCommand.cs" />
     <Compile Include="Commands\CommandFactory.cs" />
     <Compile Include="Commands\ConnectCommand.cs" />
     <Compile Include="Commands\ExecuteCommand.cs" />

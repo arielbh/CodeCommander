@@ -1,31 +1,29 @@
-using System;
-using CodeValue.CodeCommander;
-using CodeValue.CodeCommander.Interfaces;
-using CommandApp.Commands;
+﻿using CodeValue.CodeCommander;
 
-namespace CommandApp
+namespace CommandApp.Commands
 {
-    public class ExecuteCommand : BusyCommandBase
+
+    public class SequenceCommand : BusyCommandBase
     {
         private readonly MainViewModel _mainViewModel;
+        private readonly string _title;
 
-        public ExecuteCommand(MainViewModel mainViewModel)
+        public SequenceCommand(MainViewModel mainViewModel, string title)
         {
             _mainViewModel = mainViewModel;
-            PendingTimeout = new TimeSpan(10000);
-            ShouldCompleteAfterExecute = true;
+            _title = title;
 
         }
 
         public override bool CanExecute()
         {
-            _mainViewModel.AddMessage("Execute Message CanExecuted");
-            return _mainViewModel.AllowExecute;
+            _mainViewModel.AddMessage("Sequence [" + _title + "] CanExecuted");
+            return true;
         }
 
         public override void Execute()
         {
-            _mainViewModel.AddMessage("Execute Message Executed");
+            _mainViewModel.AddMessage("Sequence [" + _title + "] Executed");
 
         }
 

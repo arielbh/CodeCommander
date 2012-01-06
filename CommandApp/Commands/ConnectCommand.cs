@@ -28,12 +28,12 @@ namespace CommandApp
 
         public override void Execute()
         {
-            
+
             _mainViewModel.AddMessage("Connect Message Executed");
-            
+
         }
 
-        public override bool InterpretResponse(ProcessorInput response, CommandState currentState)
+        public override bool InterpretResponse(ProcessorInput response)
         {
 
             DeviceResult<bool> res = response as DeviceResult<bool>;
@@ -50,7 +50,7 @@ namespace CommandApp
             return false;
         }
 
-         
+
 
     }
 }

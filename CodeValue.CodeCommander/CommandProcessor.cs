@@ -8,6 +8,7 @@ using System.Reactive.Subjects;
 using System.Text;
 using CodeValue.CodeCommander.Exceptions;
 using CodeValue.CodeCommander.Interfaces;
+using CodeValue.CodeCommander.Ordered;
 using ReactiveUI;
 
 namespace CodeValue.CodeCommander
@@ -25,8 +26,7 @@ namespace CodeValue.CodeCommander
         {
             _filterManager = filterManager;
             filterManager.ItemsChanged.Subscribe(
-                o =>
-                _outstandingCommands.Where(c => c.CurrentState == CommandState.Pending).OrderBy(c => c.Order).ToList().ForEach(PushToFilter));
+                f => TraversePendingCommands());
 
             _outstandingCommands.ItemsAdded.Subscribe(HandleAddedCommand);
 
@@ -44,7 +44,7 @@ namespace CodeValue.CodeCommander
                         bool result = false;
                         try
                         {
-                            result = cmd.InterpretResponse(resp, cmd.CurrentState);
+                            result = cmd.InterpretResponse(resp);
                         }
                         catch (Exception ex)
                         {
@@ -66,7 +66,12 @@ namespace CodeValue.CodeCommander
             }
         }
 
-        private void HandleAddedCommand(CommandBase item)
+        protected virtual void TraversePendingCommands()
+        {
+            _outstandingCommands.Where(c => c.CurrentState == CommandState.Pending).OrderBy(c => c.Order).ToList().ForEach(PushToFilter);
+        }
+
+        protected virtual void HandleAddedCommand(CommandBase item)
         {
             item.SerialNumber = _commandCounter++;
             item.CurrentState = CommandState.Pending;
@@ -82,7 +87,7 @@ namespace CodeValue.CodeCommander
                                                   RemoveCommand(item));
         }
 
-        private void AddCommand(CommandBase command)
+        protected virtual void AddCommand(CommandBase command)
         {
             if (command.CurrentState != CommandState.New) throw new CommandProcessorException("Command is not new");
             lock (_lockingQueue)
@@ -90,7 +95,7 @@ namespace CodeValue.CodeCommander
                 _outstandingCommands.Add(command);
             }
         }
-        private bool RemoveCommand(CommandBase item)
+        protected virtual bool RemoveCommand(CommandBase item)
         {
             lock (_lockingQueue)
             {
@@ -99,7 +104,7 @@ namespace CodeValue.CodeCommander
             }
         }
 
-        private void PushToFilter(CommandBase command)
+        protected virtual void PushToFilter(CommandBase command)
         {
             Exception exception = null;
             bool result;
@@ -120,7 +125,7 @@ namespace CodeValue.CodeCommander
             command.StartRequest(nextState, exception);
         }
 
-        public IDisposable PublishCommand(CommandBase command, IObserver<ICommandResponse<Unit>> observer = null)
+        public virtual IDisposable PublishCommand(CommandBase command, IObserver<ICommandResponse<Unit>> observer = null)
         {
             IDisposable subscription = null;
             if (observer != null)
@@ -130,7 +135,7 @@ namespace CodeValue.CodeCommander
 
 
         }
-        public IDisposable PublishCommand<T>(CommandBase<T> command, IObserver<ICommandResponse<T>> observer = null)
+        public virtual IDisposable PublishCommand<T>(CommandBase<T> command, IObserver<ICommandResponse<T>> observer = null)
         {
             IDisposable subscription = null;
             if (observer != null)
@@ -139,8 +144,43 @@ namespace CodeValue.CodeCommander
             return subscription;
         }
 
+        public virtual IDisposable[] PublishOrderedCommands(CommandBase[] commands, IObserver<ICommandResponse<Unit>>[] observers = null)
+        {
+            var disposables = new List<IDisposable>();
+            var commandsTracking = commands.ToDictionary(c => c as ICommandBase, c => false);
+            var filter = CreateOrderedCommandsFilter(commands, commandsTracking);
+            filter.UnregisterToken = RegisterForCompletedCommands(filter.CompletedCommandsObserver);
+            var pusbFilterDispose =
+                RegisterForCompletedCommands(Observer.Create<CommandBase>(c => TraversePendingCommands()));
+            filter.Finalizer = () =>
+            {
+                pusbFilterDispose.Dispose();
+                filter.Finalizer = null;
+                _filterManager.RemoveFilter(filter);
+            };
 
-        public void CancelCommand(CommandBase command)
+            _filterManager.AddFilter(filter);
+            for (int i = 0; i < commands.Length; i++)
+            {
+                var command = commands[i];
+                IObserver<ICommandResponse<Unit>> observer = null;
+
+                if (observers != null)
+                {
+                    observer = observers.ElementAtOrDefault(i);
+                }
+                disposables.Add(PublishCommand(command, observer));
+            }
+            return disposables.ToArray();
+        }
+
+        protected virtual OrderedCommandsFilter CreateOrderedCommandsFilter(CommandBase[] commands, Dictionary<ICommandBase, bool> commandsTracking)
+        {
+            return new OrderedCommandsFilter(commands, commandsTracking);
+        }
+
+
+        public virtual void CancelCommand(CommandBase command)
         {
             command.CurrentState = CommandState.Canceled;
             lock (_lockingQueue)
@@ -152,13 +192,13 @@ namespace CodeValue.CodeCommander
             }
         }
 
-        public void RerunBlockedCommand(CommandBase command)
+        public virtual void RerunBlockedCommand(CommandBase command)
         {
             if (command.CurrentState != CommandState.Blocked) throw new CommandProcessorException("Command is not blocked");
             HandleAddedCommand(command);
         }
 
-        public void CancelCommandGroup(string groupId)
+        public virtual void CancelCommandGroup(string groupId)
         {
             lock (_lockingQueue)
             {
@@ -170,7 +210,7 @@ namespace CodeValue.CodeCommander
             }
         }
 
-        public IDisposable RegisterForCompletedCommands(IObserver<CommandBase> observer)
+        public virtual IDisposable RegisterForCompletedCommands(IObserver<CommandBase> observer)
         {
             return _outstandingCommands.ItemsRemoved.Subscribe(observer);
         }
