@@ -3,6 +3,7 @@ using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reactive;
+using System.Reactive.Concurrency;
 using System.Reactive.Linq;
 using System.Reactive.Subjects;
 using System.Text;
@@ -22,8 +23,12 @@ namespace CodeValue.CodeCommander
         private Dictionary<CommandBase, IDisposable> _subscriptions = new Dictionary<CommandBase, IDisposable>();
 
 
-        public CommandProcessor(IObservable<ProcessorInput> inputsSource, IFilterManager filterManager)
+        public CommandProcessor(IObservable<ProcessorInput> inputsSource, IFilterManager filterManager, bool useBackgroundDispatcher)
         {
+            if (useBackgroundDispatcher)
+            {
+                RxApp.DeferredScheduler = new EventLoopScheduler();
+            }
             _filterManager = filterManager;
             filterManager.ItemsChanged.Subscribe(
                 f => TraversePendingCommands());
@@ -41,16 +46,16 @@ namespace CodeValue.CodeCommander
                 {
                     foreach (var cmd in _outstandingCommands)
                     {
-                        bool result = false;
+                        bool result = false; 
                         try
-                        {
+                        {                                                                                                                  
                             result = cmd.InterpretResponse(resp);
                         }
                         catch (Exception ex)
                         {
                             cmd.CompleteCommand(ex);
                         }
-
+                        
                         if (result)
                         {
                             cmd.CurrentState = CommandState.Successed;
@@ -149,16 +154,16 @@ namespace CodeValue.CodeCommander
             var disposables = new List<IDisposable>();
             var commandsTracking = commands.ToDictionary(c => c as ICommandBase, c => false);
             var filter = CreateOrderedCommandsFilter(commands, commandsTracking);
-            filter.UnregisterToken = RegisterForCompletedCommands(filter.CompletedCommandsObserver);
+            filter.UnregisterToken =  RegisterForCompletedCommands(filter.CompletedCommandsObserver);
             var pusbFilterDispose =
                 RegisterForCompletedCommands(Observer.Create<CommandBase>(c => TraversePendingCommands()));
             filter.Finalizer = () =>
-            {
-                pusbFilterDispose.Dispose();
-                filter.Finalizer = null;
-                _filterManager.RemoveFilter(filter);
-            };
-
+                                   {
+                                       pusbFilterDispose.Dispose();
+                                       filter.Finalizer = null;
+                                       _filterManager.RemoveFilter(filter);
+                                   };
+            
             _filterManager.AddFilter(filter);
             for (int i = 0; i < commands.Length; i++)
             {
@@ -176,7 +181,7 @@ namespace CodeValue.CodeCommander
 
         protected virtual OrderedCommandsFilter CreateOrderedCommandsFilter(CommandBase[] commands, Dictionary<ICommandBase, bool> commandsTracking)
         {
-            return new OrderedCommandsFilter(commands, commandsTracking);
+            return new OrderedCommandsFilter(commands, commandsTracking); 
         }
 
 
