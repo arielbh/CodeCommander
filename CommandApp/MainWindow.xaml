@@ -43,6 +43,9 @@
                 <Button Content="Create Sequence Commands"
                         Command="{Binding CreateSequnceCommand}"
                         Height="30" />
+                <Button Content="Test Background Task"
+                        Command="{Binding CallBackgroundTaskCommand}"
+                        Height="30" />
             </StackPanel>
         </GroupBox>
         <GroupBox Grid.Column="1"
@@ -68,11 +71,11 @@
                         Command="{Binding SendSignalCommand}"
                         CommandParameter="{Binding SelectedItem.CommandId, ElementName=commandsGrid}" />
                 <TextBox Text="{Binding SignalValue}" />
-
+                
             </StackPanel>
-
+            
         </GroupBox>
-
+   
         <ListBox Grid.Row="1" Grid.ColumnSpan="3"
                  ItemsSource="{Binding Messages}">
             <ListBox.ItemTemplate>
@@ -113,7 +116,7 @@
                 <DataGrid ItemsSource="{Binding Filters}"
                           IsReadOnly="True"
                           AutoGenerateColumns="True">
-
+          
                 </DataGrid>
             </GroupBox>
 

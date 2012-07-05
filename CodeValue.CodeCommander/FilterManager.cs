@@ -37,7 +37,7 @@ namespace CodeValue.CodeCommander
                     localFilters = Filters.OrderBy(f => f.Order).ToArray();
                     _filtersChanged = false;
                 }
-                if (localFilters.Count() == 0) return true;
+                if (!localFilters.Any()) return true;
                 int index = 0;
                 while (index < localFilters.Count() && !_filtersChanged)
                 {

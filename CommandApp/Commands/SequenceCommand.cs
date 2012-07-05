@@ -3,7 +3,7 @@
 namespace CommandApp.Commands
 {
 
-    public class SequenceCommand : BusyCommandBase
+    public class SequenceCommand: BusyCommandBase
     {
         private readonly MainViewModel _mainViewModel;
         private readonly string _title;

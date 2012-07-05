@@ -40,19 +40,20 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.Practices.Prism, Version=4.0.0.0, Culture=neutral, PublicKeyToken=c4def769cd5b7e21, processorArchitecture=MSIL">
-      <HintPath>..\3rd Party\Microsoft.Practices.Prism.dll</HintPath>
+    <Reference Include="Microsoft.Practices.Prism">
+      <HintPath>..\..\..\Prism4\Microsoft.Practices.Prism.dll</HintPath>
     </Reference>
-    <Reference Include="ReactiveUI, Version=2.3.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\3rd Party\ReactiveUI.dll</HintPath>
+    <Reference Include="ReactiveUI, Version=2.4.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\RxUI\ReactiveUI.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Reactive, Version=1.1.10605.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\3rd Party\System.Reactive.dll</HintPath>
+    <Reference Include="System.Reactive, Version=1.1.10621.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\RxUI\System.Reactive.dll</HintPath>
     </Reference>
-    <Reference Include="System.Reactive.Windows.Threading, Version=1.1.10605.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\3rd Party\System.Reactive.Windows.Threading.dll</HintPath>
+    <Reference Include="System.Reactive.Windows.Threading, Version=1.1.10621.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\RxUI\System.Reactive.Windows.Threading.dll</HintPath>
     </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
@@ -73,11 +74,11 @@
     </ApplicationDefinition>
     <Compile Include="Commands\AlertsCommand.cs" />
     <Compile Include="Commands\BusyCommandBase.cs" />
-    <Compile Include="Commands\SequenceCommand.cs" />
     <Compile Include="Commands\CommandFactory.cs" />
     <Compile Include="Commands\ConnectCommand.cs" />
     <Compile Include="Commands\ExecuteCommand.cs" />
     <Compile Include="Commands\GetValueCommand.cs" />
+    <Compile Include="Commands\SequenceCommand.cs" />
     <Compile Include="DeviceResult.cs" />
     <Compile Include="Commands\NotConnectedFilter.cs" />
     <Compile Include="Extensions.cs" />

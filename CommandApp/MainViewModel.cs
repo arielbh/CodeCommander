@@ -10,6 +10,7 @@ using CodeValue.CodeCommander.Interfaces;
 using CommandApp.Commands;
 using Microsoft.Practices.Prism.Commands;
 using System.Reflection;
+using System.Threading.Tasks;
 
 namespace CommandApp
 {
@@ -28,60 +29,60 @@ namespace CommandApp
         {
             Filters = new ObservableCollection<IFilter>();
             SendSignalCommand = new DelegateCommand<string>(s =>
-            {
-                if (string.IsNullOrEmpty(SignalValue))
-                    callMe.OnNext(new DeviceResult { CommandId = s });
-                else
-                    callMe.OnNext(new DeviceResult<string>
-                    {
-                        CommandId = s,
-                        Input = SignalValue
-                    });
+                                                                {
+                                                                    if (string.IsNullOrEmpty(SignalValue))
+                                                                        callMe.OnNext(new DeviceResult {CommandId = s});
+                                                                    else
+                                                                        callMe.OnNext(new DeviceResult<string>
+                                                                                          {
+                                                                                              CommandId = s,
+                                                                                              Input = SignalValue
+                                                                                          });
 
-            }
+                                                                }
                 );
 
             _types = Assembly.GetExecutingAssembly().GetTypes();
-            _additionals[typeof(ConnectCommand)] =
+            _additionals[typeof (ConnectCommand)] =
                 c =>
-                {
-                    CommandBase<bool> command = c as CommandBase<bool>;
-                    command.CompleteAction = com =>
                     {
-                        CommandBase<bool> cast = com as CommandBase<bool>;
-                        if (cast.ReturnValue)
-                        {
-                            FilterManager.RemoveFilter(_notConnectedFilter);
-                        }
+                        CommandBase<bool> command = c as CommandBase<bool>;
+                        command.CompleteAction = com =>
+                                                     {
+                                                         CommandBase<bool> cast = com as CommandBase<bool>;
+                                                         if (cast.ReturnValue)
+                                                         {
+                                                             FilterManager.RemoveFilter(_notConnectedFilter);
+                                                         }
+                                                     };
+                        currentConnectCommand = command;
                     };
-                    currentConnectCommand = command;
-                };
-            _additionals[typeof(AlertsCommand)] =
+            _additionals[typeof (AlertsCommand)] =
                 c =>
-                {
-                    CommandBase<String> com = c as CommandBase<string>;
-                    com.Subscribe(
-                        Observer.Create<ICommandResponse<string>>(
-                            x => AddMessage(x.Sender.ToString() + " Got result " + x.Value.ToString()),
-                            ex => AddMessage(ex.Source + " Got Error: " + ex.Message),
-                            () => { }));
-                    currentAlertCommand = c;
-                };
+                    {
+                        CommandBase<String> com = c as CommandBase<string>;
+                        com.Subscribe(
+                            Observer.Create<ICommandResponse<string>>(
+                                x => AddMessage(x.Sender.ToString() + " Got result " + x.Value.ToString()),
+                                ex => AddMessage(ex.Source + " Got Error: " + ex.Message),
+                                () => { }));
+                        currentAlertCommand = c;
+                    };
 
             _CanExecutes["AlertsCommand"] = new Func<string, bool>(s => CanConnect);
 
             CreateCommandCommand = new DelegateCommand<string>(CreateACommand, s =>
-            {
-                if (_CanExecutes.ContainsKey(s))
-                {
-                    return _CanExecutes[s](s);
-                }
-                return true;
-            });
+                                                                                   {
+                                                                                       if (_CanExecutes.ContainsKey(s))
+                                                                                       {
+                                                                                           return _CanExecutes[s](s);
+                                                                                       }
+                                                                                       return true;
+                                                                                   });
 
             ThrowAlertCommand =
                 new DelegateCommand<string>(
-                    s => callMe.OnNext(new DeviceResult<string> { Input = s, CommandId = currentAlertCommand.CommandId }));
+                    s => callMe.OnNext(new DeviceResult<string> {Input = s, CommandId = currentAlertCommand.CommandId}));
 
             Commands = new ObservableCollection<IProcessedCommand>();
             Messages = new ObservableCollection<Message>();
@@ -99,11 +100,11 @@ namespace CommandApp
 
             SendConnectCommand = new DelegateCommand<bool?>(b =>
                                                             callMe.OnNext(new DeviceResult<bool>
-                                                            {
-                                                                Input = b.Value,
-                                                                CommandId =
-                                                                    currentConnectCommand.CommandId
-                                                            }));
+                                                                              {
+                                                                                  Input = b.Value,
+                                                                                  CommandId =
+                                                                                      currentConnectCommand.CommandId
+                                                                              }));
 
 
             callMe.OnNext(new ProcessorInput());
@@ -114,21 +115,21 @@ namespace CommandApp
                                                                                                           Commands.First(c => c.CommandId == s)));
 
             CreateSequnceCommand = new DelegateCommand(() =>
-            {
-                SequenceCommand c1 = new SequenceCommand(this, "AAA");
-                SequenceCommand c2 = new SequenceCommand(this, "BBB");
-                SequenceCommand c3 = new SequenceCommand(this, "CCC");
-                SequenceCommand c4 = new SequenceCommand(this, "DDD");
-                Commands.Add(c1);
-                Commands.Add(c2);
-                Commands.Add(c3);
-                Commands.Add(c4);
-                subscriptions.AddRange(
-                    CommandProcessor.PublishOrderedCommands(
-                        new[] { c1, c2, c3, c4 },
-                        new[] { MyObserver, MyObserver, MyObserver, MyObserver }));
+                                                           {
+                                                               SequenceCommand c1 = new SequenceCommand(this, "AAA");
+                                                               SequenceCommand c2 = new SequenceCommand(this, "BBB");
+                                                               SequenceCommand c3 = new SequenceCommand(this, "CCC");
+                                                               SequenceCommand c4 = new SequenceCommand(this, "DDD");
+                                                               Commands.Add(c1);
+                                                               Commands.Add(c2);
+                                                               Commands.Add(c3);
+                                                               Commands.Add(c4);
+                                                               subscriptions.AddRange(
+                                                                   CommandProcessor.PublishOrderedCommands(
+                                                                       new[] {c1, c2, c3, c4},
+                                                                       new[] { MyObserver, MyObserver, MyObserver, MyObserver }));
 
-            });
+                                                           });
 
         }
 
@@ -205,10 +206,37 @@ namespace CommandApp
                     OnPropertyChanged(() => CanConnect);
                     SendConnectCommand.RaiseCanExecuteChanged();
                     CreateCommandCommand.RaiseCanExecuteChanged();
-
+                    
                 }
             }
         }
+
+
+        private DelegateCommand _callBackgroundTaskCommand;
+
+        public DelegateCommand CallBackgroundTaskCommand
+        {
+            get
+            {
+                return _callBackgroundTaskCommand ?? (_callBackgroundTaskCommand = new DelegateCommand(
+                                                     () =>
+                                                         {
+                                                             Task.Factory.StartNew(() =>
+                                                                                       {
+                                                                                           var connect =
+                                                                                               new ConnectCommand(this);
+                                                                                           CommandProcessor p =
+                                                                                               new CommandProcessor(
+                                                                                                   callMe, FilterManager);
+                                                                                           var dispose =
+                                                                                               p.PublishCommand(connect);
+                                                                                       });
+                                                         }));
+            }
+        }
+
+
+
 
 
 
@@ -216,7 +244,7 @@ namespace CommandApp
 
     public class Message
     {
-        public Message()
+        public Message ()
         {
             Date = DateTime.Now;
         }

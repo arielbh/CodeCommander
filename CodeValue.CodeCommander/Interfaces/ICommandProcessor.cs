@@ -12,7 +12,7 @@ namespace CodeValue.CodeCommander.Interfaces
         IDisposable PublishCommand<T>(CommandBase<T> command, IObserver<ICommandResponse<T>> observer = null);
         IDisposable[] PublishOrderedCommands(CommandBase[] commands, IObserver<ICommandResponse<Unit>>[] observers = null);
 
-
+        
         void CancelCommand(CommandBase command);
         void RerunBlockedCommand(CommandBase command);
         void CancelCommandGroup(string groupId);

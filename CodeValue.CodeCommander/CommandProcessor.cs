@@ -7,6 +7,7 @@ using System.Reactive.Concurrency;
 using System.Reactive.Linq;
 using System.Reactive.Subjects;
 using System.Text;
+using System.Threading.Tasks;
 using CodeValue.CodeCommander.Exceptions;
 using CodeValue.CodeCommander.Interfaces;
 using CodeValue.CodeCommander.Ordered;
@@ -23,7 +24,7 @@ namespace CodeValue.CodeCommander
         private Dictionary<CommandBase, IDisposable> _subscriptions = new Dictionary<CommandBase, IDisposable>();
 
 
-        public CommandProcessor(IObservable<ProcessorInput> inputsSource, IFilterManager filterManager, bool useBackgroundDispatcher)
+        public CommandProcessor(IObservable<ProcessorInput> inputsSource, IFilterManager filterManager, bool useBackgroundDispatcher = false)
         {
             if (useBackgroundDispatcher)
             {
@@ -44,6 +45,7 @@ namespace CodeValue.CodeCommander
             {
                 inputsSource.SelectMany(resp =>
                 {
+                    var failingCommands = new List<Tuple<CommandBase, Exception>>();
                     foreach (var cmd in _outstandingCommands)
                     {
                         bool result = false; 
@@ -53,7 +55,8 @@ namespace CodeValue.CodeCommander
                         }
                         catch (Exception ex)
                         {
-                            cmd.CompleteCommand(ex);
+                            failingCommands.Add(new Tuple<CommandBase, Exception>(cmd, ex));
+                            
                         }
                         
                         if (result)
@@ -61,6 +64,11 @@ namespace CodeValue.CodeCommander
                             cmd.CurrentState = CommandState.Successed;
                             return Observable.Return(cmd.CurrentState);
                         }
+                    }
+
+                    foreach (var cmd in failingCommands)
+                    {
+                        cmd.Item1.CompleteCommand(cmd.Item2);
                     }
 
                     return Observable.Empty<CommandState>();
@@ -111,6 +119,11 @@ namespace CodeValue.CodeCommander
 
         protected virtual void PushToFilter(CommandBase command)
         {
+            Task.Factory.StartNew(() => DoPushToFilter(command));
+        }
+
+        protected void DoPushToFilter(CommandBase command)
+        {
             Exception exception = null;
             bool result;
             try
@@ -121,12 +134,11 @@ namespace CodeValue.CodeCommander
             {
                 result = false;
                 exception = ex;
-
             }
+            CommandState nextState = result ? CommandState.Executing
+                                            : command.ShouldFailIfFiltered ? CommandState.Failed
+                                                                           : CommandState.Pending;
 
-            CommandState nextState = result
-                                         ? CommandState.Executing
-                                         : command.ShouldFailIfFiltered ? CommandState.Failed : CommandState.Pending;
             command.StartRequest(nextState, exception);
         }
 
@@ -137,9 +149,8 @@ namespace CodeValue.CodeCommander
                 subscription = command.Subscribe(observer);
             AddCommand(command);
             return subscription;
-
-
         }
+
         public virtual IDisposable PublishCommand<T>(CommandBase<T> command, IObserver<ICommandResponse<T>> observer = null)
         {
             IDisposable subscription = null;
@@ -152,7 +163,7 @@ namespace CodeValue.CodeCommander
         public virtual IDisposable[] PublishOrderedCommands(CommandBase[] commands, IObserver<ICommandResponse<Unit>>[] observers = null)
         {
             var disposables = new List<IDisposable>();
-            var commandsTracking = commands.ToDictionary(c => c as ICommandBase, c => false);
+            var commandsTracking = commands.OrderBy(c => c.Order).ToDictionary(c => c as ICommandBase, c => false);
             var filter = CreateOrderedCommandsFilter(commands, commandsTracking);
             filter.UnregisterToken =  RegisterForCompletedCommands(filter.CompletedCommandsObserver);
             var pusbFilterDispose =

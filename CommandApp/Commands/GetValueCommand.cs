@@ -38,7 +38,7 @@ namespace CommandApp
         public override void Execute()
         {
             _mainViewModel.AddMessage("Execute Message Executed");
-
+            
         }
     }
 }

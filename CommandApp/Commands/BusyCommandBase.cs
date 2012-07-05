@@ -17,7 +17,7 @@ namespace CommandApp.Commands
 
     public abstract class BusyCommandBase<T> : CommandBase<T>, IBusyCommandBase
     {
-
+        
     }
 
     public class StopCommand : CommandBase
@@ -43,7 +43,7 @@ namespace CommandApp.Commands
         public override bool Process(ICommandBase command)
         {
             // When there will be stop command
-            return command is StopCommand;
+            return command is StopCommand;                                
         }
     }
 }

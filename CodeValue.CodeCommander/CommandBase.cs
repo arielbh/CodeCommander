@@ -155,9 +155,9 @@ namespace CodeValue.CodeCommander
                 }
                 else
                 {
-                    CompleteCommand(new CommandFailureException("Command can not be started. Most likely due to filers"));
-
-                }
+                    CompleteCommand(new CommandFailureException("Command can not be started. Most likely due to filters"));
+                    
+                }                
             }
             // This method is called at the start of every request - this method
             // should do the following:
@@ -212,6 +212,7 @@ namespace CodeValue.CodeCommander
                     if (ShouldFailIfBlocked)
                     {
                         CompleteCommand(new CommandFailureException("Command was supposed to be blocked, due to configuration command has failed."));
+                        return;
                     }
                     CurrentState = CommandState.Blocked;
                 }
@@ -230,7 +231,7 @@ namespace CodeValue.CodeCommander
         public CommandState CurrentState
         {
             get { return _CurrentState; }
-            set { this.RaiseAndSetIfChanged(x => x.CurrentState, value); }
+            internal protected set { this.RaiseAndSetIfChanged(x => x.CurrentState, value); }
         }
 
         public abstract bool CanExecute();

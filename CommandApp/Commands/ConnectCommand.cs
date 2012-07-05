@@ -28,9 +28,9 @@ namespace CommandApp
 
         public override void Execute()
         {
-
+            
             _mainViewModel.AddMessage("Connect Message Executed");
-
+            
         }
 
         public override bool InterpretResponse(ProcessorInput response)
@@ -50,7 +50,7 @@ namespace CommandApp
             return false;
         }
 
-
+         
 
     }
 }
