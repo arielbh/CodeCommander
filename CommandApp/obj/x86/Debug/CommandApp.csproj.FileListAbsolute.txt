@@ -25,3 +25,14 @@ C:\Ariel\Projects\Customers\LandaLabs\Spitfire\Dev\3rd Party\CodeValue\CodeComma
 C:\Ariel\Projects\Customers\LandaLabs\Spitfire\Dev\3rd Party\CodeValue\CodeCommander\CommandApp\bin\Debug\Microsoft.Practices.ServiceLocation.xml
 C:\Ariel\Projects\Customers\LandaLabs\Spitfire\Dev\3rd Party\CodeValue\CodeCommander\CommandApp\obj\x86\Debug\CommandApp.exe
 C:\Ariel\Projects\Customers\LandaLabs\Spitfire\Dev\3rd Party\CodeValue\CodeCommander\CommandApp\obj\x86\Debug\CommandApp.pdb
+D:\dev\CodeCommander\CommandApp\obj\x86\Debug\CommandApp.exe
+D:\dev\CodeCommander\CommandApp\obj\x86\Debug\CommandApp.pdb
+D:\dev\CodeCommander\CommandApp\obj\x86\Debug\ResolveAssemblyReference.cache
+D:\dev\CodeCommander\CommandApp\obj\x86\Debug\MainWindow.baml
+D:\dev\CodeCommander\CommandApp\obj\x86\Debug\MainWindow.g.cs
+D:\dev\CodeCommander\CommandApp\obj\x86\Debug\App.g.cs
+D:\dev\CodeCommander\CommandApp\obj\x86\Debug\CommandApp_MarkupCompile.cache
+D:\dev\CodeCommander\CommandApp\obj\x86\Debug\CommandApp.g.resources
+D:\dev\CodeCommander\CommandApp\obj\x86\Debug\CommandApp.Properties.Resources.resources
+D:\dev\CodeCommander\CommandApp\obj\x86\Debug\GenerateResource.read.1.tlog
+D:\dev\CodeCommander\CommandApp\obj\x86\Debug\GenerateResource.write.1.tlog

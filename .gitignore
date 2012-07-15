@@ -1,36 +1,61 @@
-# .gitignore for .NET projects
-# Thanks to Derick Bailey
-# http://www.lostechies.com/blogs/derickbailey/archive/2009/05/18/a-net-c-developer-s-gitignore-file.aspx
-# Additional Thanks to 
-# - Alexey Abramov
-
-# Standard VS.NET and ReSharper Foo
-obj
-bin
-*.csproj.user
-*ReSharper*
-*resharper*
+*.pdb
 *.suo
-*.cache
-* Thumbs.db
+*.vspcc
+.svn
+bin
+Debug
+Release
 
-# Other useful stuff
-*.bak
-*.cache
-*.log
-*.swp
+#Armadillo files
+ARMADILLO_CACHE
+
+#OS junk files
+[Tt]humbs.db
+*.DS_Store
+
+#Visual Studio files
+*.[Oo]bj
 *.user
-_compareTemp
-_notes
-aspnet_client
-httpd.parse.errors
+*.aps
+*.pch
+*.vspscc
+*.vssscc
+*_i.c
+*_p.c
+*.ncb
+*.suo
+*.tlb
+*.tlh
+*.bak
+*.[Cc]ache
+*.ilk
+*.log
+*.lib
+*.sbr
+*.sdf
+*.opensdf
+ipch/
+obj/
+[Bb]in
+[Dd]ebug*/
+[Rr]elease*/
+Ankh.NoLoad
+packages/
+
+#Tooling
+_ReSharper*/
+*.resharper
+[Tt]est[Rr]esult*
+
+#Project files
+[Bb]uild/
+
+#Subversion files
+.svn
 
 # Office Temp Files
-~$* 
+~$*
 
-# If you have a deploy folder
-deploy
-deploy/*
-
-
-
+#ncrunch
+*ncrunch*
+*crunch*.local.xml
