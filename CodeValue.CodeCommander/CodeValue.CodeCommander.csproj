@@ -71,12 +71,12 @@
   <ItemGroup>
     <Reference Include="PresentationCore" />
     <Reference Include="ReactiveUI">
-      <HintPath>..\CommandApp\bin\Debug\ReactiveUI.dll</HintPath>
+      <HintPath>..\3rd Party\ReactiveUI.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Reactive">
-      <HintPath>..\CommandApp\bin\Debug\System.Reactive.dll</HintPath>
+      <HintPath>..\3rd Party\System.Reactive.dll</HintPath>
     </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
