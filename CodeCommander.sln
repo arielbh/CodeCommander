@@ -14,22 +14,14 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeValue.CodeCommander.Tests", "CodeValue.CodeCommander.Tests\CodeValue.CodeCommander.Tests.csproj", "{13801845-152B-44E1-BC1A-2EFC415F9641}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{3D0A3F16-4707-490C-A499-3B11DBB1AE19}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\nuget.exe = .nuget\nuget.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
 Global
-	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 4
-		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccTeamFoundationServer = http://tfsrv01:8080/tfs/defaultcollection
-		SccLocalPath0 = .
-		SccProjectUniqueName1 = CommandApp\\CommandApp.csproj
-		SccProjectName1 = CommandApp
-		SccLocalPath1 = CommandApp
-		SccProjectUniqueName2 = CodeValue.CodeCommander\\CodeValue.CodeCommander.csproj
-		SccProjectName2 = CodeValue.CodeCommander
-		SccLocalPath2 = CodeValue.CodeCommander
-		SccProjectUniqueName3 = CodeValue.CodeCommander.Tests\\CodeValue.CodeCommander.Tests.csproj
-		SccProjectName3 = CodeValue.CodeCommander.Tests
-		SccLocalPath3 = CodeValue.CodeCommander.Tests
-	EndGlobalSection
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = CodeCommander.vsmdi
 	EndGlobalSection
