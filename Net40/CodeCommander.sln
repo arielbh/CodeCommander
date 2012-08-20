@@ -1,6 +1,6 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommandApp", "CommandApp\CommandApp.csproj", "{71A80D4F-63F9-43A0-9E70-903A14AD690F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeValue.CodeCommander", "CodeValue.CodeCommander\CodeValue.CodeCommander.csproj", "{7DF98769-B32F-43BE-ABBC-679A5391FA32}"
