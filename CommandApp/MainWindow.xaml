@@ -1,0 +1,130 @@
+﻿<Window x:Class="CommandApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="350" Width="525" WindowState="Maximized">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60*" />
+            <RowDefinition Height="40*" />
+        </Grid.RowDefinitions>
+        <GroupBox Header="Client">
+            <StackPanel>
+                <Button Content="Connect Command"
+                        Command="{Binding CreateCommandCommand}"
+                        CommandParameter="ConnectCommand"
+                        Height="30" />
+                <Button Content="Alerts Command"
+                        Command="{Binding CreateCommandCommand}"
+                        CommandParameter="AlertsCommand"
+                        Height="30" />
+                <Button Content="Execute Command"
+                        Command="{Binding CreateCommandCommand}"
+                        CommandParameter="ExecuteCommand"
+                        Height="30" />
+                <CheckBox Content="Allow Execute?"
+                          IsChecked="{Binding AllowExecute}" />
+                <Button Content="GetValue Command"
+                        Command="{Binding CreateCommandCommand}"
+                        CommandParameter="GetValueCommand"
+                        Height="30" />
+                <Button Content="Release Blocked Command"
+                        Command="{Binding ReleaseBlockedCommand}"
+                        CommandParameter="{Binding SelectedItem.CommandId, ElementName=commandsGrid}" 
+                        Height="30" />
+                <Button Content="Cancel Command"
+                        Command="{Binding CancelCommandCommand}"
+                        CommandParameter="{Binding SelectedItem.CommandId, ElementName=commandsGrid}"
+                        Height="30" />
+                <Button Content="Create Sequence Commands"
+                        Command="{Binding CreateSequnceCommand}"
+                        Height="30" />
+                <Button Content="Test Background Task"
+                        Command="{Binding CallBackgroundTaskCommand}"
+                        Height="30" />
+            </StackPanel>
+        </GroupBox>
+        <GroupBox Grid.Column="1"
+                  Header="Device">
+            <StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <CheckBox x:Name="isConnected"
+                              Content="Can Connect"
+                              IsChecked="True" />
+                    <Button Content="Send Connection State"
+                            Command="{Binding SendConnectCommand}"
+                            CommandParameter="{Binding IsChecked,ElementName=isConnected}" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Button Content="Throw Alert"
+                            Command="{Binding ThrowAlertCommand}"
+                            CommandParameter="{Binding Text, ElementName=alertTextBox}"
+                            Height="30" />
+                    <TextBox x:Name="alertTextBox"  Width="100"/>
+                </StackPanel>
+
+                <Button Content="Send Signal"
+                        Command="{Binding SendSignalCommand}"
+                        CommandParameter="{Binding SelectedItem.CommandId, ElementName=commandsGrid}" />
+                <TextBox Text="{Binding SignalValue}" />
+                
+            </StackPanel>
+            
+        </GroupBox>
+   
+        <ListBox Grid.Row="1" Grid.ColumnSpan="3"
+                 ItemsSource="{Binding Messages}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock>
+                        <TextBlock.Text>
+                             <MultiBinding StringFormat="[{0} - {1}]">
+                                  <Binding Path="Date"></Binding>
+                                  <Binding Path="Text"></Binding>
+                             </MultiBinding>
+
+                        </TextBlock.Text>
+                    </TextBlock>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <Grid Grid.Column="2">
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <GroupBox Header="Running Commands">
+                <DataGrid x:Name="commandsGrid"  ItemsSource="{Binding Commands}" 
+                           AutoGenerateColumns="False" IsReadOnly="True">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Command Id" Binding="{Binding CommandId}" />
+                        <DataGridTextColumn Header="State" Binding="{Binding CurrentState}" />
+                        <DataGridTextColumn Header="Return Value" Binding="{Binding ReturnValue}" />
+                        <DataGridTextColumn Header="Serial Number"
+                                            Binding="{Binding SerialNumber}" />
+
+                    </DataGrid.Columns>
+                </DataGrid>
+            </GroupBox>
+            <GroupBox Grid.Row="1"
+                      Header="Current Filters"
+                      >
+                <DataGrid ItemsSource="{Binding Filters}"
+                          IsReadOnly="True"
+                          AutoGenerateColumns="True">
+          
+                </DataGrid>
+            </GroupBox>
+
+
+
+        </Grid>
+
+
+    </Grid>
+</Window>
+                      
