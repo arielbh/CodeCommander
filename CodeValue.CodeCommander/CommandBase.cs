@@ -270,7 +270,7 @@ namespace CodeValue.CodeCommander
                 if (value != _currentState)
                 {
                     _currentState = value;
-                    OnPropertyChanged();
+                    OnPropertyChanged("CurrentState");
                     HandleStateChange(CurrentState);
                 }
             }
@@ -295,7 +295,7 @@ namespace CodeValue.CodeCommander
                 if (value != _returnValue)
                 {
                     _returnValue = value;
-                    OnPropertyChanged();
+                    OnPropertyChanged("ReturnValue");
                 }
             }
         }
@@ -336,7 +336,7 @@ namespace CodeValue.CodeCommander
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        protected virtual void OnPropertyChanged(string propertyName = null)
         {
             PropertyChangedEventHandler handler = PropertyChanged;
             if (handler != null) handler(this, new PropertyChangedEventArgs(propertyName));
@@ -379,7 +379,7 @@ namespace CodeValue.CodeCommander
             {
 
                 _returnValue = value;
-                OnPropertyChanged();
+                OnPropertyChanged("ReturnValue");
             }
         }
 
