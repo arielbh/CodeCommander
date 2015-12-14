@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Reactive;
+using System.Reactive.Linq;
 using System.Reactive.Subjects;
 using CodeLight.Common.Desktop;
 using CodeValue.CodeCommander;
@@ -10,6 +11,7 @@ using CodeValue.CodeCommander.Interfaces;
 using CommandApp.Commands;
 using Microsoft.Practices.Prism.Commands;
 using System.Reflection;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace CommandApp
@@ -88,8 +90,9 @@ namespace CommandApp
             Messages = new ObservableCollection<Message>();
 
             FilterManager = new FilterManager();
-            FilterManager.ItemsAdded.Subscribe(f => Filters.Add(f));
-            FilterManager.ItemsRemoved.Subscribe(f => Filters.Remove(f));
+
+            FilterManager.ItemsAdded.ObserveOn(SynchronizationContext.Current).Subscribe(f => Filters.Add(f));
+            FilterManager.ItemsRemoved.ObserveOn(SynchronizationContext.Current).Subscribe(f => Filters.Remove(f));
             FilterManager.AddFilter(_notConnectedFilter);
             commandFactory = new CommandFactory(FilterManager);
             commandFactory.OnCreateCommand = new Action<CommandBase>(c => Commands.Add(c));

@@ -1,18 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Reactive;
 using System.Reactive.Linq;
 using System.Reactive.Subjects;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using CodeValue.CodeCommander.Exceptions;
 using CodeValue.CodeCommander.Interfaces;
-using ReactiveUI;
 
 namespace CodeValue.CodeCommander
 {
-    public abstract class CommandBase : ReactiveObject, IObservable<ICommandResponse<Unit>>, ICommandBase, IProcessedCommand
+    public abstract class CommandBase : IObservable<ICommandResponse<Unit>>, ICommandBase, IProcessedCommand, INotifyPropertyChanged
     {
 #pragma warning disable 649 //RxUI assume private methods are following this convention.
         // ReSharper disable InconsistentNaming
@@ -21,20 +23,28 @@ namespace CodeValue.CodeCommander
 #pragma warning restore  649
 
         private readonly ReplaySubject<ICommandResponse<Unit>> _inner = new ReplaySubject<ICommandResponse<Unit>>();
-
+              private readonly Subject<CommandState> _stateChangedSubject = new Subject<CommandState>();
         protected CommandBase()
         {
-            CommandTraces = new ReactiveCollection<CommandTrace>();
+            CommandTraces = new ObservableCollection<CommandTrace>();
             CommandId = Guid.NewGuid().ToString();
             CurrentState = CommandState.New;
             Inner.Subscribe(x => HandleFullfillment(), HandleError, HandleCompletion);
-            this.ObservableForProperty(c => c.CurrentState).Subscribe(HandleStateChange);
+            this.PropertyChanged += CommandBase_PropertyChanged;
         }
 
-        private void HandleStateChange(IObservedChange<CommandBase, CommandState> b)
+        private void CommandBase_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            CommandTraces.Add(new CommandTrace { DateTime = DateTime.Now, State = b.Value });
-            if (b.Value == CommandState.Successed)
+            if (e.PropertyName == "CurrentState")
+            {
+                HandleStateChange(this.CurrentState);
+            }
+        }
+
+        private void HandleStateChange(CommandState state)
+        {
+            CommandTraces.Add(new CommandTrace { DateTime = DateTime.Now, State = state });
+            if (state == CommandState.Successed)
             {
                 SignalCommandFulfillment();
                 if (!ShouldExecuteForever)
@@ -47,7 +57,8 @@ namespace CodeValue.CodeCommander
                 }
             }
 
-            RegisterTimers(b.Value);
+            RegisterTimers(state);
+            _stateChangedSubject.OnNext(state);
         }
 
         private void RegisterTimers(CommandState currentState)
@@ -127,9 +138,9 @@ namespace CodeValue.CodeCommander
 
         protected ReplaySubject<ICommandResponse<Unit>> Inner { get { return _inner; } }
 
-        public IDisposable RegisterForStateChange(IObserver<IObservedChange<CommandBase, CommandState>> observer)
+        public IDisposable RegisterForStateChange(IObserver<CommandState> observer)
         {
-            return this.ObservableForProperty(c => c.CurrentState).Subscribe(observer);
+            return _stateChangedSubject.Subscribe(observer);
         }
 
         public IDisposable Subscribe(IObserver<ICommandResponse<Unit>> observer)
@@ -228,10 +239,19 @@ namespace CodeValue.CodeCommander
             return "Command: " + CommandId;
         }
 
+        private CommandState _currentState;
+
         public CommandState CurrentState
         {
-            get { return _CurrentState; }
-            internal protected set { this.RaiseAndSetIfChanged(x => x.CurrentState, value); }
+            get { return _currentState; }
+            set
+            {
+                if (value != _currentState)
+                {
+                    _currentState = value;
+                    OnPropertyChanged();
+                }
+            }
         }
 
         public abstract bool CanExecute();
@@ -239,23 +259,25 @@ namespace CodeValue.CodeCommander
 
         public string CommandId { get; private set; }
 
-#pragma warning disable 649 //RxUI assume private methods are following this convention.
-        // ReSharper disable InconsistentNaming
-        private Unit _ReturnValue;
-        // ReSharper restore InconsistentNaming
-#pragma warning restore  649
-
+        private Unit _returnValue;
         public Unit ReturnValue
         {
-            get { return _ReturnValue; }
-            protected set { this.RaiseAndSetIfChanged(x => x.ReturnValue, value); }
+            get { return _returnValue; }
+            set
+            {
+                if (value != _returnValue)
+                {
+                    _returnValue = value;
+                    OnPropertyChanged();
+                }
+            }
         }
 
         public Action<IProcessedCommand> CompleteAction { get; set; }
         public Action<IProcessedCommand, Exception> ErrorAction { get; set; }
         public Action<IProcessedCommand> FullfillmentAction { get; set; }
         public Action<IProcessedCommand> BeforeExecuteAction { get; set; }
-        public ReactiveCollection<CommandTrace> CommandTraces { get; private set; }
+        public ObservableCollection<CommandTrace> CommandTraces { get; private set; }
         public bool ShouldFailIfFiltered { get; protected set; }
         public TimeSpan? PendingTimeout { get; protected set; }
         public TimeSpan? ExecutingTimeout { get; protected set; }
@@ -276,6 +298,13 @@ namespace CodeValue.CodeCommander
                 return _order.Value;
             }
             set { _order = value; }
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 
@@ -300,18 +329,19 @@ namespace CodeValue.CodeCommander
             Inner.OnNext(new CommandResponse<T>(this, ReturnValue));
         }
 
-
-
-#pragma warning disable 649 //RxUI assume private methods are following this convention.
-        // ReSharper disable InconsistentNaming
-        private T _ReturnValue;
-        // ReSharper restore InconsistentNaming
-#pragma warning restore  649
+        private T _returnValue;
 
         public new T ReturnValue
         {
-            get { return _ReturnValue; }
-            protected set { this.RaiseAndSetIfChanged(x => x.ReturnValue, value); }
+            get { return _returnValue; }
+            set
+            {
+                if (!Equals(value, _returnValue))
+                {
+                    _returnValue = value;
+                    OnPropertyChanged();
+                }
+            }
         }
 
 

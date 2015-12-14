@@ -4,7 +4,6 @@ using System.Collections.Specialized;
 using System.Linq;
 using System.Reactive.Linq;
 using CodeValue.CodeCommander.Interfaces;
-using ReactiveUI;
 
 namespace CodeValue.CodeCommander
 {
@@ -15,9 +14,10 @@ namespace CodeValue.CodeCommander
 
         public FilterManager()
         {
-            Filters = new ReactiveCollection<IFilter>();
+            Filters = new ObservableCollection<IFilter>();
 
         }
+
         public bool Process(CommandBase command)
         {
             if (command.CurrentState == CommandState.Pending)
@@ -50,7 +50,7 @@ namespace CodeValue.CodeCommander
 
         public IObservable<IFilter> ItemsRemoved
         {
-            get { return Filters.ItemsRemoved; }
+            get { return Filters.GetObservableRemovedValues(); }
         }
 
         public void AddFilter(IFilter filter)
@@ -72,7 +72,7 @@ namespace CodeValue.CodeCommander
             }
         }
 
-        private ReactiveCollection<IFilter> Filters { get; set; }
+        private ObservableCollection<IFilter> Filters { get; set; }
         public IFilter[] CurrentFilters
         {
             get
@@ -88,12 +88,12 @@ namespace CodeValue.CodeCommander
 
         public IObservable<IFilter> ItemsAdded
         {
-            get { return Filters.ItemsAdded; }
+            get { return Filters.GetObservableAddedValues(); }
         }
 
         public IObservable<IFilter>  ItemsChanged
         {
-            get { return Observable.Merge(Filters.ItemsAdded, Filters.ItemsRemoved); }
+            get { return Observable.Merge(Filters.GetObservableAddedValues(), Filters.GetObservableRemovedValues()); }
         }
 
     }

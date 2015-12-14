@@ -2,7 +2,6 @@ using System;
 using System.Reactive;
 using CodeValue.CodeCommander;
 using CodeValue.CodeCommander.Interfaces;
-using ReactiveUI;
 
 namespace CommandApp.Commands
 {
@@ -23,9 +22,9 @@ namespace CommandApp.Commands
             {
                 instance.BeforeExecuteAction = c => _filterManager.AddFilter(_busyFilter);
                 instance.CompleteAction = c => _filterManager.RemoveFilter(_busyFilter);
-                instance.RegisterForStateChange(Observer.Create<IObservedChange<CommandBase, CommandState>>(b =>
+                instance.RegisterForStateChange(Observer.Create<CommandState>(b =>
                                                                                                                 {
-                                                                                                                    if (b.Value == CommandState.Blocked || b.Value == CommandState.Canceled)
+                                                                                                                    if (b == CommandState.Blocked || b == CommandState.Canceled)
                                                                                                                     {
                                                                                                                     _filterManager.RemoveFilter(_busyFilter);                                
                                                                                                                     }

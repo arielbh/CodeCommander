@@ -9,7 +9,6 @@ using CodeValue.CodeCommander.Interfaces;
 using CodeValue.CodeCommander.Tests.Mocks;
 using FakeItEasy;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using ReactiveUI;
 
 namespace CodeValue.CodeCommander.Tests
 {
@@ -75,9 +74,9 @@ namespace CodeValue.CodeCommander.Tests
             var evt = new ManualResetEventSlim(false);
             var command = new TestCommand(CommandState.New, shouldFailIfFiltered: true);
 
-            command.RegisterForStateChange(Observer.Create<IObservedChange<CommandBase, CommandState>>(b =>
+            command.RegisterForStateChange(Observer.Create<CommandState>(b =>
             {
-                if (b.Value == CommandState.Failed)
+                if (b == CommandState.Failed)
                 {
                     evt.Set();
                 }
@@ -155,9 +154,9 @@ namespace CodeValue.CodeCommander.Tests
             var evt = new ManualResetEventSlim(false);
             var command = new TestCommand(CommandState.New);
 
-            command.RegisterForStateChange(Observer.Create<IObservedChange<CommandBase, CommandState>>(b =>
+            command.RegisterForStateChange(Observer.Create<CommandState>(b =>
             {
-                if (b.Value == CommandState.Executing)
+                if (b == CommandState.Executing)
                 {
                     evt.Set();
                 }
@@ -239,9 +238,9 @@ namespace CodeValue.CodeCommander.Tests
             var processor = new CommandProcessor(null, fakeFilterManager);
             var command = new TestCommand(CommandState.New);
 
-            command.RegisterForStateChange(Observer.Create<IObservedChange<CommandBase, CommandState>>(b =>
+            command.RegisterForStateChange(Observer.Create<CommandState>(b =>
             {
-                if (b.Value == CommandState.Executing)
+                if (b == CommandState.Executing)
                 {
                     resetEvent.Set();
                 }
@@ -264,9 +263,9 @@ namespace CodeValue.CodeCommander.Tests
             var processor = new CommandProcessor(null, fakeFilterManager);
             var command = new TestCommand(CommandState.New, blockCanExecute:true);
 
-            command.RegisterForStateChange(Observer.Create<IObservedChange<CommandBase, CommandState>>(b =>
+            command.RegisterForStateChange(Observer.Create<CommandState>(b =>
             {
-                if (b.Value == CommandState.Blocked)
+                if (b == CommandState.Blocked)
                 {
                     resetEvent.Set();
                 }
@@ -289,9 +288,9 @@ namespace CodeValue.CodeCommander.Tests
             var processor = new CommandProcessor(null, fakeFilterManager);
             var command = new TestCommand(CommandState.New, blockCanExecute: true, shouldFailIfBlocked:true);
 
-            command.RegisterForStateChange(Observer.Create<IObservedChange<CommandBase, CommandState>>(b =>
+            command.RegisterForStateChange(Observer.Create<CommandState>(b =>
             {
-                if (b.Value == CommandState.Failed)
+                if (b == CommandState.Failed)
                 {
                     resetEvent.Set();
                 }
@@ -340,9 +339,9 @@ namespace CodeValue.CodeCommander.Tests
             var processor = new CommandProcessor(null, fakeFilterManager);
             var command = new TestCommand(CommandState.New, blockCanExecute: true);
 
-            command.RegisterForStateChange(Observer.Create<IObservedChange<CommandBase, CommandState>>(b =>
+            command.RegisterForStateChange(Observer.Create<CommandState>(b =>
             {
-                if (b.Value == CommandState.Blocked)
+                if (b == CommandState.Blocked)
                 {
                     resetEvent.Set();
                 }
@@ -350,9 +349,9 @@ namespace CodeValue.CodeCommander.Tests
             processor.PublishCommand(command);
             resetEvent.Wait();
             A.CallTo(() => fakeFilterManager.Process(A<CommandBase>.Ignored)).Returns(false);
-            command.RegisterForStateChange(Observer.Create<IObservedChange<CommandBase, CommandState>>(b =>
+            command.RegisterForStateChange(Observer.Create<CommandState>(b =>
             {
-                if (b.Value == CommandState.Pending)
+                if (b == CommandState.Pending)
                 {
                     resetEvent.Set();
                 }
@@ -381,9 +380,9 @@ namespace CodeValue.CodeCommander.Tests
                                                                                          resetEvent.Set();
                                                                                          return false;
                                                                                      });
-            command.RegisterForStateChange(Observer.Create<IObservedChange<CommandBase, CommandState>>(b =>
+            command.RegisterForStateChange(Observer.Create<CommandState>(b =>
             {
-                if (b.Value == CommandState.Executing)
+                if (b == CommandState.Executing)
                 {
                     resetEvent.Set();
                 }
@@ -419,9 +418,9 @@ namespace CodeValue.CodeCommander.Tests
                 throw new Exception(exceptionMessage);
             });
 
-            command.RegisterForStateChange(Observer.Create<IObservedChange<CommandBase, CommandState>>(b =>
+            command.RegisterForStateChange(Observer.Create<CommandState>(b =>
             {
-                if (b.Value == CommandState.Executing)
+                if (b == CommandState.Executing)
                 {
                     resetEvent.Set();
                 }
@@ -462,9 +461,9 @@ namespace CodeValue.CodeCommander.Tests
             var processor = new CommandProcessor(inputSource, fakeFilterManager);
             var command = new TestCommand(CommandState.New, interpretResponseAction: i => true);
 
-            command.RegisterForStateChange(Observer.Create<IObservedChange<CommandBase, CommandState>>(b =>
+            command.RegisterForStateChange(Observer.Create<CommandState>(b =>
             {
-                if (b.Value == CommandState.Executing)
+                if (b == CommandState.Executing)
                 {
                     resetEvent.Set();
                 }
@@ -499,9 +498,9 @@ namespace CodeValue.CodeCommander.Tests
             var processor = new CommandProcessor(inputSource, fakeFilterManager);
             var command = new TestCommand(CommandState.New, interpretResponseAction: i => true);
 
-            command.RegisterForStateChange(Observer.Create<IObservedChange<CommandBase, CommandState>>(b =>
+            command.RegisterForStateChange(Observer.Create<CommandState>(b =>
             {
-                if (b.Value == CommandState.Executing)
+                if (b == CommandState.Executing)
                 {
                     resetEvent.Set();
                 }
@@ -536,11 +535,11 @@ namespace CodeValue.CodeCommander.Tests
             A.CallTo(() => fakeFilterManager.Process(A<CommandBase>.Ignored)).Returns(true);
             var processor = new CommandProcessor(inputSource, fakeFilterManager);
             var command = new TestCommand(CommandState.New, interpretResponseAction: i => true, shouldExecuteForever: true);
-            
 
-            command.RegisterForStateChange(Observer.Create<IObservedChange<CommandBase, CommandState>>(b =>
+
+            command.RegisterForStateChange(Observer.Create<CommandState>(b =>
             {
-                if (b.Value == CommandState.Executing)
+                if (b == CommandState.Executing)
                 {
                     resetEvent.Set();
                 }
@@ -813,13 +812,14 @@ namespace CodeValue.CodeCommander.Tests
                            };
             foreach (var command in commands)
             {
-                command.RegisterForStateChange(Observer.Create<IObservedChange<CommandBase, CommandState>>(b =>
+                command.RegisterForStateChange(Observer.Create<CommandState>(b =>
                 {
-                    if (b.Value == CommandState.Canceled)
+                    if (b == CommandState.Canceled)
                     {
                         commandsCanceled[0]++;
                     }
                 }));
+
                 processor.PublishCommand(command);
             }
 
@@ -836,9 +836,9 @@ namespace CodeValue.CodeCommander.Tests
             var filterManager = new FilterManager();
             var processor = new CommandProcessor(null, filterManager);
             var command = new TestCommand(CommandState.New);
-            command.RegisterForStateChange(Observer.Create<IObservedChange<CommandBase, CommandState>>(b =>
+            command.RegisterForStateChange(Observer.Create<CommandState>(b =>
             {
-                if (b.Value == CommandState.Executing)
+                if (b == CommandState.Executing)
                 {
                     resetEvent.Set();
                 }
@@ -862,9 +862,9 @@ namespace CodeValue.CodeCommander.Tests
             var processor = new CommandProcessor(null, filterManager);
             var command = new TestCommand(CommandState.New, shouldCompleteAfterExecute:false) { Order = 13};
             
-            command.RegisterForStateChange(Observer.Create<IObservedChange<CommandBase, CommandState>>(b =>
+            command.RegisterForStateChange(Observer.Create<CommandState>(b =>
             {
-                if (b.Value == CommandState.Successed)
+                if (b == CommandState.Successed)
                 {
                     commandsCompleted[0] = true;
                 }
@@ -872,9 +872,9 @@ namespace CodeValue.CodeCommander.Tests
 
             var command2 = new TestCommand(CommandState.New, shouldCompleteAfterExecute: true) { Order = 2 };
 
-            command2.RegisterForStateChange(Observer.Create<IObservedChange<CommandBase, CommandState>>(b =>
+            command2.RegisterForStateChange(Observer.Create<CommandState>(b =>
             {
-                if (b.Value == CommandState.Successed)
+                if (b == CommandState.Successed)
                 {
                     commandsCompleted[1] = true;
                     resetEvent.Set();
@@ -889,12 +889,12 @@ namespace CodeValue.CodeCommander.Tests
 
 
 
-        [TestMethod]
-        public void CommandProcessor_ExplicitBackgroundDispatcherNeeded_DispatcherIsEventLoops()
-        {
-            var fakeFilterManager = A.Fake<IFilterManager>();
-            var processor = new CommandProcessor(null, fakeFilterManager, true);
-            Assert.IsTrue(RxApp.DeferredScheduler is EventLoopScheduler);
-        }
+        //[TestMethod]
+        //public void CommandProcessor_ExplicitBackgroundDispatcherNeeded_DispatcherIsEventLoops()
+        //{
+        //    var fakeFilterManager = A.Fake<IFilterManager>();
+        //    var processor = new CommandProcessor(null, fakeFilterManager, true);
+        //    Assert.IsTrue(RxApp.DeferredScheduler is EventLoopScheduler);
+        //}
     }
 }

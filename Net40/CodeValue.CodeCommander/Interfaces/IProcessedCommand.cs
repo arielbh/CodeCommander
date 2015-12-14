@@ -1,6 +1,6 @@
 using System;
+using System.Collections.ObjectModel;
 using System.Reactive;
-using ReactiveUI;
 
 namespace CodeValue.CodeCommander.Interfaces
 {
@@ -26,9 +26,9 @@ namespace CodeValue.CodeCommander.Interfaces
         bool ShouldCompleteAfterExecute { get; }
 
 
-        ReactiveCollection<CommandTrace> CommandTraces { get; }
+        ObservableCollection<CommandTrace> CommandTraces { get; }
 
-        IDisposable RegisterForStateChange(IObserver<IObservedChange<CommandBase, CommandState>> observer);
+        IDisposable RegisterForStateChange(IObserver<CommandState> observer);
         IDisposable Subscribe(IObserver<ICommandResponse<Unit>> observer);
     }
 

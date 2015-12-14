@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Reactive;
 using System.Reactive.Concurrency;
@@ -11,7 +12,6 @@ using System.Threading.Tasks;
 using CodeValue.CodeCommander.Exceptions;
 using CodeValue.CodeCommander.Interfaces;
 using CodeValue.CodeCommander.Ordered;
-using ReactiveUI;
 
 namespace CodeValue.CodeCommander
 {
@@ -20,23 +20,24 @@ namespace CodeValue.CodeCommander
         private int _commandCounter = 0;
         private readonly IFilterManager _filterManager;
         private readonly object _lockingQueue = new object();
-        private ReactiveCollection<CommandBase> _outstandingCommands = new ReactiveCollection<CommandBase>();
+        private ObservableCollection<CommandBase> _outstandingCommands = new ObservableCollection<CommandBase>();
         private Dictionary<CommandBase, IDisposable> _subscriptions = new Dictionary<CommandBase, IDisposable>();
 
 
-        public CommandProcessor(IObservable<ProcessorInput> inputsSource, IFilterManager filterManager, bool useBackgroundDispatcher = false)
+        public CommandProcessor(IObservable<ProcessorInput> inputsSource, IFilterManager filterManager)
         {
-            if (useBackgroundDispatcher)
-            {
-                RxApp.DeferredScheduler = new EventLoopScheduler();
-            }
+            //if (useBackgroundDispatcher)
+            //{
+            //    RxApp.DeferredScheduler = new EventLoopScheduler();
+            //}
             _filterManager = filterManager;
             filterManager.ItemsChanged.Subscribe(
                 f => TraversePendingCommands());
 
-            _outstandingCommands.ItemsAdded.Subscribe(HandleAddedCommand);
 
-            _outstandingCommands.ItemsRemoved.Subscribe(item =>
+            _outstandingCommands.GetObservableAddedValues().Subscribe(HandleAddedCommand);
+
+            _outstandingCommands.GetObservableRemovedValues().Subscribe(item =>
             {
                 _subscriptions[item].Dispose();
                 _subscriptions.Remove(item);
@@ -228,7 +229,7 @@ namespace CodeValue.CodeCommander
 
         public virtual IDisposable RegisterForCompletedCommands(IObserver<CommandBase> observer)
         {
-            return _outstandingCommands.ItemsRemoved.Subscribe(observer);
+            return _outstandingCommands.GetObservableRemovedValues().Subscribe(observer);
         }
     }
 
