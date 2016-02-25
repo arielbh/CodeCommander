@@ -35,7 +35,7 @@ namespace CodeValue.CodeCommander
                 f => TraversePendingCommands());
 
 
-            _outstandingCommands.GetObservableAddedValues().Subscribe(HandleAddedCommand);
+         //   _outstandingCommands.GetObservableAddedValues().Subscribe(HandleAddedCommand);
 
             _outstandingCommands.GetObservableRemovedValues().Subscribe(item =>
             {
@@ -101,12 +101,38 @@ namespace CodeValue.CodeCommander
                                                   RemoveCommand(item));
         }
 
+        protected virtual void HandleAddedCommand<T>(CommandBase<T> item)
+        {
+            item.SerialNumber = _commandCounter++;
+            item.CurrentState = CommandState.Pending;
+            PushToFilter(item);
+            if (_subscriptions.ContainsKey(item))
+            {
+                _subscriptions[item].Dispose();
+            }
+            _subscriptions[item] = item.Subscribe(Observer.Create<ICommandResponse<T>>(
+                _ => { },
+                ex => { RemoveCommand(item); },
+                () => { RemoveCommand(item); }));
+        }
+
         protected virtual void AddCommand(CommandBase command)
         {
             if (command.CurrentState != CommandState.New) throw new CommandProcessorException("Command is not new");
             lock (_lockingQueue)
             {
                 _outstandingCommands.Add(command);
+                HandleAddedCommand(command);
+            }
+        }
+
+        protected virtual void AddCommand<T>(CommandBase<T> command)
+        {
+            if (command.CurrentState != CommandState.New) throw new CommandProcessorException("Command is not new");
+            lock (_lockingQueue)
+            {
+                _outstandingCommands.Add(command);
+                HandleAddedCommand<T>(command);
             }
         }
         protected virtual bool RemoveCommand(CommandBase item)
@@ -152,13 +178,34 @@ namespace CodeValue.CodeCommander
             return subscription;
         }
 
+        public Task PublishCommand(CommandBase command)
+        {
+            var source = new TaskCompletionSource<object>();
+            PublishCommand(command, Observer.Create<ICommandResponse<Unit>>(
+                _ => { }, 
+                ex => source.SetException(ex),
+                () => source.SetResult(command)));
+            return source.Task;
+        }
+
         public virtual IDisposable PublishCommand<T>(CommandBase<T> command, IObserver<ICommandResponse<T>> observer = null)
         {
             IDisposable subscription = null;
             if (observer != null)
                 subscription = command.Subscribe(observer);
-            AddCommand(command);
+            AddCommand<T>(command);
             return subscription;
+        }
+
+        public Task<IList<T>> PublishCommand<T>(CommandBase<T> command)
+        {
+            var source = new TaskCompletionSource<IList<T>>();
+            var results = new List<T>(); 
+            PublishCommand(command, Observer.Create<ICommandResponse<T>>(
+                result => results.Add(result.Value),
+                ex => source.SetException(ex),
+                () => source.SetResult(results)));
+            return source.Task;
         }
 
         public virtual IDisposable[] PublishOrderedCommands(CommandBase[] commands, IObserver<ICommandResponse<Unit>>[] observers = null)

@@ -96,17 +96,27 @@ namespace CodeValue.CodeCommander
             Inner.OnNext(new CommandResponse<Unit>(this, new Unit()));
         }
 
+        internal protected virtual void SignalCommandException(Exception exception)
+        {
+            Inner.OnError(exception);
+        }
+
+        internal protected virtual void SignalCommandCompletion()
+        {
+            Inner.OnCompleted();
+        }
+
         internal protected virtual void CompleteCommand(Exception ex = null)
         {
             if (ex != null)
             {
                 CurrentState = CommandState.Failed;
-                Inner.OnError(ex);
+                SignalCommandException(ex);
             }
             else
             {
 
-                Inner.OnCompleted();
+                SignalCommandCompletion();
             }
         }
 
@@ -327,6 +337,16 @@ namespace CodeValue.CodeCommander
         protected override void SignalCommandFulfillment()
         {
             Inner.OnNext(new CommandResponse<T>(this, ReturnValue));
+        }
+
+        protected internal override void SignalCommandException(Exception exception)
+        {
+            Inner.OnError(exception);
+        }
+
+        protected internal override void SignalCommandCompletion()
+        {
+            Inner.OnCompleted();
         }
 
         private T _returnValue;
